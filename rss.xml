@@ -10,7 +10,7 @@
         <title>Cube219&#39;s Blog</title>
         <link>https://blog.cube219.me/</link>
         <description>게임 개발자가 되고 싶은 사람.</description>
-        <generator>Hugo 0.82.0-DEV https://gohugo.io/</generator>
+        <generator>Hugo 0.81.0 https://gohugo.io/</generator>
         
             <language>ko-kr</language>
         
@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Fri, 19 Mar 2021 17:00:07 &#43;0000</lastBuildDate>
+        <lastBuildDate>Fri, 19 Mar 2021 17:17:17 &#43;0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://blog.cube219.me/rss.xml" />
         

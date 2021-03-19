@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-kr">
     <title type="text">Cube219&#39;s Blog</title>
     <subtitle type="html">게임 개발자가 되고 싶은 사람.</subtitle>
-    <updated>2021-03-19T17:00:07&#43;00:00</updated>
+    <updated>2021-03-19T17:17:17&#43;00:00</updated>
     <id>https://blog.cube219.me/</id>
     <link rel="alternate" type="text/html" href="https://blog.cube219.me/" />
     <link rel="self" type="application/atom&#43;xml" href="https://blog.cube219.me/atom.xml" />
@@ -15,7 +15,7 @@
                 <email>max804800@gmail.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
-    <generator uri="https://gohugo.io/" version="0.82.0-DEV">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.81.0">Hugo</generator>
         <entry>
             <title type="text">Educational Codeforces Round 106 (Rated for Div. 2)</title>
             <link rel="alternate" type="text/html" href="https://blog.cube219.me/posts/2021/edu-codeforce-round-106-div2/" />
