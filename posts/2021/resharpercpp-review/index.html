@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.82.0-DEV" /><meta name="theme-color" content="#fff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>ReSharperC&#43;&#43; 사용 후기 | Cube219&#39;s Blog</title>
+
+    <link rel="stylesheet" href="/css/meme.min.6b5a8c677842eff0ff344977d22d5c4ebfac413896d7ca535d5d1944083919e6.css"/>
+
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.f510ee18539997618746194a58b59c626566191a3af103e5f9018c2fe66091d0.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="Cube219" /><meta name="description" content="최근 언리얼 엔진을 이용한 프로젝트를 한 적이 있었다. 언리얼 엔진은 프로그래밍을 할 때 블루프린트를 이용할 수 있지만, 구조가 복잡해지면 가독성이 떨어지기도 하고, 결정적으로 Gameplay Ability System이 블루프린트를 지원하지 않기 때문에 핵심 파트는 C&#43;&#43;로 개발하고 있었다. 본인은 Windows 환경에서 C&#43;&#43;을 개발할 때 거의 Visual Studio를 사용한다. 가장..." />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Cube219&#39;s Blog" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Cube219&#39;s Blog" />
+    <meta name="msapplication-starturl" content="../../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://blog.cube219.me/posts/2021/resharpercpp-review/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2021-03-11T16:07:11+09:00",
+        "dateModified": "2021-03-11T16:10:28+09:00",
+        "url": "https://blog.cube219.me/posts/2021/resharpercpp-review/",
+        "headline": "ReSharperC++ 사용 후기",
+        "description": "최근 언리얼 엔진을 이용한 프로젝트를 한 적이 있었다. 언리얼 엔진은 프로그래밍을 할 때 블루프린트를 이용할 수 있지만, 구조가 복잡해지면 가독성이 떨어지기도 하고, 결정적으로 Gameplay Ability System이 블루프린트를 지원하지 않기 때문에 핵심 파트는 C++로 개발하고 있었다. 본인은 Windows 환경에서 C++을 개발할 때 거의 Visual Studio를 사용한다. 가장...",
+        "inLanguage" : "ko-kr",
+        "articleSection": "posts",
+        "wordCount":  2968 ,
+        "image": ["https://blog.cube219.me/posts/2021/resharpercpp-review/images/banner.png"],
+        "author": {
+            "@type": "Person",
+            "description": "게임 개발자가 되고 싶은 사람.",
+            "email": "max804800@gmail.com",
+            "image": "https://blog.cube219.me/images/logo_new.png",
+            "url": "https://blog.cube219.me/",
+            "name": "Cube219"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Cube219's Blog",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://blog.cube219.me/images/logo_new.png"
+            },
+            "url": "https://blog.cube219.me/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://blog.cube219.me/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary_large_image" />
+
+
+<meta name="twitter:site" content="@Cube219&#39;s Blog" />
+
+    
+
+
+
+<meta property="og:title" content="ReSharperC&#43;&#43; 사용 후기" />
+<meta property="og:description" content="최근 언리얼 엔진을 이용한 프로젝트를 한 적이 있었다. 언리얼 엔진은 프로그래밍을 할 때 블루프린트를 이용할 수 있지만, 구조가 복잡해지면 가독성이 떨어지기도 하고, 결정적으로 Gameplay Ability System이 블루프린트를 지원하지 않기 때문에 핵심 파트는 C&#43;&#43;로 개발하고 있었다. 본인은 Windows 환경에서 C&#43;&#43;을 개발할 때 거의 Visual Studio를 사용한다. 가장..." />
+<meta property="og:url" content="https://blog.cube219.me/posts/2021/resharpercpp-review/" />
+<meta property="og:site_name" content="Cube219&#39;s Blog" />
+<meta property="og:locale" content="ko-kr" /><meta property="og:image" content="https://blog.cube219.me/posts/2021/resharpercpp-review/images/banner.png" />
+<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2021-03-11T16:07:11&#43;09:00" />
+    <meta property="article:modified_time" content="2021-03-11T16:10:28&#43;09:00" />
+    
+    <meta property="article:section" content="posts" />
+
+
+        <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+
+        
+
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154144484-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-154144484-1');
+    </script>
+
+
+
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">Cube219&#39;s Blog</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon home"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg><span class="menu-item-name">Home</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">Posts</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/categories/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255 0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm386.667-56H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24z"/></svg><span class="menu-item-name">Categories</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class="menu-item-name">About</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+            
+                <li class="menu-item search-item">
+                        <form id="search" class="search" role="search">
+    <label for="search-input"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon search-icon"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></label>
+    <input type="search" id="search-input" class="search-input">
+</form>
+
+<template id="search-result" hidden>
+    <article class="content post">
+        <h2 class="post-title"><a class="summary-title-link"></a></h2>
+        <summary class="summary"></summary>
+        <div class="read-more-container">
+            <a class="read-more-link">더 보기 »</a>
+        </div>
+    </article>
+</template>
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    {"hash":"114a57f4ee830de0a52a8f326b0e1e94c9870d0d","abbreviatedHash":"114a57f","subject":"📝 Writing: ReSharperC++ 사용 후기","authorName":"Cube219","authorEmail":"max804800@gmail.com","authorDate":"2021-03-11T16:10:28+09:00","commitDate":"2021-03-11T16:10:28+09:00"}
+    <div class="main-inner">
+
+        
+
+        <article class="content post" data-align="default" data-type="posts" data-toc-num="true">
+
+            
+                <img src="images/banner.png" class="article-banner">
+            
+            <h1 class="post-title">ReSharperC++ 사용 후기</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2021-03-11T16:07:11&#43;09:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2021.3.11</time>
+    
+    
+    
+    
+        
+        
+        
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/programming/" class="category-link p-category">Programming</a>/<a href="/categories/etc/" class="category-link p-category">Etc</a></span>
+            
+        
+    
+    
+    
+    
+    
+</div>
+
+            
+
+            <div class="post-body">
+              <p>최근 <a href="https://www.unrealengine.com/" target="_blank" rel="noopener">언리얼 엔진</a>을 이용한 프로젝트를 한 적이 있었다. 언리얼 엔진은 프로그래밍을 할 때 블루프린트를 이용할 수 있지만, 구조가 복잡해지면 가독성이 떨어지기도 하고, 결정적으로 <a href="https://docs.unrealengine.com/en-US/InteractiveExperiences/GameplayAbilitySystem/index.html" target="_blank" rel="noopener">Gameplay Ability System</a>이 블루프린트를 지원하지 않기 때문에 핵심 파트는 C++로 개발하고 있었다.</p>
+<p>본인은 Windows 환경에서 C++을 개발할 때 거의 <a href="https://visualstudio.microsoft.com/ko/" target="_blank" rel="noopener">Visual Studio</a>를 사용한다. 가장 큰 이유는 디버깅하기 편해서지만, Intellisense 기능도 상당 부분 차지한다. 이 기능이 있어야 Syntax highlighting이나 Code completion, Navigation등 여러 편리한 기능들을 쓸 수 있다. 소규모 프로젝트에서는 이 기능들이 잘 작동하지만, 언리얼 엔진 프로젝트는 엔진 소스코드도 참조해서 그런지 매우 느리게 작동한다.</p>
+<p><img src="images/intellisence.gif" alt="intellisence"></p>
+<p>위 영상처럼 다른 파일을 열 때마다 Intellisense가 코드를 분석하는데 오랜 시간이 걸려서 개발하는데 많이 불편했다.</p>
+<p>그래서 찾아보니까 <a href="https://www.wholetomato.com/" target="_blank" rel="noopener">Visual Assist</a> 또는 <a href="https://www.jetbrains.com/ko-kr/resharper-cpp/" target="_blank" rel="noopener">ReSharperC++</a>같은 추가 Extension을 많이 사용하는 것 같다. Visual Assist는 지인도 쓰고있고 많이 쓰는 것 같은데&hellip; 유료다. 물론 ReSharperC++도 유료지만 <a href="https://www.jetbrains.com/ko-kr/" target="_blank" rel="noopener">JetBrains</a>사 제품들은 <a href="https://www.jetbrains.com/ko-kr/community/education/#students" target="_blank" rel="noopener">학생인증</a>을 하면 무료로 쓸 수 있어서 후자를 선택했다.</p>
+<p><img src="images/resharper.gif" alt="resharper"></p>
+<p>적용하니 12초에서 1초로 매우 빠르게 완료가 된다. 다만 프로젝트를 열 때 플러그인 초기화 + 인덱싱을 하는지 조금 기다려야 한다 (한 1~2분?).</p>
+<hr>
+<p>이외에도 여러 유용한 기능들이 많은데 그중에 본인이 자주 쓰는 것들을 정리해봤다. 단축키 설정은 Visual Studio scheme을 이용한다.</p>
+<h2 id="code--file-template"><a href="#code--file-template" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Code / File template</h2>
+<p>템플릿 기능은 자주 쓰는 코드 조각들을 미리 정의해서 쉽게 가져다 쓸 수 있는 기능이다. 그중에 본인이 많이 쓰는 것은</p>
+<ul>
+<li>
+<p>beg..end - STL container에서 시작과 끝을 지정하는 일이 많은데, 그때 사용한다.</p>
+<p><img src="images/begend.png" alt="beg..end"></p>
+</li>
+<li>
+<p>fori, forr - 각각 순차/역순으로 탐색하는 for문을 만든다.</p>
+<p><img src="images/fori.png" alt="fori"></p>
+<p><img src="images/forr.png" alt="forr"></p>
+</li>
+</ul>
+<p>이외에도 사용자가 직접 템플릿을 정의해서 만들 수 있다.</p>
+<h2 id="inlay-hints"><a href="#inlay-hints" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Inlay hints</h2>
+<p><img src="images/inlay1.png" alt="inlay"></p>
+<p>JetBrains사 제품에서 많이 볼 수 있는데, 함수를 호출 할 때 매개변수의 이름을 보여주는 기능이다. Python이나 Swift같은 언어처럼 매개변수를 명시적으로 지정할 수는 없지만, hint로 보여주니까 괜찮은 것 같다. 레퍼런스로 넘겨지는 경우에는 <code>[&amp;]</code>를 표시한다.</p>
+<p><img src="images/inlay2.png" alt="inlay-in-struct"></p>
+<p>개인적으로 이 기능의 최대 강점은 <code>struct</code>를 초기화 할 때 변수들 이름을 보여주는 것이다. <code>{}</code>를 이용해 초기화를 할 때 변수 이름들을 보여줘 값들이 어떤 변수에 들어가는지 바로 알 수 있다.</p>
+<h2 id="search-everywhere"><a href="#search-everywhere" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Search everywhere</h2>
+<p><img src="images/search-everywhere.png" alt="search-everywhere"></p>
+<p>Mac의 <a href="https://support.apple.com/ko-kr/HT204014" target="_blank" rel="noopener">Spotlight</a>랑 비슷한 기능이다. <code>Ctrl + T</code>를 누르면 검색창이 뜨는데, 여기에 찾고싶은 것을 입력하면 해당하는 이름의 클래스/함수/변수명을 찾거나, 텍스트를 찾는 기능이다. 솔루션 탐색기를 뒤질 필요 없이 검색해서 바로 찾을 수 있어서 편리하다. 만약에 타입들로만 찾고 싶다면 <code>Ctrl + T</code>를 두 번, 파일명으로만 찾고 싶다면 <code>Ctrl + Shift + T</code> 등 선택적으로도 탐색할 수 있다.</p>
+<h2 id="navigation"><a href="#navigation" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Navigation</h2>
+<p><img src="images/navigate.png" alt="navigate to"></p>
+<p>특정한 위치로 이동하는 기능들이다. <strong>Alt + `</strong> 를 누르면 위 사진처럼 사용할 수 있는 기능들이 나온다. 자주 사용하는 기능들로는,</p>
+<ul>
+<li>
+<p>Find usage</p>
+<p><img src="images/find-usage.png" alt="find-usage"></p>
+<ul>
+<li>
+<p><code>Shift + F12</code>를 누르면 해당 함수나 변수가 쓰이고 있는 곳들을 보여준다. Visual Studio에도 있는 기능이지만, 속도는 비교할 수 없을 정도로 빠르다.</p>
+<p><img src="images/find-usage2.png" alt="find-usage-inline"></p>
+</li>
+<li>
+<p><code>Shift + Alt + F12</code>를 누르면 별도의 창이 아닌 바로 볼 수 있다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Base / Derived Symbol</p>
+<p><img src="images/base-derived-symbol.gif" alt="base-derived-move"></p>
+<ul>
+<li>함수나 클래스의 부모 / 자식으로 바로 이동할 수 있다. <code>Alt + Home</code> / <code>Alt + End</code>로 이동 가능하다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="insertion"><a href="#insertion" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Insertion</h2>
+<p><img src="images/insert.png" alt="insertion"></p>
+<p>특정 코드들을 넣을 수 있는 기능이다. <code>Alt + Insert</code>를 누르면 사용할 수 있는 기능들이 나온다. 자주 사용하는 기능들로는,</p>
+<ul>
+<li>Copy and move operations
+<ul>
+<li><img src="images/copy-move-operations.png" alt="copy-move-operations"></li>
+<li>복사/이동 관련 함수들을 추가해준다. 맴버 변수들도 반영해서 함수가 만들어진다.</li>
+</ul>
+</li>
+<li>Overriding / Missing memebers
+<ul>
+<li>오버라이딩 할 함수나 추가해야 할 함수들을 추가한다. 하지만 보통 밑에 있는 빠른 수정 기능으로 이용한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="빠른-수정"><a href="#빠른-수정" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>빠른 수정</h2>
+<p>코드에 문제가 있거나 수정사항이 있을만한 곳에 물결 표시가 뜨는데, 이를 해결해주는 기능이다. <code>Alt + Enter</code>로 사용할 수 있다. 자주 사용하는 기능들로는,</p>
+<ul>
+<li>
+<p>Switch - generate missing case statements</p>
+<p><img src="images/switch-case.png" alt="switch-generate-case"></p>
+<ul>
+<li>switch 값이 enum class같이 정해져 있는 경우, 빠져있는 case들을 자동으로 추가하는 기능이다.</li>
+</ul>
+</li>
+<li>
+<p>Class 수정</p>
+<p><img src="images/class-fix.png" alt="class-fix"></p>
+<ul>
+<li>만들어야 할 함수(pure virtual function, &hellip;)들을 추가할 수 있다.</li>
+</ul>
+</li>
+<li>
+<p>Function 수정</p>
+<p><img src="images/function-fix.png" alt="function-fix"></p>
+<ul>
+<li>구현이 없는 함수에 구현을 추가할 수 있다.</li>
+</ul>
+</li>
+<li>
+<p>including</p>
+<p><img src="images/auto-include.png" alt="auto-including"></p>
+<ul>
+<li>코드를 작성하는데 만약 include되지 않은 것을 쓰려하면 자동으로 해당 헤더파일을 include해준다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="refactoring"><a href="#refactoring" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Refactoring</h2>
+<p><img src="images/refactor.png" alt="refactoring"></p>
+<p>말 그대로 리펙토링 기능이다. <code>Ctrl + Shift + R</code>로 사용할 수 있다. 자주 사용하는 기능으로는,</p>
+<ul>
+<li>
+<p>Rename</p>
+<p><img src="images/rename.png" alt="rename"></p>
+<ul>
+<li>함수나 변수의 이름을 바꿔주는 기능이다. <code>Ctrl + R, R</code>로 실행할 수 있다.  사용중인 곳에도 자동으로 바뀐다.</li>
+</ul>
+</li>
+<li>
+<p>Change signature</p>
+<p><img src="images/change-sign1.png" alt="change-signature1"></p>
+<ul>
+<li>
+<p>함수의 이름 뿐만 아니라 선언까지 바꿔주는 기능이다. <code>Ctrl + R, S</code>로 실행할 수 있다. return type, 매개변수 추가 / 수정 / 제거 등 여러가지를 바꿀 수 있다. 이상하게 이 창에서는 입력하는 속도가 상당히 느려진다.</p>
+<p><img src="images/change-sign2.png" alt="change-signature2"></p>
+</li>
+<li>
+<p>추가되는 매개변수가 있을 경우, 이 함수를 사용하는 곳에서 어떤 값으로 넣을지 정할 수 있다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="unreal-engine-support"><a href="#unreal-engine-support" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Unreal Engine support</h2>
+<p>당연히 언리얼 엔진 기능도 지원한다. 이러한 플러그인을 쓰게 된 계기가 언리얼 엔진 지원 때문이니&hellip;</p>
+<ul>
+<li>
+<p>Reflection code completion</p>
+<p><img src="images/ue-reflection-formatting.png" alt="ue-reflection-formatting"></p>
+<ul>
+<li>언리얼 엔진에서는 C++에서는 지원하지 않는 리플렉션 기능을 위해 <code>UCLASS</code>, <code>UFUNCTION</code>과 같은 여러 매크로들을 사용한다. 하지만 실제로는 아무 내용도 없는 매크로이기 때문에, Visual Studio에서는 리플렉션 관련 코드들 자동 완성이 되지 않는데, 이러한 매크로들을 자동 완성이 되도록 해준다.</li>
+</ul>
+</li>
+<li>
+<p>UE4 전용 코드 검사</p>
+<p><img src="images/ue-missing-macro.png" alt="ue-missing-macro"></p>
+<ul>
+<li>
+<p>역시 리플렉션 기능을 위해 매크로를 필수적으로 넣어야 하는 곳들이 있는데, 빠진 곳에 오류를 표시해서 알 수 있게 해준다.</p>
+<p><img src="images/ue-coding-standard.png" alt="ue-coding-standard"></p>
+</li>
+<li>
+<p>언리얼 엔진에는 자체적인 <a href="https://docs.unrealengine.com/en-US/ProductionPipelines/DevelopmentSetup/CodingStandard/index.html" target="_blank" rel="noopener">코딩 컨벤션</a>이 있는데, 이를 지키지 않을 경우 오류를 표시해준다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="etc"><a href="#etc" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Etc</h2>
+<ul>
+<li>
+<p>To-do items</p>
+<p><img src="images/todo-items.png" alt="to-do-items"></p>
+<ul>
+<li>코드에 있는 TODO들을 모아서 보여주는 기능이다. <code>Ctrl + Alt + D</code>를 눌러 띄울 수 있다.</li>
+</ul>
+</li>
+<li>
+<p>std::make_shared 매개변수</p>
+<p><img src="images/make_shared.png" alt="make_shared-parameters"></p>
+<ul>
+<li>스마트 포인터를 생성하기 위해서는 보통 <code>std::make_shared</code>나 <code>std::make_unique</code>함수를 많이 사용한다. 근데 이 함수들을 이용하면 생성자의 매개변수들을 에디터에서 볼 수가 없고, 만약에 잘못 넣은 경우 에디터에 바로 나오지 않고 컴파일해야 나오기 때문에 오류를 알아보기가 힘들다. 이러한 단점을 보완해 에디터에서 생성자의 매개변수들을 볼 수 있고, 잘못 넣은 경우 오류를 바로 표시해준다.</li>
+</ul>
+</li>
+<li>
+<p>Extend selection</p>
+<p><img src="images/extend-selection.gif" alt="extend-selection"></p>
+<ul>
+<li>선택 범위를 점점 늘려가거나 줄이는 기능이다. 보통 유용하게 쓰는 경우는 함수 파라미터나 인자들을 복사하는 경우이다.</li>
+</ul>
+</li>
+<li>
+<p>Highlight usage in file</p>
+<p><img src="images/highlight-usage.png" alt="highlight-usage"></p>
+<ul>
+<li>강조하고 싶은 곳에 <code>Shift + Alt + F11</code>을 누르면, 해당 파일 안에서 강조한 것들이 보라색으로 표시가 되는 기능이다. 물론 커서를 가져다대면 파란색으로 강조되긴 한다.</li>
+</ul>
+</li>
+<li>
+<p>break / continue 대상 표시</p>
+<p><img src="images/break.png" alt="break"></p>
+<ul>
+<li><code>break</code>나 <code>continue</code>를 쓸 때 해당되는 반복문을 강조해준다. 이게 <code>if</code>나 여러가지가 섞이면 알아보기가 힘든 경우가 많은데, 강조를 해줘서 쉽게 알아볼 수 있다.</li>
+</ul>
+</li>
+</ul>
+<p>이외에도 naming convention, uint test 등 여러 기능들이 있다. 하지만 소소한 단점들도 있는데,</p>
+<ul>
+<li>처음에 프로젝트를 열었을 때 플러그인 로드 + 분석때문에 조금 기다려야 한다. 특히 언리얼 프로젝트인 경우, 맨 처음에 인덱싱하는데 2~5분정도 걸리고, 이후에 다시 열 때는 20초 정도 걸린다.</li>
+<li><code>}</code>나 <code>;</code>를 넣을 때, 자동으로 formatting이 되지 않는다. 설정을 다 찾아서 수정해도 안 된다&hellip; 그래서 자동 fomatting은 Visual Studio 기능을 사용하고 있다.</li>
+<li>최근에 업데이트 하고나서 팅기는 경우가 가끔 발생한다. Visual Studio 문제일 수도 있으나, 보통 code completion 리스트가 뜰 때 팅기는 것으로 봐서 ReSharper 문제같다.</li>
+</ul>
+<hr>
+<p>사람들이 왜 이런 플러그인들을 쓰는지 처음에는 잘 몰랐다. Visual Studio 기능만 해도 충분한 것 같은데 굳이 유로 플러그인들을 써야 하나&hellip;? 하는 생각이었다. 하지만 실제로 써보니까 그 이유를 알 것 같다. 무엇보다 네비게이션이나 코드 분석이 빨라서 좋았다. 아주 만족스럽게 사용하고 있다.</p>
+
+            </div>
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+                <li class="post-nav-prev">
+                    <a href="/posts/2021/codeforces-round-708-div2/" rel="prev">&lt; Codeforces Round #708 (Div. 2)</a>
+                </li>
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/2021/codeforces-round-706-div2/" rel="next">Codeforces Round #706 (Div. 2) &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+    
+
+        
+
+        
+
+        
+
+        
+            <div id="utterances">
+                <script src="https://utteranc.es/client.js"
+                    repo="Cube219/Cube219.github.io"
+                    issue-term="Comments: resharpercpp-review"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </div>
+        
+
+    
+
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2019–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;Cube219</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="https://github.com/cube219" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://facebook.com/profile.php?id=100001164136339" target="_blank" rel="external noopener" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://www.instagram.com/cube219" target="_blank" rel="external noopener" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="/rss.xml" target="_blank" rel="external noopener" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="mailto:max804800@gmail.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+
+
+
+
+
+
+    
+
+        
+
+        
+
+        
+            <script>
+    function loadComments() {
+        (function() {
+            var utterances = document.getElementById("utterances");
+            var script = document.createElement('script');
+            script.src = 'https://utteranc.es/client.js';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('repo', 'Cube219\/Cube219.github.io');
+            script.setAttribute('issue-term', 'Comments: ReSharperC\u002b\u002b 사용 후기');
+            const isDark = getCurrentTheme() === 'dark';
+        if (isDark) {
+            script.setAttribute('theme', 'photon-dark');
+        } else {
+            script.setAttribute('theme', 'github-light');
+        }
+            
+            utterances.appendChild(script);
+        })();
+    }
+</script>
+        
+
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    mediumZoom(document.querySelectorAll('div.post-body img'), {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+
+    </body>
+</html>

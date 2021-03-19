@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.82.0-DEV" /><meta name="theme-color" content="#fff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>MelonCrawler4YTMusic 개발기 | Cube219&#39;s Blog</title>
+
+    <link rel="stylesheet" href="/css/meme.min.6b5a8c677842eff0ff344977d22d5c4ebfac413896d7ca535d5d1944083919e6.css"/>
+
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.f510ee18539997618746194a58b59c626566191a3af103e5f9018c2fe66091d0.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="Cube219" /><meta name="description" content="필자는 음악 스트리밍 서비스로 Youtube Music을 이용하고 있다. Youtube Premium에 포함되어 있길래 그냥 같이 쓰고있다. 플레이 리스트 생성이나 자동재생 기능은 만족하면서 쓰고있지만, 차트 기능이 좀 부족한 것 같았다. 물론 한국 인기곡 Top100 차트가 있긴 한데 유행하는 신곡이 나와도 업데이트가 빠르게 되는 것 같지 않다. 한국 노래 차트하면 대표적으로 멜론..." />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Cube219&#39;s Blog" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Cube219&#39;s Blog" />
+    <meta name="msapplication-starturl" content="../../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://blog.cube219.me/posts/2020/melon-crawler-for-ytmusic-development/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2020-08-22T00:00:00+00:00",
+        "dateModified": "2020-08-22T23:11:08+09:00",
+        "url": "https://blog.cube219.me/posts/2020/melon-crawler-for-ytmusic-development/",
+        "headline": "MelonCrawler4YTMusic 개발기",
+        "description": "필자는 음악 스트리밍 서비스로 Youtube Music을 이용하고 있다. Youtube Premium에 포함되어 있길래 그냥 같이 쓰고있다. 플레이 리스트 생성이나 자동재생 기능은 만족하면서 쓰고있지만, 차트 기능이 좀 부족한 것 같았다. 물론 한국 인기곡 Top100 차트가 있긴 한데 유행하는 신곡이 나와도 업데이트가 빠르게 되는 것 같지 않다. 한국 노래 차트하면 대표적으로 멜론...",
+        "inLanguage" : "ko-kr",
+        "articleSection": "posts",
+        "wordCount":  5222 ,
+        "image": ["https://blog.cube219.me/posts/2020/melon-crawler-for-ytmusic-development/images/melon-chart-decomposite.png"],
+        "author": {
+            "@type": "Person",
+            "description": "게임 개발자가 되고 싶은 사람.",
+            "email": "max804800@gmail.com",
+            "image": "https://blog.cube219.me/images/logo_new.png",
+            "url": "https://blog.cube219.me/",
+            "name": "Cube219"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Cube219's Blog",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://blog.cube219.me/images/logo_new.png"
+            },
+            "url": "https://blog.cube219.me/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://blog.cube219.me/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary_large_image" />
+
+
+<meta name="twitter:site" content="@Cube219&#39;s Blog" />
+
+    
+
+
+
+<meta property="og:title" content="MelonCrawler4YTMusic 개발기" />
+<meta property="og:description" content="필자는 음악 스트리밍 서비스로 Youtube Music을 이용하고 있다. Youtube Premium에 포함되어 있길래 그냥 같이 쓰고있다. 플레이 리스트 생성이나 자동재생 기능은 만족하면서 쓰고있지만, 차트 기능이 좀 부족한 것 같았다. 물론 한국 인기곡 Top100 차트가 있긴 한데 유행하는 신곡이 나와도 업데이트가 빠르게 되는 것 같지 않다. 한국 노래 차트하면 대표적으로 멜론..." />
+<meta property="og:url" content="https://blog.cube219.me/posts/2020/melon-crawler-for-ytmusic-development/" />
+<meta property="og:site_name" content="Cube219&#39;s Blog" />
+<meta property="og:locale" content="ko-kr" /><meta property="og:image" content="https://blog.cube219.me/posts/2020/melon-crawler-for-ytmusic-development/images/melon-chart-decomposite.png" />
+<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2020-08-22T00:00:00&#43;00:00" />
+    <meta property="article:modified_time" content="2020-08-22T23:11:08&#43;09:00" />
+    
+    <meta property="article:section" content="posts" />
+
+
+        <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+
+        
+
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154144484-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-154144484-1');
+    </script>
+
+
+
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">Cube219&#39;s Blog</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon home"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg><span class="menu-item-name">Home</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">Posts</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/categories/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255 0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm386.667-56H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24z"/></svg><span class="menu-item-name">Categories</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class="menu-item-name">About</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+            
+                <li class="menu-item search-item">
+                        <form id="search" class="search" role="search">
+    <label for="search-input"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon search-icon"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></label>
+    <input type="search" id="search-input" class="search-input">
+</form>
+
+<template id="search-result" hidden>
+    <article class="content post">
+        <h2 class="post-title"><a class="summary-title-link"></a></h2>
+        <summary class="summary"></summary>
+        <div class="read-more-container">
+            <a class="read-more-link">더 보기 »</a>
+        </div>
+    </article>
+</template>
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    {"hash":"601ddbc4a154f0469bdc04818fa80388dfd633b2","abbreviatedHash":"601ddbc","subject":"📝 Writing: MelonCrawler4YTMusic 개발기","authorName":"Cube219","authorEmail":"max804800@gmail.com","authorDate":"2020-08-22T23:11:08+09:00","commitDate":"2020-08-22T23:21:47+09:00"}
+    <div class="main-inner">
+
+        
+
+        <article class="content post" data-align="default" data-type="posts" data-toc-num="true">
+
+            
+                <img src="images/melon-chart-decomposite.png" class="article-banner">
+            
+            <h1 class="post-title">MelonCrawler4YTMusic 개발기</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2020-08-22T00:00:00&#43;00:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2020.8.22</time>
+    
+    
+    
+    
+        
+        
+        
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/project/" class="category-link p-category">Project</a>/<a href="/categories/meloncrawler4ytmusic/" class="category-link p-category">MelonCrawler4YTMusic</a></span>
+            
+        
+    
+    
+    
+    
+    
+</div>
+
+            
+
+            <div class="post-body">
+              <p>필자는 음악 스트리밍 서비스로 <a href="https://music.youtube.com/" target="_blank" rel="noopener">Youtube Music</a>을 이용하고 있다. <a href="https://www.youtube.com/premium" target="_blank" rel="noopener">Youtube Premium</a>에 포함되어 있길래 그냥 같이 쓰고있다. 플레이 리스트 생성이나 자동재생 기능은 만족하면서 쓰고있지만, 차트 기능이 좀 부족한 것 같았다. 물론 한국 인기곡 Top100 차트가 있긴 한데 유행하는 신곡이 나와도 업데이트가 빠르게 되는 것 같지 않다.</p>
+<p>한국 노래 차트하면 대표적으로 <a href="https://www.melon.com/chart/index.htm" target="_blank" rel="noopener">멜론 차트</a>가 있다. 그래서 이 멜론 차트를 주기적으로 크롤링해서 내 플레이리스트에 넣으면 되겠다! 라는 생각이 들었다. 하지만, <a href="https://developers.google.com/youtube/v3/getting-started" target="_blank" rel="noopener">Youtube API</a>는 있는데 아무리 찾아봐도 Youtube Music API는 찾을 수가 없었다.</p>
+<p>그렇게 구현을 포기하고 있다가 어느날, 이 API를 어떤 사람이 <a href="https://github.com/sigma67/ytmusicapi" target="_blank" rel="noopener">직접 구현</a>한 것을 발견했다! 그것을 보고 바로 개발을 시작했다.</p>
+<hr>
+<h1 id="api-파악"><a href="#api-파악" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>API 파악</h1>
+<p>이 API는 <a href="https://www.python.org/" target="_blank" rel="noopener">python</a>으로 만들어져 있다. python은 오랜만에 해보는 언어라서 어떻게 개발 환경을 만들어야 할지 좀 찾아봤다. (자세한 구축 방법은 다음 문단에)</p>
+<p>다행히 <a href="https://ytmusicapi.readthedocs.io/en/latest/usage.html" target="_blank" rel="noopener">문서</a>가 잘 정리되어있어서  API를 쓰는데 어려움 점은 없었다.</p>
+<p>이 API는 크게 <strong>인증된 요청(Authenticated requests)</strong> 과 <strong>인증되지 않은 요청(Unauthenticated requests)</strong> 두 가지로 나눌 수 있다.</p>
+<p><strong>인증된 요청</strong>은 말 그래도 <strong>사용자 인증</strong>이 된 상태에서 하는 요청이다. 보통 유저와 관련된 요청(플레이 리스트 추가, 추천&hellip;)들이 여기에 속한다. 인증된 요청을 쓰기 위해서는 로그인된 유저의 <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies" target="_blank" rel="noopener"><strong>쿠키</strong></a>가 필요하다. 아마 이 API는 Youtube Music에게 HTTP 요청을 보내 받은 값을 처리하는 구조인 것 같은데, 그때 사용하는 것 같다.</p>
+<p><strong>인증되지 않은 요청</strong>은 이와 반대로 사용자 인증이 필요 없는 요청이다. 검색이나 곡 정보 보기 같은 것들이 해당한다.</p>
+<h1 id="개발-환경-구축"><a href="#개발-환경-구축" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>개발 환경 구축</h1>
+<p>API가 python으로 만들어져 있기 때문에 python 개발 환경 구축방법들을 찾아보았다.</p>
+<p>일단 python은 그냥 쓰기에 좋지 않다.  모든 환경이 각 프로젝트에 맞춰져 있지 않고 <strong>글로벌</strong>하게 맞춰져 있기 때문이다. Python 프로그램 자체가 그런것은 그럴 수 있는데, 문제는 <strong>라이브러리 패키지</strong>도 그렇다는 점이다.</p>
+<p>예를 들어 <strong>AProject</strong>에서 <strong>B-1.0.2</strong> 라이브러리를 쓴다고 하자. 이때 새로운 <strong>BProject</strong>를 만들고 이 프로젝트는 <strong>B-4.5.1</strong> 라이브러리를 쓰도록 설정했다. 이러면 python(정확히는 <a href="https://pypi.org/project/pip/" target="_blank" rel="noopener">pip</a>)은 기존에 설치되어있던 B-1.0.2를 B-4.5.1로 <strong>업데이트</strong> 하게 된다. 그러면 이제 <strong>AProject</strong>는 <strong>B-4.5.1</strong> 라이브러리를 쓰게 되고, 버전이 의도치 않게 올라갔기 때문에 문제가 발생할 가능성이 생기게 된다.</p>
+<p>이 문제를 해결하기 위해서는 각 프로젝트마다 <strong>독립된 환경</strong>을 구축할 필요가 있다. 이러한 것들을 도와주는 여러 프로그램들이 있는데, 필자는 <a href="https://virtualenv.pypa.io/en/latest/" target="_blank" rel="noopener"><strong>Virtualenv</strong></a>를 사용했다. Virtualenv는 쉽게 말해 라이브러리랑 python 그 자체를 <strong>한 폴더</strong>에다가 넣어두고, 실제로 사용할 땐 그 폴더 안에서 동작하도록 <strong>가상화</strong>해준다.</p>
+<p>사용법은 아주 간단하다. 먼저 Virtualenv를 설치해 준다. (이미 설치가 되어있다면 할 필요 없음)</p>
+<pre><code>$ sudo pip install virtualenv
+</code></pre><blockquote>
+<p>Windows의 경우 <code>sudo</code>를 빼주면 된다.</p>
+</blockquote>
+<p>설치가 되었으면 가상환경을 구축할 프로젝트 폴더로 가서</p>
+<pre><code>$ virtualenv env
+</code></pre><p>를 입력하면, <code>env</code>라는 폴더가 생기게 된다.</p>
+<p>폴더가 생겼다고 바로 쓸 수 있는 것은 아니다. 작업을 시작하기 전에 수동으로 <strong>활성화</strong>해야 한다.</p>
+<pre><code>$ source env/bin/activate
+</code></pre><blockquote>
+<p>Windows의 경우 <code>./env/Scripts/activate</code> 라고 입력하면 된다.</p>
+</blockquote>
+<p>를 입력하면 가상환경이 활성화가 된다. 이제 <code>pip</code>나 <code>python</code> 명령어를 실행하면 <code>env</code>폴더 내부에서 처리하게 된다.</p>
+<p>작업을 다 끝내고 가상환경을 <strong>비활성화</strong> 하고 싶으면 간단하게</p>
+<pre><code>$ deactivate
+</code></pre><p>를 입력하면 된다.</p>
+<p>이외에 여러가지 찾아보니까 부실한 pip를 대신해 <a href="https://python-poetry.org/" target="_blank" rel="noopener"><strong>Poetry</strong></a>라는 패키지 매니저도 있었다. 하지만 프로젝트 규모도 크지 않고, 무엇보다 귀찮아서 그냥 pip를 쓰기로 했다.</p>
+<p>이외에 편집기로는 기존에 쓰던 <a href="https://code.visualstudio.com/" target="_blank" rel="noopener"><strong>VSCode</strong></a>를 이용했다.</p>
+<h1 id="멜론-차트-크롤링"><a href="#멜론-차트-크롤링" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>멜론 차트 크롤링</h1>
+<p>웹 크롤링을 구글에 검색하면 대다수가 python을 이용한 크롤링이라서 정보를 아주 쉽게 얻을수가 있다. 방법을 간단히 요약하자면,</p>
+<ol>
+<li><a href="https://requests.readthedocs.io/en/master/" target="_blank" rel="noopener"><strong>request</strong></a>를 이용해 웹 페이지를 가져온다.</li>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/" target="_blank" rel="noopener"><strong>BeautifulSoup</strong></a>를 이용해 가져온 웹 페이지에서 원하는 정보를 뽑아낸다.</li>
+</ol>
+<p>자세한 방법은 검색하면 많이 나오니 여기서는 생략하겠다.</p>
+<p>멜론 차트에서 정보를 뽑아오기 위해서는 먼저 <a href="https://www.melon.com/chart/index.htm" target="_blank" rel="noopener">차트 페이지</a>가 어떤 구조로 되어있는가를 알아야 한다.</p>
+<p><img src="images/melon-chart-decomposite.png" alt="멜론 차트 페이지 분석"></p>
+<p>차트 페이지에서 얻어야 할 정보는 <strong>곡 이름</strong>, <strong>앨범</strong>, 그리고 <strong>작곡가</strong>이다. 얻고자 하는 정보에 마우스 우클릭-&gt;검사(혹은 Ctrl-Shift-I)를 누르면 해당 element로 이동하기 때문에 좀 더 편리하게 구조를 분석할 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+    ...
+    <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;wrap&#34;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;wrap_song_info&#34;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ellipsis rank01&#34;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">a</span> <span class="err">...</span><span class="p">&gt;</span> 곡 이름 <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                            <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ellipsis rank02&#34;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">a</span> <span class="err">...</span><span class="p">&gt;</span> 작곡가 <span class="p">&lt;</span><span class="nt">a</span><span class="p">/&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;wrap&#34;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;wrap_song_info&#34;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;ellipsis rank03&#34;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">a</span> <span class="err">...</span><span class="p">&gt;</span> 앨범 <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            
+            ...
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        ...
+    <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>구조를 간략하게 분석한 내용이다. 차트 자체는 table로 이루어져 있고, 각 곡들은 table에 한 줄씩 차례대로 들어가있다. 각 줄의 4번째 <code>&lt;td&gt;</code>랑 5번째 <code>&lt;td&gt;</code>가 각각 <strong>곡 이름+작곡가</strong>, <strong>앨범</strong>의 정보를 가지고 있다.</p>
+<p>이 정보만 가지고도 충분히 뽑아올 수 있지만, 좀 더 살펴보니 더 편한 방법이 있었다. 곡 이름, 작곡가, 앨범 정보들이 모두 <code>&lt;div class=&quot;wrap_song_info&quot;&gt;</code> 안에 있어서 저 클래스만 가지고 뽑을 수도 있겠다 라는 생각이 들었다. 실제로 <a href="https://www.w3schools.com/cssref/css_selectors.asp" target="_blank" rel="noopener">CSS Selector</a>로 <code>.wrap_song_info</code> 를 검색하니까 <strong>[1등 곡 이름+작곡가, 1등 곡 앨범, 2등 곡 이름+작곡가, 2등 곡 앨범, &hellip;]</strong> 이렇게 손쉽게 정보를 뽑아올 수 있었다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">melon_page_req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://www.melon.com/chart/index.htm&#34;</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">melon_page_req</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&#34;html.parser&#34;</span><span class="p">)</span>
+<span class="n">song_infos</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;.wrap_song_info&#34;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">song_infos</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">song_infos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">)</span>
+
+    <span class="n">title</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">span</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">artist</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">span</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">album</span> <span class="o">=</span> <span class="n">song_infos</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">text</span>
+    
+    <span class="bp">self</span><span class="o">.</span><span class="n">melon_song_infos</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">title</span><span class="p">,</span> <span class="n">artist</span><span class="p">,</span> <span class="n">album</span><span class="p">))</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>먼저 BeautifulSoup를 이용해 <code>.wrap_song_info</code>인 요소들을 다 가져온다. 그리고 반복문을 돌면서 요소들 안에 있는 곡 이름, 작곡가, 앨범 정보들을 빼서 배열에 튜플로 넣어준다.</p>
+<p>완벽해! 하고 프로그램을 돌리니까 오류가 발생했다&hellip; 응답 내용을 보니 <strong>406 Not Acceptable</strong> 이 찍혀 있었다. 그래서 검색해보니까 requests의 <strong>User-Agent</strong>가 몇몇 사이트에서는 <strong>막는</strong> 경우가 있다고 한다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">melon_page_req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&#34;https://www.melon.com/chart/index.htm&#34;</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&#34;User-Agent&#34;</span><span class="p">:</span> <span class="s2">&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36&#34;</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>그래서 그냥 헤더에 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent#Chrome_UA_string" target="_blank" rel="noopener">Chrome의 User-Agent</a> 값을 넣었다. 다행히 잘 작동했다.</p>
+<h1 id="youtube-music에-넣기"><a href="#youtube-music에-넣기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Youtube Music에 넣기</h1>
+<h2 id="id-찾기"><a href="#id-찾기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>ID 찾기</h2>
+<p>Youtube Music에 음악을 넣기 위해서는, 각 곡의 <strong>ID</strong>를 알아야 한다. 가지고 있는 정보는 곡 이름, 작곡가, 앨범인데 다음과 같은 방식으로 찾았다.</p>
+<ol>
+<li><strong>곡 이름</strong>을 Youtube Music에 검색한다.</li>
+<li>검색 결과중에 <strong>앨범명</strong>이 일치하는 곡이 있으면 그 곡을 선택한다.</li>
+<li>없을 경우, <strong>작곡가</strong>와 일치하는지 확인 후 있으면 그 곡을 선택한다.</li>
+<li>그래도 없을 경우, 그냥 <strong>첫 번째</strong> 곡을 선택한다.</li>
+</ol>
+<p>일치하는지 여부 확인은 두 문자열이 정확히 일치하는지를 확인하지 않고, 문자열 중 하나가 다른 문자열에 <strong>포함</strong>될 경우를 일치한다고 정했다. 멜론에서 쓰는 작곡가/앨범 이름이 Youtube Music하고 다른 경우가 종종 있어서 이런 방식을 사용했다. 특히 영어 이름인 경우에 이런 예외가 많았는데, 예를 들어 멜론에서 <strong>아이유</strong> 라는 이름이 Youtube Music에서는 <strong>IU(아이유)</strong> 라고 표기되어 있다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">album_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">song_album</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">song_album</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">album_name</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>포함 여부는 <code>find()</code>함수를 쓰면 쉽게 알 수 있다.</p>
+<h2 id="플레이리스트에-넣기"><a href="#플레이리스트에-넣기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>플레이리스트에 넣기</h2>
+<p>플레이리스트에 넣는 방법은 간단하다.</p>
+<ol>
+<li>이전에 플레이리스트를 만들어서 해당하는 플레이리스트 ID를 가지고 있다면, 4번으로 넘어간다.</li>
+<li>해당 계정이 가지고 있는 플레이리스트를 전부 가져온 뒤, 해당하는 플레이리스트가 있으면 그 플레이리스트 ID를 가져온다.</li>
+<li>없을 경우 플레이리스트를 만들고 해당 ID를 가져온다.</li>
+<li>플레이리스트에 있는 모든 곡들을 제거한다.</li>
+<li>플레이리스트에 미리 찾아둔 곡 ID들을 이용해 곡들을 전부 넣는다.</li>
+</ol>
+<p>플레이리스트에 곡들을 넣을 때 주의할 점이 있는데, 곡 ID들이 <strong>중복</strong>되어서는 <strong>안 된다</strong>. 중복으로 넣으려 하면 이미 있는 곡이라고 중간에 곡 넣는 작업이 중단되기 때문이다.</p>
+<h1 id="검색-정확도-높이기"><a href="#검색-정확도-높이기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>검색 정확도 높이기</h1>
+<p>이렇게 코딩을 하고 실제로 돌려보니 잘 돌아갔다. 하지만 의도한 것과는 다른 곡들이 들어가는 경우가 종종 있었다. 그래서 이런 오류들을 고치기 위해 여러 추가 작업들을 했다.</p>
+<h3 id="작곡가보다-앨범을-우선해서-확인"><a href="#작곡가보다-앨범을-우선해서-확인" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>작곡가보다 앨범을 우선해서 확인</h3>
+<p>초기 버전에서는 곡 검색 후 작곡가가 먼지 일치하는지를 확인했었다. 하지만 이 방식으로 하니까 종종 엉뚱한 곡이 들어가는 경우가 생겼다. Youtube Music에서 작곡가 명이 조금씩 다르기 때문이다.</p>
+<p><img src="images/wrong-artist-name.png" alt="잘못된 곡이 들어가는 예"></p>
+<p>왼쪽이 멜론에서의 곡 정보, 오른쪽이 Youtube Music에서의 곡 정보이다. <em>다시 여기 바닷가</em> 라는 곡의 작곡가가 멜론에서는 <strong>싹쓰리 (유두래곤, 린다G, 비룡)</strong> 으로 되어있고 Youtube Music에서는 <strong>싹스리 (유두래곤&amp;린다G&amp;비룡)</strong> 으로 되어있다. <code>,</code> 가 <code>&amp;</code> 로 바뀌어서 서로 일치하지 않는다고 판단하고, 오히려 전혀 다른 곡이지만 작곡가 명이 일치하는 <em>그 여름을 틀어줘</em>가 대신 들어가게 된다.</p>
+<p>또한 어떤 작곡가는 <strong>한글명</strong>만 쓰여있고, 어떤 작곡가는 <strong>한글명(영어명)</strong> 으로 쓰여있고, 어떤 작곡가는 <strong>영어명</strong>만 쓰여있는 등 일관성이 없기도 하다.</p>
+<p>이처럼 작곡가 이름은 서로 다르거나 일관성이 없는 경우가 많은 반면에, 앨범 이름은 대체로 멜론과 Youtube Music 둘 다 같은 이름을 가지는 경우가 많았다. 그래서 앨범이 작곡가보다 더 신뢰할만하다고 판단해, <strong>앨범</strong>이 먼저 일치하는지 확인하도록 바꾸었다.</p>
+<h3 id="일치-여부-확인-전에-전부-소문자로-바꾸기"><a href="#일치-여부-확인-전에-전부-소문자로-바꾸기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>일치 여부 확인 전에 전부 소문자로 바꾸기</h3>
+<p>앨범을 먼저 확인하도록 바꾸었어도 종종 오류가 발생해서 확인해봤더니 이런 경우도 있었다.</p>
+<p><img src="images/wrong-album-name.png" alt="잘못된 앨범 이름"></p>
+<p>위쪽의 멜론에서는 <strong>YOU NEVER WALK ALONE</strong> 으로 전부 대문자로 되어 있는 반면에, 아래쪽의 Youtube Music에서는 <strong>You Never Walk Alone</strong> 으로 단어의 첫 글자만 대문자로 되어있다. 그래서 서로 일치하는지 확인하기 전에 모든 영문자들을 <strong>소문자</strong>로 바꾸는 전처리과정을 추가했다. Python에서는 이 과정을 문자열 뒤에 <code>.lower()</code>만 붙이면 된다.</p>
+<h3 id="검색-결과를-한국어로-바꾸기"><a href="#검색-결과를-한국어로-바꾸기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>검색 결과를 한국어로 바꾸기</h3>
+<p>이런저런 작업들을 해도, 근본적으로 검색 결과가 <strong>영어</strong>로 나오기 때문에 오류가 이따금씩 발생하고 있었다. API가 아직 한국어를 지원하지 않아서 그렇다. 그래서 <strong>한국어</strong>를 지원하도록 API를 수정하기로 했다.</p>
+<p>다행히 이 <a href="https://github.com/sigma67/ytmusicapi/tree/master/ytmusicapi/locales" target="_blank" rel="noopener">문서</a>를 보고 추가 언어 지원을 할 수 있다고 한다. 여기서 ytmusicapi는 <a href="https://ko.wikipedia.org/wiki/Gettext" target="_blank" rel="noopener"><strong>gettext</strong></a>를 사용하고 있다는 것을 알 수 있었다.</p>
+<p><code>.po</code> 파일을 수정하고 (<a href="https://poedit.net/" target="_blank" rel="noopener">Poedit</a>을 사용했다), 파일들을 라이브러리 폴더에 넣고, 언어 설정을 <code>ko</code>로 바꾸었다. 검색 요청을 날려보니 다행히 한국어로 잘 나왔다.</p>
+<p>그런데 몇몇 검색에서는 결과값이 전혀 안 나오고 <code>[]</code>만 나오는 현상이 발생했다. 실제로 웹에서 검색을 하면 잘 나와서 검색 결과가 없는게 아닌데 라는 생각으로 라이브러리를 뜯어보았다. 그리고 문제점을 발견했다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">to_int</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">locale</span><span class="o">.</span><span class="n">atoi</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>유틸 관련 파일에 있는 <code>to_int()</code>함수이다. 구현이 그냥 문자열을 띄어쓰기를 기준으로 나누고 나눈 것의 첫번째를 숫자로 바꾼다. 이 함수가 문제였다.</p>
+<p>위 함수는 숫자가 있는 데이터(조회수, 좋아요 수&hellip;)에서 숫자 정보만 빼기 위해 만든 함수이다. 영미권 언어들은 저런 구현이 가능한게, &lsquo;<strong>153</strong> songs&rsquo;, &lsquo;<strong>156k</strong> follwers&rsquo; 처럼 왠만하면 무조건 숫자가 앞에 나오게 된다. 하지만 한국어의 경우, &lsquo;노래 <strong>153</strong>곡&rsquo;, &lsquo;팔로우 <strong>15.6만</strong>명&rsquo; 처럼 앞에 숫자의 정보가 있고, 숫자 뒤에 접미사까지 붙게 된다. 이 때문에 한국어에서 저 함수를 호출하면 &lsquo;<strong>노래</strong>&lsquo;를 숫자로 변환하려고 하게 되고, 예외가 발생해서 올바른 값이 나오지 않게 된다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">to_int</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">start_decimal_idx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">end_decimal_idx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">()</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">end_decimal_idx</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">if</span> <span class="n">start_decimal_idx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">start_decimal_idx</span> <span class="o">=</span> <span class="n">i</span>
+
+    <span class="n">number</span> <span class="o">=</span> <span class="n">string</span><span class="p">[</span><span class="n">start_decimal_idx</span> <span class="p">:</span> <span class="n">end_decimal_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">locale</span><span class="o">.</span><span class="n">atoi</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>그래서 문자열에서 <strong>숫자만</strong> 추출해서 변환하도록 코드를 수정했다. 문자열을 돌면서 가장 처음에 나온 숫자의 위치와 가장 나중에 나온 숫자의 위치를 알아내고, 그 위치를 기준으로 문자열을 자른 후 그 문자열을 변환하게 만들었다.</p>
+<p>이 코드 말고도 다른 곳에서도 비슷하게 숫자를 처리하는 로직이 있는데, 일단 저 함수만 수정해도 잘 돌아갔다. 그래서 저런 로직들을 싹다 수정해서 PR을 올리려고 했는데, 골치아픈 문제가 있었다.</p>
+<p>숫자가 적을 경우는 문제가 안 되는데, 숫자가 많아져서 줄어들게 될 경우 문제가 발생한다. 숫자 뒤에 k, m이나 천, 만 같은 접미사가 붙게 되어서 숫자만 추출하면 저 접미사가 빠져서 원래 숫자보다 더 적게 나오게 된다. 그렇다고 뒤에 한 글자만 더 포함하자니 접미사가 안 붙는 경우도 있고, 언어마다 다른 경우도 있는 등 고려할 게 많았다. 그리고 이 모든 것들을 수정하기에는 귀찮기도 해서&hellip; 그래서 그냥 오류가 안 날 정도로만 수정해서 쓰고있다. 어차피 숫자 데이터는 안 쓰기 때문에&hellip;</p>
+<h1 id="배포"><a href="#배포" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>배포</h1>
+<p>배포는 <a href="https://blog.cube219.me/posts/2019/making-a-alerter-for-new-posts/#%EB%B0%B1%EC%97%94%EB%93%9C-%EC%84%9C%EB%B2%84" target="_blank" rel="noopener">이전에 했던 프로젝트</a>랑 비슷하게 <a href="https://www.docker.com/" target="_blank" rel="noopener"><strong>Docker</strong></a>를 이용했다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> python:3.8-alpine</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app/MelonCrawler4YTMusic</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> main.py ./<span class="err">
+</span><span class="err"></span><span class="k">COPY</span> requirements.txt ./<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> pip install -r requirements.txt<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> ytmusicapi_modified /usr/local/lib/python3.8/site-packages/ytmusicapi<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;python3&#34;</span><span class="p">,</span> <span class="s2">&#34;main.py&#34;</span> <span class="p">]</span><span class="err">
+</span></code></pre></td></tr></table></div>
+</div>
+</div><p>파일을 복사하고, pip로 패키지 설치하고, 실행하는 간단한 구조이다. 실행하기 전에 ytmusicapi 수정한 부분을 덮어씌우는 과정이 있다. 이 Dockerfile을 이용해 docker image를 만들면 된다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">mainserver</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;cube219/melon-crawler:latest&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">melon-crawler-server</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./logs:/app/MelonCrawler4YTMusic/log</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">COOKIE</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">MY_COOKIE]</span><span class="w">
+</span><span class="w">      </span><span class="nt">PLAYLIST_NAME</span><span class="p">:</span><span class="w"> </span><span class="l">멜론 차트 100</span><span class="w">
+</span><span class="w">      </span><span class="nt">UPDATE_INTERVAL</span><span class="p">:</span><span class="w"> </span><span class="m">172800</span><span class="w"> </span><span class="c"># 2 days</span><span class="w">
+</span></code></pre></td></tr></table></div>
+</div>
+</div><p>그리고 만든 docker image를 띄우면 된다.  필자는 <a href="https://docs.docker.com/compose/" target="_blank" rel="noopener"><strong>docker-compose</strong></a>를 사용했다. 환경 변수 설정이나 volume 마운트 설정이 편하기 때문이다.</p>
+<h1 id="느낀-점"><a href="#느낀-점" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>느낀 점</h1>
+<p>오랜만에 쓰는 python이라 그런지 생각보다 재미있었다.</p>
+<p>완성하긴 했는데 막상 별로 사용하지는 않을 것 같다. 노래를 자주 듣지 않기도 하고, 요즘은 그냥 Youtube 추천 노래들만 듣고있다. 그래도 한 번 만들어보고 싶었던 것이여서 만족한다.</p>
+
+            </div>
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+                <li class="post-nav-prev">
+                    <a href="/posts/2020/scpc-2020-round1-review/" rel="prev">&lt; SCPC 2020 Round1 후기</a>
+                </li>
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/2019/making-a-alerter-for-new-posts/" rel="next">웹사이트 새 글을 자동으로 확인해 알려주는 알리미 만들기 &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+    
+
+        
+
+        
+
+        
+
+        
+            <div id="utterances">
+                <script src="https://utteranc.es/client.js"
+                    repo="Cube219/Cube219.github.io"
+                    issue-term="Comments: melon-crawler-for-ytmusic-development"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </div>
+        
+
+    
+
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2019–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;Cube219</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="https://github.com/cube219" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://facebook.com/profile.php?id=100001164136339" target="_blank" rel="external noopener" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://www.instagram.com/cube219" target="_blank" rel="external noopener" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="/rss.xml" target="_blank" rel="external noopener" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="mailto:max804800@gmail.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+
+
+
+
+
+
+    
+
+        
+
+        
+
+        
+            <script>
+    function loadComments() {
+        (function() {
+            var utterances = document.getElementById("utterances");
+            var script = document.createElement('script');
+            script.src = 'https://utteranc.es/client.js';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('repo', 'Cube219\/Cube219.github.io');
+            script.setAttribute('issue-term', 'Comments: MelonCrawler4YTMusic 개발기');
+            const isDark = getCurrentTheme() === 'dark';
+        if (isDark) {
+            script.setAttribute('theme', 'photon-dark');
+        } else {
+            script.setAttribute('theme', 'github-light');
+        }
+            
+            utterances.appendChild(script);
+        })();
+    }
+</script>
+        
+
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    mediumZoom(document.querySelectorAll('div.post-body img'), {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+
+    </body>
+</html>

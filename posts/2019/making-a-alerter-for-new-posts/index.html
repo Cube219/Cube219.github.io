@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+    <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8" />
+
+    <meta name="generator" content="Hugo 0.82.0-DEV" /><meta name="theme-color" content="#fff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <title>웹사이트 새 글을 자동으로 확인해 알려주는 알리미 만들기 | Cube219&#39;s Blog</title>
+
+    <link rel="stylesheet" href="/css/meme.min.6b5a8c677842eff0ff344977d22d5c4ebfac413896d7ca535d5d1944083919e6.css"/>
+
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.f510ee18539997618746194a58b59c626566191a3af103e5f9018c2fe66091d0.js"></script>
+
+    
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" /></noscript>
+
+    <meta name="author" content="Cube219" /><meta name="description" content="요즘 게임 엔진 프로젝트만 계속 진행하다 보니까 너무 지루하고 힘들어서 의욕이 나지 않았다. 그래서 잠깐 쉴 겸 새로운 서브 프로젝트를 하나 진행해야겠다고 생각했다. 어떤 것을 할까 생각하다가 예전부터 필요하다고 생각했던 것을 떠올렸다. 나는 여러 개발자 블로그나 웹사이트들을 자주 둘러보는 편이다. 재미있어 보이는 글이 올라오는 블로그나 사이트들을..." />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Cube219&#39;s Blog" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Cube219&#39;s Blog" />
+    <meta name="msapplication-starturl" content="../../../" />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="../../../icons/mstile-150x150.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    
+
+    
+    <link rel="canonical" href="https://blog.cube219.me/posts/2019/making-a-alerter-for-new-posts/" />
+    
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": "2019-12-15T00:00:00+00:00",
+        "dateModified": "2020-08-20T14:07:46+09:00",
+        "url": "https://blog.cube219.me/posts/2019/making-a-alerter-for-new-posts/",
+        "headline": "웹사이트 새 글을 자동으로 확인해 알려주는 알리미 만들기",
+        "description": "요즘 게임 엔진 프로젝트만 계속 진행하다 보니까 너무 지루하고 힘들어서 의욕이 나지 않았다. 그래서 잠깐 쉴 겸 새로운 서브 프로젝트를 하나 진행해야겠다고 생각했다. 어떤 것을 할까 생각하다가 예전부터 필요하다고 생각했던 것을 떠올렸다. 나는 여러 개발자 블로그나 웹사이트들을 자주 둘러보는 편이다. 재미있어 보이는 글이 올라오는 블로그나 사이트들을...",
+        "inLanguage" : "ko-kr",
+        "articleSection": "posts",
+        "wordCount":  7916 ,
+        "image": ["https://blog.cube219.me/posts/2019/making-a-alerter-for-new-posts/images/archieved-pages.png"],
+        "author": {
+            "@type": "Person",
+            "description": "게임 개발자가 되고 싶은 사람.",
+            "email": "max804800@gmail.com",
+            "image": "https://blog.cube219.me/images/logo_new.png",
+            "url": "https://blog.cube219.me/",
+            "name": "Cube219"
+        },
+        "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Cube219's Blog",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://blog.cube219.me/images/logo_new.png"
+            },
+            "url": "https://blog.cube219.me/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": "https://blog.cube219.me/"
+        }
+    }
+</script>
+
+    
+
+<meta name="twitter:card" content="summary_large_image" />
+
+
+<meta name="twitter:site" content="@Cube219&#39;s Blog" />
+
+    
+
+
+
+<meta property="og:title" content="웹사이트 새 글을 자동으로 확인해 알려주는 알리미 만들기" />
+<meta property="og:description" content="요즘 게임 엔진 프로젝트만 계속 진행하다 보니까 너무 지루하고 힘들어서 의욕이 나지 않았다. 그래서 잠깐 쉴 겸 새로운 서브 프로젝트를 하나 진행해야겠다고 생각했다. 어떤 것을 할까 생각하다가 예전부터 필요하다고 생각했던 것을 떠올렸다. 나는 여러 개발자 블로그나 웹사이트들을 자주 둘러보는 편이다. 재미있어 보이는 글이 올라오는 블로그나 사이트들을..." />
+<meta property="og:url" content="https://blog.cube219.me/posts/2019/making-a-alerter-for-new-posts/" />
+<meta property="og:site_name" content="Cube219&#39;s Blog" />
+<meta property="og:locale" content="ko-kr" /><meta property="og:image" content="https://blog.cube219.me/posts/2019/making-a-alerter-for-new-posts/images/archieved-pages.png" />
+<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-12-15T00:00:00&#43;00:00" />
+    <meta property="article:modified_time" content="2020-08-20T14:07:46&#43;09:00" />
+    
+    <meta property="article:section" content="posts" />
+
+
+        <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+
+        
+
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154144484-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-154144484-1');
+    </script>
+
+
+
+
+    
+</head>
+
+    <body>
+        <div class="container">
+            
+    <header class="header">
+        
+            <div class="header-wrapper">
+                <div class="header-inner single">
+                    
+    <div class="site-brand">
+        
+            <a href="/" class="brand">Cube219&#39;s Blog</a>
+        
+    </div>
+
+                    <nav class="nav">
+    <ul class="menu" id="menu">
+        
+            
+        
+        
+        
+        
+            
+                <li class="menu-item"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon home"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg><span class="menu-item-name">Home</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">Posts</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/categories/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255 0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm386.667-56H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24z"/></svg><span class="menu-item-name">Categories</span></a>
+                </li>
+            
+        
+            
+                <li class="menu-item"><a href="/about/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class="menu-item-name">About</span></a>
+                </li>
+            
+        
+            
+                
+                    
+                    
+                        <li class="menu-item">
+                            <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
+                        </li>
+                    
+                
+            
+        
+            
+                
+            
+        
+            
+                <li class="menu-item search-item">
+                        <form id="search" class="search" role="search">
+    <label for="search-input"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon search-icon"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></label>
+    <input type="search" id="search-input" class="search-input">
+</form>
+
+<template id="search-result" hidden>
+    <article class="content post">
+        <h2 class="post-title"><a class="summary-title-link"></a></h2>
+        <summary class="summary"></summary>
+        <div class="read-more-container">
+            <a class="read-more-link">더 보기 »</a>
+        </div>
+    </article>
+</template>
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+
+                    
+                </div>
+            </div>
+            
+    <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-toggle"></label>
+    <label for="nav-toggle" class="nav-curtain"></label>
+
+
+        
+    </header>
+
+
+
+
+            
+            
+    <main class="main single" id="main">
+    {"hash":"a470c5acde50f41d8fe2558d71e682c1f607a588","abbreviatedHash":"a470c5a","subject":"⬆️ Development: 테마 업데이트","authorName":"Cube219","authorEmail":"max804800@gmail.com","authorDate":"2020-08-20T14:07:46+09:00","commitDate":"2020-08-20T14:07:54+09:00"}
+    <div class="main-inner">
+
+        
+
+        <article class="content post" data-align="default" data-type="posts" data-toc-num="true">
+
+            
+                <img src="images/archieved-pages.png" class="article-banner">
+            
+            <h1 class="post-title">웹사이트 새 글을 자동으로 확인해 알려주는 알리미 만들기</h1>
+
+            
+
+            
+                
+            
+
+            
+                
+
+<div class="post-meta">
+    
+        
+        <time datetime="2019-12-15T00:00:00&#43;00:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2019.12.15</time>
+    
+    
+    
+    
+        
+        
+        
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/project/" class="category-link p-category">Project</a>/<a href="/categories/webpagealerter/" class="category-link p-category">WebPageAlerter</a></span>
+            
+        
+    
+    
+    
+    
+    
+</div>
+
+            
+
+            <div class="post-body">
+              <p>요즘 <a href="https://github.com/Cube219/CubeEngine" target="_blank" rel="noopener">게임 엔진 프로젝트</a>만 계속 진행하다 보니까 너무 지루하고 힘들어서 의욕이 나지 않았다. 그래서 잠깐 쉴 겸 새로운 서브 프로젝트를 하나 진행해야겠다고 생각했다. 어떤 것을 할까 생각하다가 예전부터 필요하다고 생각했던 것을 떠올렸다.</p>
+<p>나는 여러 개발자 블로그나 웹사이트들을 자주 둘러보는 편이다. 재미있어 보이는 글이 올라오는 블로그나 사이트들을 발견하면 즐겨찾기해서 자주 살펴본다. 하지만 이런 사이트들에서 새로운 글이 올라왔나 매번 확인하는 것은 많이 귀찮은 일이다. 그래서 이러한 확인을 자동으로 하고 새로운 글이 올라오면 따로 저장을 해 알려 주는 알리미 서비스를 만들면 좋겠다는 생각을 자주 했다. 그래서 이번 서브 프로젝트로 이것을 구현하기로 결정했다.</p>
+<hr>
+<h1 id="무엇으로-만들까"><a href="#무엇으로-만들까" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>무엇으로 만들까?</h1>
+<p>새로운 글이 올라왔는지 확인하기 위해서 주기적으로 크롤링을 해야 하기 때문에 서버가 필요하다. 서버를 무엇으로 만들지 고민하다가 가장 먼저 <a href="https://www.python.org/" target="_blank" rel="noopener"><strong>python</strong></a>이 떠올랐다. 당장 구글에 웹 크롤링이라고 검색하면 python을 이용해 만드는 방법들이 정말 많이 있고, 예전에 간단히 써본 경험도 있다. 그래서 python을 선택하자고 생각을 했었다.</p>
+<p><img src="images/nodejs-typescript.png" alt="python을 쓸까 생각했지만 결국 Node.js + TypeScript로 결정했다"></p>
+<p>그러다가 최근 JavaScript를 써본 적이 있었는데, 쓰다 보니까 동적 타입 언어라서 그런지 생각보다 불편했다. 특히 <strong>함수 호출</strong>에서 많은 불편함을 느꼈다. 많은 JavaScript 라이브러리에서 API를 호출 할 때 매개변수로 Object를 넣는 경우가 많은데, 이때 Object 안에 어떤 값들을 넣어야 하는지 에디터에서는 알 수가 없다. 또한 반환값으로 Object를 반환하면 역시 안에 어떤 값들이 들어있는지 알 수 없다. 그래서 계속 문서를 보거나 라이브러리 코드를 봐야 하는 번거로움이 있었다.</p>
+<p>이러한 불편한 점이 있어서  JavaScript에 정적 타입을 얹은 <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener"><strong>TypeScript</strong></a>를 한 번 써보고 싶다고 계속 생각을 했었고, 마침 이 프로젝트를 하면서 써보면 좋겠다고 생각해서 python에서 TypeScript로 변경했다.</p>
+<p><img src="images/quasar-framework.png" alt="quasar framework"></p>
+<p>프론트엔드쪽은 그냥 이전에 써본 <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue.js</a>를 썼다. 큰 프로젝트도 아니고 익숙한 걸 써서 빠르게 개발하고 싶었다. 여기서 UI는 <a href="https://quasar.dev/" target="_blank" rel="noopener"><strong>quasar framework</strong></a>를 썼다. 여러가지 찾아봤는데 이 프레임워크가 다양한 기능(버튼에 진행 중 표시, Infinite 스크롤&hellip;)들이 있고 나중에 Web Application으로도 쉽게 만들 수 있을 것 같아서 선택했다.</p>
+<h1 id="기획"><a href="#기획" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>기획</h1>
+<p>먼저 어떠한 기능들이 있어야 하는지 생각을 해보았다.</p>
+<h2 id="웹-사이트"><a href="#웹-사이트" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>웹 사이트</h2>
+<ul>
+<li>새 글들을 저장할 웹 사이트 정보
+<ul>
+<li>이름 / 주소 / 설명 / 카테고리 / 크롤링주소 / CSS Selector / &hellip;</li>
+</ul>
+</li>
+<li>웹 사이트들을 추가, 제거, 조회</li>
+<li>새 글들을 확인하기 위해서는 주기적으로 웹 크롤링을 해서 확인
+<ul>
+<li>보통 최근 글 리스트가 나오는 페이지를 크롤링</li>
+<li>CSS Selector를 이용해 가장 최신 글로 가는 <code>&lt;a&gt;</code> 태그의 링크로 최신 글인지 확인</li>
+</ul>
+</li>
+</ul>
+<h2 id="글페이지"><a href="#글페이지" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>글(페이지)</h2>
+<ul>
+<li>새 글이 올라오면 푸시 알림으로 알려주고 따로 서버에 저장해둠</li>
+<li>저장된 글들은 최신 글부터 차례대로 보여지며, 여러 분류로 나눠서 볼 수 있음</li>
+<li>저장된 새 글들은 읽었으면 읽었다는 체크가 자동으로 됨</li>
+<li>글은 수정은 불가능하나, 제거는 가능함</li>
+<li>글은 별도의 장소에 보관할 수 있음 (중요한 글)</li>
+<li>글의 정보
+<ul>
+<li>제목 / 내용 / 주소 / 카테고리 / 작성시간 / 커버이미지 / &hellip;</li>
+</ul>
+</li>
+</ul>
+<h2 id="새로운-글은-어떻게-확인하나"><a href="#새로운-글은-어떻게-확인하나" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>새로운 글은 어떻게 확인하나?</h2>
+<p><img src="images/flowchart.png" alt="새로운 글을 확인하는 순서도"></p>
+<ol>
+<li>일정 주기마다 등록한 웹사이트 페이지를 크롤링한다.</li>
+<li>크롤링한 페이지에서 가장 마지막에 작성된 글의 정보를 가져온다. 이때 CSS Selector를 이용한다.</li>
+<li>저장된 마지막 글 정보를 위에서 크롤링한 정보와 비교한다. 그림에서는 제목으로 비교하지만, 실제로는 글의 주소(<code>&lt;a&gt;</code> 태그의 href)로 비교한다.</li>
+<li>둘이 서로 다를 경우, 새로운 글이 올라왔다는 것이므로 해당 글에 접근해 정보들을 가져온다. 이때 <a href="https://ogp.me/" target="_blank" rel="noopener">Open Graph</a> 정보를 이용한다.</li>
+<li>마지막 글 정보를 업데이트 한다.</li>
+</ol>
+<h1 id="구현backend"><a href="#구현backend" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>구현(Backend)</h1>
+<p>위 기획을 바탕으로, 백엔드 구조를 구상했다.</p>
+<p><img src="images/architecture.png" alt="기본 구조"></p>
+<p>최대한 기능 별로 분리를 하려고 헀고, 흐름을 무조건 중심(<strong>Core</strong>)을 거치게 해서 최대한 깔끔하게 처리하려고 했다.</p>
+<h2 id="기본-인터페이스-websiteinfo-webpageinfo"><a href="#기본-인터페이스-websiteinfo-webpageinfo" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>기본 인터페이스 (WebSiteInfo, WebPageInfo)</h2>
+<p>먼저 웹 사이트 / 웹 페이지 인터페이스들을 정의했다. 이 정의들은 여러 곳에서 쓰이기 때문에 <code>Utility.ts</code>에 정의했다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">WebSiteInfo</span>
+<span class="p">{</span>
+    <span class="nx">_id</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">url</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">crawlUrl</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">cssSelector</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">lastUrl</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">category</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">checkingCycleSec</span>: <span class="kt">number</span><span class="p">;</span>
+    <span class="nx">isDisabled</span>: <span class="kt">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">WebPageInfo</span>
+<span class="p">{</span>
+    <span class="nx">_id</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">siteId</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">siteTitle</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">url</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">imageUrl</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">desc</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">category</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">time</span>: <span class="kt">Date</span><span class="p">;</span>
+    <span class="nx">isRead</span>: <span class="kt">boolean</span><span class="p">;</span>
+    <span class="nx">isArchieved</span>: <span class="kt">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p><code>WebSiteInfo</code>는 크롤링할 웹 사이트들의 정보들을 정의했다. 웹사이트의 기본적인 정보와 새로운 글이 올라왔는지 확인하기 위한 정보들을 가지고 있다.</p>
+<p><code>WebPageInfo</code>에는 저장한 페이지 정보들을 정의했다.</p>
+<h2 id="페이지-정보-가져오기"><a href="#페이지-정보-가져오기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>페이지 정보 가져오기</h2>
+<p>페이지 정보는 위에서 언급했듯이 <strong>Open Graph</strong> 태그를 이용해 가져왔다.</p>
+<p>Open Graph에는 많은 정보들이 있지만 그중에서 title, url, image, description만 이용했다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:title&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;제목&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:url&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;https://blog.cube219.me/...&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:image&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;...image.png&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:description&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;설명&#34;</span><span class="p">&gt;</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>이런 태그들을 찾아서 데이터를 뽑아야 하는데, <a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="noopener"><strong>cheerio</strong></a>를 사용해 뽑아냈다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">selected</span>: <span class="kt">Cheerio</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+<span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:title&#34;]&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">title</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">title</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+<span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:url&#34;]&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">url</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">url</span> <span class="o">=</span> <span class="nx">pageUrl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">imageUrl</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+<span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:image&#34;]&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">imageUrl</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">desc</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+<span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:description&#34;]&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">desc</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>CSS Selector로 해당하는 태그를 선택해 해당 태그의 정보를 가져올 수 있다. <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery</a>와 상당히 유사해서 쉽게 쓸 수 있었다.</p>
+<p>만약 페이지에 Open Graph 정보가 없으면 최소한의 정보인 title, url만 각각 <code>&lt;title&gt;</code>태그, 페이지 url로 대체한다.</p>
+<h2 id="websitewatcher"><a href="#websitewatcher" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>WebSiteWatcher</h2>
+<p>말 그대로 웹 사이트에 새로운 글이 올라왔는지 감시하는 <strong>감시자(Watcher)</strong> 이다. 등록한 웹 사이트마다 1개씩 생성된다.</p>
+<p>감시자들은 생성이 되면 일정 주기로 해당 웹 사이트에 새로운 글이 올라왔는지 확인을 한다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">public</span> <span class="nx">run</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">isDisabled</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span> <span class="o">=</span> <span class="mi">3600</span><span class="p">;</span>
+
+        <span class="nx">DB</span><span class="p">.</span><span class="nx">updateWebSite</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">_id</span><span class="p">,</span> <span class="p">{</span> <span class="nx">checkingCycleSec</span>: <span class="kt">3600</span> <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Delay checking when initialized
+</span><span class="c1"></span>    <span class="c1">// because of preventing checking many sites at same time
+</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">delayTimeSec</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">checkImmediately</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="nx">delayTimeSec</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kr">public</span> <span class="nx">checkImmediately</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">runInternal</span><span class="p">();</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">runInternal</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>주기적으로 검사를 해야 하기 때문에 <code>setInterval</code>함수를 이용했다. 여기서 <code>run</code>함수는 실행하자 마자 바로 검사를 하는 것이 아니라 <strong>일정 딜레이 후</strong> 검사를 하는데, 이는 서버가 켜지면서 등록된 모든 Wathcer들이 바로 동시에 검사하는 것을 막기 위해서다. 굳이 필요할 것 같진 않은데 그래도 혹시나 해서 넣었다.</p>
+<p>이제 웹 사이트에 새로운 글이 올라왔는지 확인을 하는 함수를 만들어야 한다. 확인하는 방법으로는 지정한 웹 사이트 HTML을 가져오고, 최신 글로 가는 링크를 뽑아서 기존에 저장한 링크와 같은지 확인해 안 같으면 새로운 글이 올라온 것으로 확인할 수 있다.</p>
+<p><img src="images/latest-post.png" alt="가장 최신 글의  태그로 새로운 글이 올라왔는지 확인한다"></p>
+<p>예를 들어 <a href="https://blogs.unity3d.com/" target="_blank" rel="noopener">Unity Blog</a>에서 새로운 글을 확인하고 싶다면, 이렇게 최신 글의 <code>&lt;a&gt;</code>태그를 CSS Selector(여기서는 <code>.post-heading &gt; a</code>)로 뽑아낸 다음 해당 주소를 이용해 판별할 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">private</span> <span class="kr">async</span> <span class="nx">checkNewPage</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isBusy</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+    <span class="kd">let</span> <span class="nx">res</span>: <span class="kt">any</span><span class="p">;</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">rq</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">crawlUrl</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InvalidUrlError</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">crawlUrl</span><span class="p">);</span>
+        <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="kr">const</span> <span class="nx">aElement</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">cssSelector</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+
+        <span class="kr">const</span> <span class="nx">pageUrl</span> <span class="o">=</span> <span class="nx">relToAbsUrl</span><span class="p">(</span><span class="nx">aElement</span><span class="p">.</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">lastUrl</span> <span class="o">!=</span> <span class="nx">pageUrl</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">savePage</span><span class="p">(</span><span class="nx">pageUrl</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InvalidCssSelectorError</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">cssSelector</span><span class="p">);</span>
+        <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">isBusy</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>실제 코드에서도 <code>crawlUrl</code>로 지정한 페이지를 가져오고, <code>cssSelector</code>로 해당 <code>&lt;a&gt;</code> 태그의 href 속성을 가져온다. 그리고 이 주소가 <code>lastUrl</code>과 다르면, 새로운 글이 올라왔다는 뜻이므로 해당 페이지를 저장한다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">private</span> <span class="kr">async</span> <span class="nx">savePage</span><span class="p">(</span><span class="nx">pageUrl</span>: <span class="kt">string</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">info</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getPageInfo</span><span class="p">(</span><span class="nx">pageUrl</span><span class="p">);</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">siteId</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">_id</span><span class="p">;</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">siteTitle</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nx">category</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">category</span><span class="p">;</span>
+
+    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">insertPage</span><span class="p">(</span><span class="nx">info</span><span class="p">,</span> <span class="nx">pageUrl</span><span class="p">);</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">lastUrl</span> <span class="o">=</span> <span class="nx">pageUrl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>페이지 저장은 간단하게 <code>getPageInfo</code>를 통해 해당 페이지 정보를 얻고, 저 함수로 얻을 수 없는 사이트 정보, 카테고리도 추가한 후 DB에 해당 페이지를 삽입한다. 그리고 <code>lastUrl</code>을 갱신한다.</p>
+<h2 id="db"><a href="#db" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>DB</h2>
+<p>DB로는 <a href="https://www.mongodb.com/" target="_blank" rel="noopener"><strong>mongoDB</strong></a>를 이용했다. 노드에서는 저걸 많이 쓰기도 하고, 뭔가 새로운 것을 해보고 싶었다.</p>
+<p><img src="images/mongoose.png" alt="mongoose"></p>
+<p>이제 이걸 노드에서 어떻게 사용해야 할지 검색해보니까 보통 <a href="https://mongoosejs.com/" target="_blank" rel="noopener"><strong>mongoose</strong></a>라는 라이브러리를 많이 이용했다. 이 라이브러리는 <strong>스키마</strong>를 정의를 하게 해서 좀 더 견고하게 DB를 다룰 수 있게 도와주고, <strong>쿼리 빌더</strong>로 쉽게 쿼리를 만들수 있다. 특히 쿼리 빌더 기능이 편리했다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kd">let</span> <span class="nx">query</span>: <span class="kt">mongoose.DocumentQuery</span><span class="p">&lt;</span><span class="nt">ISavedWebPage</span><span class="err">[],</span> <span class="na">ISavedWebPage</span><span class="p">&gt;;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">fromArchieved</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">query</span> <span class="o">=</span> <span class="nx">SavedWebPageModel</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">condition</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">query</span> <span class="o">=</span> <span class="nx">ArchievedWebPageModel</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">condition</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">afterId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">query</span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&#34;_id&#34;</span><span class="p">).</span><span class="nx">lt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">afterId</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">startIndex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">query</span><span class="p">.</span><span class="nx">skip</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">startIndex</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">query</span><span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">queryRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">query</span><span class="p">.</span><span class="nx">sort</span><span class="p">({</span> <span class="nx">_id</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span> <span class="p">});</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>저장된 웹 페이지들을 가져오는 코드의 일부분이다. 저장된 페이지들을 가져올 때는 특정 개수나 특정 id이후, 특정 index이후 등 여러 조건들이 들어가게 되고, 이는 조건 JSON 객체를 복잡하게 만든다. 이것을 쿼리 빌더를 이용하면 <code>.limit</code>, <code>.where</code>와 같은 함수를 이용해 조건을 붙일 수 있고, 좀 더 직관적으로 코드를 짤 수 있었다.</p>
+<p>컬렉션 <em>(RDBMS의 테이블에 해당)</em> 으로는 해당 서버의 버전 정보를 담는 <strong>app_infos</strong>, 웹 사이트 정보인 <strong>web_site_infos</strong>, 저장된 웹 페이지인 <strong>saved_web_pages</strong>, 따로 보관한 웹 페이지인 <strong>archieved_web_pages</strong>, 그리고 카테고리인 <strong>category_infos</strong>로 나누었다.</p>
+<p><strong>app_infos</strong>는 현재 실행 중인 서버의 버전을 담는 컬렉션이다. 이 데이터는 추후에 서버가 업데이트 되어서 DB구조가 바뀌어 수정을 해야 할 때 쓰인다. 예를 들어 0.3.0 버전부터 카테고리를 category_infos로 옮겼는데 기존에 들어있던 웹 사이트들의 카테고리 정보를 가져와야 하기 때문에 추가적인 작업이 필요하다. 이때 이 정보를 가져오고 0.3.0 버전보다 아래이면 위 작업을 하는 방식이다.</p>
+<p><strong>web_site_infos</strong>는 말 그대로 등록한 웹 사이트의 정보들을 저장하고 있다.</p>
+<p><strong>saved_web_pages</strong>와 <strong>archieved_web_pages</strong>는 역시 말 그대로 저장된/따로 저장한 웹 페이지들을 저장하고 있다.</p>
+<p><strong>category_infos</strong>는 등록된 카테고리 정보들을 저장하고 있다. 이 데이터는 개발하다 보니까 카테고리들만 따로 필요하게 되는 경우가 생겨서 추가했다.</p>
+<p>코드는 최대한 컬렉션 별로 해당 정보를 추가/제거/수정하는 함수들을 각각 만들었다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">async</span> <span class="nx">getWebSites</span><span class="p">()</span>
+<span class="kr">async</span> <span class="nx">getWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">)</span>
+<span class="kr">async</span> <span class="nx">insertWebSite</span><span class="p">(</span><span class="nx">info</span>: <span class="kt">WebSiteInfo</span><span class="p">)</span>
+<span class="kr">async</span> <span class="nx">deleteWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">deleteAllPages</span>: <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
+<span class="kr">async</span> <span class="nx">updateWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">params</span>: <span class="kt">UpdateWebSiteParams</span><span class="p">)</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>예를 들어 웹 사이트의 경우 사이트를 검색/추가/수정/제거 기능을 하는 함수들을 만들고 함수 내부에서는 web_site_info 컬렉션을 수정하도록 되어있다.</p>
+<h2 id="apiserver"><a href="#apiserver" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>APIServer</h2>
+<p>웹 사이트를 등록/수정하거나 저장된 페이지들을 볼 수 있는 <strong>RESTful API 서버</strong>이다. 외부하고 유일하게 통신할 수 있는 곳이다.</p>
+<p><img src="images/koa.png" alt="Koa"></p>
+<p>원래는 <a href="https://expressjs.com/" target="_blank" rel="noopener">Express.js</a>를 쓸려고 했는데 지인이 <a href="https://koajs.com/" target="_blank" rel="noopener"><strong>Koa</strong></a>를 써보라고 해서 써보았다. 써보니까 <code>await/async</code>를 쓸 수 있다는 점이 좋았다. 그리고 Express 만들던 사람들이 만들어서 그런지 기능이나 쓰는 방법들이 Express랑 거의 유사했다. 그래서 쉽게 사용할 수 있었다.</p>
+<h3 id="인증-시스템"><a href="#인증-시스템" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>인증 시스템</h3>
+<p>인증 토큰으로는 <a href="https://jwt.io/" target="_blank" rel="noopener"><strong>JSON Web Token(JWT)</strong></a>을 이용했다. JWT는 다른 토큰들과는 다르게 서버에서 관리할 필요가 없는데, 이는 토큰 내부에 이 토큰이 올바른지 확인하는 <strong>서명</strong>이 있기 때문이다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="c1">// koa 초기화하는 부분 일부 코드
+</span><span class="c1"></span><span class="p">...</span>
+<span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">enableAuth</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="p">...</span>
+
+<span class="kr">private</span> <span class="kr">async</span> <span class="nx">authMiddleware</span><span class="p">(</span><span class="nx">ctx</span>: <span class="kt">koa.ParameterizedContext</span><span class="p">,</span> <span class="nx">next</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;)</span>
+<span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s2">&#34;x-access-token&#34;</span><span class="p">]</span> <span class="kr">as</span> <span class="kt">string</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">jwtSecretKey</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">e</span> <span class="k">instanceof</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">TokenExpiredError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s2">&#34;Token expired&#34;</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">e</span> <span class="k">instanceof</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">JsonWebTokenError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s2">&#34;Token error&#34;</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">await</span> <span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>토큰 확인은 요청한 주소로 라우팅 하기 전에 미들웨어를 하나 거쳐서 확인한다. 이 미들웨어에서는 <code>x-access-token</code>에 들어있는 토큰을 가져와서 이 토큰이 유효한지 <code>jwt.verify</code>함수를 통해 확인하고, 유효하면 다음 단계로 넘어가고 유효하지 않으면 토큰 에러를 발생 시키고 진행을 중단한다.</p>
+<h3 id="오류-처리"><a href="#오류-처리" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>오류 처리</h3>
+<p>서버를 돌리다 보면 수많은 잘못된 요청들이 들어올 수가 있다. 웹 사이트 url이 잘못되었거나, 필수 파라미터가 없거나 잘못되었거나, 아님 내부 서버 오류도 발생할 수 있다. 이러한 오류들을 라우팅 함수들마다 처리하는 것보단, <strong>한 곳으로 모아서 처리</strong>하는 것이 더 좋겠다는 생각을 했다. 그래서 Javascript의 <strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" target="_blank" rel="noopener">Error</a> Object</strong>를 이용하기로 했다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">WPAError</span> <span class="kr">extends</span> <span class="nb">Error</span> <span class="p">{</span>
+    <span class="nx">statusCode</span>: <span class="kt">number</span><span class="p">;</span>
+    <span class="nx">responseMessage</span>: <span class="kt">string</span><span class="p">;</span>
+
+    <span class="kr">constructor</span><span class="p">(</span><span class="nx">message</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">statusCode</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="nx">statusCode</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">responseMessage</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">MissingRequiredParametersError</span> <span class="kr">extends</span> <span class="nx">WPAError</span> <span class="p">{</span>
+    <span class="nx">missingParams</span>: <span class="kt">string</span><span class="p">[];</span>
+
+    <span class="kr">constructor</span><span class="p">(</span><span class="nx">missingParams</span>: <span class="kt">string</span><span class="p">[])</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="sb">`Missing required parameters (</span><span class="si">${</span><span class="nx">missingParams</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">)`</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;MissingRequiredParametersError&#39;</span><span class="p">;</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nx">setPrototypeOf</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">MissingRequiredParametersError</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">missingParams</span> <span class="o">=</span> <span class="nx">missingParams</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>부모 클래스로 <code>WPAError</code>를 만들었다. 이 클래스는 오류가 발생했을 때 클라이언트에게 보여 줄 <strong>상태 코드</strong>와 <strong>응답 메시지</strong>를 가지고 있다. 그리고 자식 클래스들은 생성자에서 해당 오류의 상태 코드와 메시지 내용을 넣어 준다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kr">async</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">next</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">err</span> <span class="k">instanceof</span> <span class="nx">WPAError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">responseMessage</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">Log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`APIServer: Error in </span><span class="si">${</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="err">\</span><span class="sb">n        </span><span class="si">${</span><span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>그리고 <strong>에러를 처리하는 미들웨어</strong>를 가장 위쪽에 등록을 한다. 그러면 라우팅하는 함수에서 위에서 정의한 Error들을 던지면 여기서 받게 된다. 받은 에러가 <code>WPAError</code>의 자식이면 해당하는 상태 코드와 메시지를 보내고, 아니면 그냥 Internal Server Error(500)을 보낸다. 이렇게 에러를 처리하는 부분을 한 곳으로 모아서 처리를 했다.</p>
+<h2 id="pushserver"><a href="#pushserver" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>PushServer</h2>
+<p>새로운 글이 올라왔을 때 알려주는 서버인데&hellip; 아직 구현을 하진 않았다.</p>
+<h2 id="core"><a href="#core" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Core</h2>
+<p>서버의 <strong>중심</strong> 부분이며, WebSiteWatcher들을 관리한다. 또한 기능들간 <strong>연결 고리</strong> 역할을 한다.</p>
+<p><img src="images/core-logic.png" alt="Core 로직"></p>
+<p>예를 들어 APIServer에서 새로운 웹 사이트를 등록하는 요청을 받았다고 하자. 그러면 먼저 APIServer에서 파라미터들을 정리해 <code>WebSiteInfo</code> 정보를 만들고 <code>core.insertWebSite</code>함수를 호출한다. 이 함수에서는 DB에 새로운 웹 사이트를 넣고, WebSiteWatcher를 새로 생성하고 활성화한다. 이 과정이 완료되면 함수가 반환되면서 APIServer로 돌아가게 되고 완료 응답을 보내게 된다.</p>
+<p>이렇게 모든 로직이 Core를 지나가게 만들어서 로직을 최대한 단순하게 만들려고 했다.</p>
+<hr>
+<h1 id="구현frontend"><a href="#구현frontend" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>구현(Frontend)</h1>
+<p>위에서 결정한 것처럼 프론트엔드는 quasar framework를 이용하기로 결정했다. 여기에 TypeScript를 적용 시키고 싶어서 찾아보니까 따로 <a href="https://github.com/quasarframework/app-extension-typescript" target="_blank" rel="noopener">extension</a>이 있었다. 그래서 적용해보니까 js파일들이 ts로 바뀌긴 했는데 vue파일들은 그대로 바뀌는 게 없었다. 주로 vue파일을 수정할텐데 적용이 안 되어서 있으나 마나였다.</p>
+<p>그래서 따로 찾아보니까 <a href="https://github.com/kaorun343/vue-property-decorator" target="_blank" rel="noopener"><strong>vue-property-decorator</strong></a>라는 것을 찾았다. 이 라이브러리는 <strong>decorator</strong>를 이용해 좀 더 쉽고 깔끔하게 컴포넌트를 설정할 수가 있다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-vue" data-lang="vue"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">propA</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="nb">Number</span>
+    <span class="p">},</span>
+    <span class="nx">propB</span><span class="o">:</span> <span class="p">{</span>
+      <span class="k">default</span><span class="o">:</span> <span class="s1">&#39;default value&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">propC</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Boolean</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>예를 들어 컴포넌트의 prop들을 설정하려면 위에처럼 각 prop들의 정보를 object로 넣어줘야 하는데, decorator를 이용하면</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-vue" data-lang="vue"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Vue</span><span class="p">,</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">Prop</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue-property-decorator&#39;</span>
+
+<span class="err">@</span><span class="nx">Component</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">YourComponent</span> <span class="kr">extends</span> <span class="nx">Vue</span> <span class="p">{</span>
+  <span class="err">@</span><span class="nx">Prop</span><span class="p">(</span><span class="nb">Number</span><span class="p">)</span> <span class="nx">readonly</span> <span class="nx">propA</span><span class="o">:</span> <span class="nx">number</span> <span class="o">|</span> <span class="kc">undefined</span>
+  <span class="err">@</span><span class="nx">Prop</span><span class="p">({</span> <span class="k">default</span><span class="o">:</span> <span class="s1">&#39;default value&#39;</span> <span class="p">})</span> <span class="nx">readonly</span> <span class="nx">propB</span><span class="o">!:</span> <span class="nx">string</span>
+  <span class="err">@</span><span class="nx">Prop</span><span class="p">([</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Boolean</span><span class="p">])</span> <span class="nx">readonly</span> <span class="nx">propC</span><span class="o">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="kr">boolean</span> <span class="o">|</span> <span class="kc">undefined</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>이렇게 깔끔하게 쉽게 prop들을 정의할 수가 있다.</p>
+<p>다만 아직 정식 기능이 아닌 decorator를 이용하기 때문에 JavaScript는 <a href="https://babeljs.io/docs/en/babel-plugin-proposal-decorators" target="_blank" rel="noopener"><strong>babel</strong></a>을 이용해야 하고, TypeScript는 <strong>컴파일러 옵션</strong>에 <code>experimentalDecorators</code>를 <code>true</code>로 <a href="https://www.typescriptlang.org/docs/handbook/decorators.html" target="_blank" rel="noopener">설정</a>해줘야 한다.</p>
+<p>이외에는 그냥 Vue로 웹 페이지 개발을 했다. 확실히 UI 프레임워크를 쓰니까 쉽고 이쁘게 만들수가 있었다.</p>
+<hr>
+<h1 id="배포"><a href="#배포" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>배포</h1>
+<p>프론트엔드와 백엔드를 다른 프레임워크로 만든 경우 프론트엔드를 표시할 웹 서버와 백엔드 서버, 2개의 서버가 필요하다.</p>
+<h2 id="백엔드-서버"><a href="#백엔드-서버" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>백엔드 서버</h2>
+<p>먼저 백엔드 서버를 만들 때 멈추지 않고 자동으로 배포되는 서버를 구축하고 싶었다. 그래서 열심히 찾아보니까 <a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a> + CI(<a href="https://jenkins.io/" target="_blank" rel="noopener">Jenkins</a>, <a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis CI</a>&hellip;)를 이용하면 구축할 수가 있다고 한다. 간단히 설명하자면,</p>
+<ol>
+<li>GitHub에서 최신 commit이 올라옴</li>
+<li>Travis CI에서 감지해서 해당 버전으로 docker image를 만듦</li>
+<li>새로 만들어진 image를 docker container에 띄움 (이때 기존 서버는 돌아가고 있음)</li>
+<li>새로운 서버가 성공적으로 띄워지면 기존 서버를 내림</li>
+</ol>
+<p>의외로 생각보다 간단한데, 아직 Travis CI를 잘 쓰지 못하겠어서 자동 배포까지는 구현을 못했고, 간단한 스크립트로 수동 배포까지만 구현했다.</p>
+<h3 id="docker-이미지-생성"><a href="#docker-이미지-생성" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Docker 이미지 생성</h3>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="nv">DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span> dirname <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span> <span class="k">)</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span> <span class="k">)</span><span class="s2">&#34;</span>
+
+<span class="nb">cd</span> <span class="nv">$DIR</span>
+
+<span class="nb">echo</span>
+<span class="nb">echo</span> <span class="s2">&#34;Getting wpa-server source from github...&#34;</span>
+
+<span class="k">if</span> <span class="o">[</span> -d <span class="s2">&#34;src&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+   <span class="nb">cd</span> src
+   git pull
+<span class="k">else</span>
+   git clone https://github.com/Cube219/WebPageAlerter.git src
+   <span class="nb">cd</span> src
+<span class="k">fi</span>
+
+<span class="nv">VER</span><span class="o">=</span><span class="k">$(</span>cat package.json <span class="se">\
+</span><span class="se"></span>  <span class="p">|</span> grep version <span class="se">\
+</span><span class="se"></span>  <span class="p">|</span> head -1 <span class="se">\
+</span><span class="se"></span>  <span class="p">|</span> awk -F: <span class="s1">&#39;{ print $2 }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="p">|</span> sed <span class="s1">&#39;s/[&#34;,]//g&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="p">|</span> tr -d <span class="s1">&#39;[[:space:]]&#39;</span><span class="k">)</span>
+
+<span class="nb">echo</span>
+<span class="nb">echo</span> <span class="s2">&#34;Building docker images... (version: </span><span class="nv">$VER</span><span class="s2">)&#34;</span>
+
+docker build -t cube219/wpa-server:latest -t cube219/wpa-server:v<span class="nv">$VER</span> .
+
+<span class="nb">echo</span>
+<span class="nb">echo</span> <span class="s2">&#34;Successfully build docker images.&#34;</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>자동으로 GitHub에서 소스를 가져와서 이미지를 빌드하는 스크립트이다. 버전 정보는 <code>package.json</code>파일에서 가져온다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> node:10.14.1-alpine AS installer</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/WebPageAlerter/build</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> npm install --production<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> npm install -g --production typescript<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># ----------------------------</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> installer AS builder</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/WebPageAlerter/build</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> ./src src<span class="err">
+</span><span class="err"></span><span class="k">COPY</span> tsconfig.json .<span class="err">
+</span><span class="err"></span><span class="k">RUN</span> tsc<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># ----------------------------</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> node:10.14.1-alpine</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app/WebPageAlerter</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/src/WebPageAlerter/build/dist dist<span class="err">
+</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/src/WebPageAlerter/build/node_modules node_modules<span class="err">
+</span><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;dist/main.js&#34;</span> <span class="p">]</span><span class="err">
+</span></code></pre></td></tr></table></div>
+</div>
+</div><p>Dockerfile 내용이다. 간략하게 설명하면</p>
+<ol>
+<li>package.json 파일을 가져와서 <code>npm install</code>을 해 필요한 패키지들을 가져온다.</li>
+<li>src파일을 가져와 TypeScript 컴파일을 한다.</li>
+<li>컴파일 결과인 <strong>dist</strong> 폴더와 <strong>node_modules</strong> 폴더만 가져온다.</li>
+</ol>
+<h3 id="docker-이미지-띄우기"><a href="#docker-이미지-띄우기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Docker 이미지 띄우기</h3>
+<p>이미지를 만들었으니 이제 띄우기만 하면 된다. 이미지를 띄우는 것은 <a href="https://docs.docker.com/compose/" target="_blank" rel="noopener"><strong>docker-compose</strong></a>를 이용했다.</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">mainserver</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;cube219/wpa-server:latest&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">wpa-server</span><span class="w">
+</span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">mongodb</span><span class="w">
+</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;8000:8000&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./logs:/app/WebPageAlerter/logs</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./page_data:/app/WebPageAlerter/page_data</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">API_SERVER_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">8000</span><span class="w">
+</span><span class="w">
+</span><span class="w">      </span><span class="nt">API_SERVER_USE_HTTP2</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w">      </span><span class="nt">API_SERVER_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">$PASSWORD</span><span class="w">
+</span><span class="w">      </span><span class="nt">JWT_SIGNATURE_SECRET_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">$SIG_KEY</span><span class="w">
+</span><span class="w">      </span><span class="nt">API_SERVER_ENABLE_AUTH</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w">      </span><span class="nt">DB_URL</span><span class="p">:</span><span class="w"> </span><span class="l">mongodb</span><span class="w">
+</span><span class="w">      </span><span class="nt">DB_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">27017</span><span class="w">
+</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">backend</span><span class="w">
+</span><span class="w">  </span><span class="nt">mongodb</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;mongo:latest&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">wpa-db</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">mongodb</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./db_data:/data/db</span><span class="w">
+</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">backend</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">backend</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">bridge</span><span class="w">
+</span></code></pre></td></tr></table></div>
+</div>
+</div><p>서버에 들어갈 매개변수들을 설정하고, 컨테이너가 재 시작해도 데이터가 안 날아가게 볼륨을 마운트하고, db와 연결하는 이 모든 과정들을 쉽게 할 수 있었다. 만약 이미지가 업데이트가 되었다면 그냥</p>
+<p><code>$ docker-compose -f docker-compose.yml up -d</code></p>
+<p>만 입력하면 알아서 최신 이미지로 업데이트를 할 수 있다.</p>
+<p>완전 자동화는 아니지만 어느 정도 자동화는 해둔 덕분에 서버 업데이트를</p>
+<ol>
+<li>수정 commit을 GitHub에 push</li>
+<li>서버에 ssh로 접속해서 <code>build.sh </code> 실행</li>
+<li><code>docker-compose -f docker-compose.yml up -d</code> 입력</li>
+</ol>
+<p>이렇게 쉽게 할 수 있다.</p>
+<h2 id="프론트엔드-서버"><a href="#프론트엔드-서버" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>프론트엔드 서버</h2>
+<p>프론트엔드는 Vue로 만들었기 때문에 빌드를 하면 static 파일들이 생성이 되고, 이것을 <a href="https://www.nginx.com/" target="_blank" rel="noopener">Nginx</a>에다 올리면 프론트엔드 서버 구현 완료다.</p>
+<h3 id="같은-물리적-서버에서-도메인으로-프론트--백엔드-구분하기"><a href="#같은-물리적-서버에서-도메인으로-프론트--백엔드-구분하기" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>같은 물리적 서버에서 도메인으로 프론트 / 백엔드 구분하기</h3>
+<p>프론트 / 백엔드를 따로 구현했기 때문에 서버가 <strong>2개</strong>가 필요하다. 하지만 실제로는 서버를 <strong>1개</strong>만 가지고 있기 때문에 <a href="https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%B2%84%EC%8A%A4_%ED%94%84%EB%A1%9D%EC%8B%9C" target="_blank" rel="noopener"><strong>리버스 프록시</strong></a>를 구축했다.</p>
+<p><img src="images/proxy-logic.png" alt="프록시 로직"></p>
+<p>먼저 백엔드 서버 도메인인 wpa-server.cube219.me와 프론트엔드 서버 도메인인 wpa.cube219.me를 <strong>같은</strong> 프록시 서버 주소를 가리키게 설정을 한다. 그러면 프록시 서버에서는 들어온 요청이 백엔드 도메인인지, 프론트엔드 도메인인지 확인 후 알맞은 서버로 연결을 한다.</p>
+<p>이것도 Nginx로 구현이 가능하다.</p>
+<pre><code>server {
+    listen 80;
+    server_name wpa-server.cube219.me;
+    return 301 https://wpa-server.cube219.me$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name wpa-server.cube219.me;
+    autoindex off;
+
+    ssl_certificate /etc/letsencrypt/live/cube219.me/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/cube219.me/privkey.pem;
+
+
+    location / {
+        proxy_pass http://localhost:8000;
+    }
+}
+
+server {
+    listen 80;
+    server_name wpa.cube219.me;
+    return 301 https://wpa.cube219.me$request_uri;
+}
+server {
+    listen 443 ssl http2;
+    server_name wpa.cube219.me;
+    autoindex off;
+
+    ssl_certificate /etc/letsencrypt/live/cube219.me/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/cube219.me/privkey.pem;
+
+
+    location / {
+        root /home/Cube219/wpa-client/dist;
+    }
+}
+</code></pre><p>Nginx설정에서 server안에 <strong>server_name</strong>을 입력하면 해당 도메인으로 요청이 왔을 때 해당 서버로 연결해준다. 이것을 이용해 wpa-server.cube219.me인 경우에는 아까 Docker로 열어둔 백엔드 서버 8000포트로 넘겨주고, wpa.cube219.me인 경우 Vue로 빌드한 결과물들이 있는 폴더로 넘어가게 된다.</p>
+<h1 id="구현-모습"><a href="#구현-모습" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>구현 모습</h1>
+<p><img src="images/login.png" alt="로그인 화면"></p>
+<p>맨 처음 로그인 화면이다. 여기서 올바른 비밀번호를 입력하면 토큰을 받고 메인 화면으로 이동한다.</p>
+<p><img src="images/main-page.png" alt="메인 화면"></p>
+<p>메인 화면이다. 미리 등록한 웹 사이트에 새로운 글이 올라오면 모아서 여기에 보여 준다. 3일 전에 올라온 글이면 오른쪽 위에 New 뱃지가 나온다. 이미 읽은 글은 카드 배경이 회색으로 변한다.</p>
+<p><img src="images/card.png" alt="카드 수정"></p>
+<p>카드에 있는 점 3개를 클릭하면 이 글을 따로 보관할 수가 있다. 이외에도 카드를 읽음/읽지 않음으로 표시하거나 지울 수도 있다.</p>
+<p><img src="images/archieve-new-page.png" alt="새로운 페이지 저장"></p>
+<p>오른쪽 밑에 있는 +버튼을 누르면 새로운 페이지를 보관할 수 있는 창이 뜬다. URL과 카테고리를 선택하고 추가를 누르면 아래에 설명할 보관된 페이지에 해당 페이지가 보관된다.</p>
+<p><img src="images/archieved-pages.png" alt="저장된 페이지들"></p>
+<p>왼쪽 밑에 있는 보관된 페이지를 누르면 따로 보관한 페이지들을 볼 수가 있다.</p>
+<p>이외에도 웹 사이트 설정 / 기본 설정 페이지도 있어야 하지만 아직 미 구현이라 수동으로 서버에 요청을 보내 수정하고 있다.</p>
+<p><a href="https://github.com/Cube219/WebPageAlerter" target="_blank" rel="noopener">백엔드 소스코드</a>와 <a href="https://github.com/Cube219/wpa-client" target="_blank" rel="noopener">프론트엔드 소스코드</a>를 GitHub에 올리긴 했지만 아직 README등 정리가 안 되어있다. 차후 정리해서 작성할 예정이다.</p>
+<h1 id="느낀-점"><a href="#느낀-점" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>느낀 점</h1>
+<p>이 프로젝트는 잠깐 쉴 겸해서 만든 간단한 프로젝트였는데, 생각보다 간단하지 않았다. 한 1~2개월이면 만들 줄 알았는데 거의 5개월이나 걸렸다. 프로젝트를 진행하다 보니까 욕심이 나서 기능들을 추가하는 경우도 있었고, JWT,  mongoose, 토큰 개념 등 여러 기술들을 배우느라 시간이 더 걸린 것 같다. 그래도 웹에 대해서 어느 정도 지식이 쌓이긴 했다.</p>
+<p>시간은 생각보다 오래 걸렸지만 프로젝트를 진행하면서 재미있었고 열심히 했다. 불편하고 귀찮은 일을 자동으로 해주는 서비스를 만들어서 동기부여가 잘 되었던 것 같다. 가끔씩 이런 소소한 프로젝트를 하는 것도 좋은 것 같다.</p>
+
+            </div>
+
+        </article>
+
+        
+
+        
+
+
+        
+
+
+        
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+
+
+
+        
+
+
+        
+
+
+        
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+                <li class="post-nav-prev">
+                    <a href="/posts/2020/melon-crawler-for-ytmusic-development/" rel="prev">&lt; MelonCrawler4YTMusic 개발기</a>
+                </li>
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/2019/new-operator-in-cpp/" rel="next">C++의 새로운 연산자? &gt;</a>
+                </li>
+            
+        </ul>
+    
+
+
+
+        
+    
+
+        
+
+        
+
+        
+
+        
+            <div id="utterances">
+                <script src="https://utteranc.es/client.js"
+                    repo="Cube219/Cube219.github.io"
+                    issue-term="Comments: making-a-alerter-for-new-posts"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </div>
+        
+
+    
+
+
+
+    </div>
+</main>
+
+
+            
+    <div id="back-to-top" class="back-to-top">
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a>
+    </div>
+
+
+            
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="site-info">©&nbsp;2019–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;Cube219</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+
+            
+    
+        <ul class="socials"><li class="socials-item">
+                    <a href="https://github.com/cube219" target="_blank" rel="external noopener" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://facebook.com/profile.php?id=100001164136339" target="_blank" rel="external noopener" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="https://www.instagram.com/cube219" target="_blank" rel="external noopener" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="/rss.xml" target="_blank" rel="external noopener" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon social-icon"><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg></a>
+                </li><li class="socials-item">
+                    <a href="mailto:max804800@gmail.com" target="_blank" rel="external noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon social-icon"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></a>
+                </li></ul>
+    
+
+
+
+            
+        </div>
+    </footer>
+
+
+        </div>
+        
+
+        
+
+
+
+
+
+
+    
+
+        
+
+        
+
+        
+            <script>
+    function loadComments() {
+        (function() {
+            var utterances = document.getElementById("utterances");
+            var script = document.createElement('script');
+            script.src = 'https://utteranc.es/client.js';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('repo', 'Cube219\/Cube219.github.io');
+            script.setAttribute('issue-term', 'Comments: 웹사이트 새 글을 자동으로 확인해 알려주는 알리미 만들기');
+            const isDark = getCurrentTheme() === 'dark';
+        if (isDark) {
+            script.setAttribute('theme', 'photon-dark');
+        } else {
+            script.setAttribute('theme', 'github-light');
+        }
+            
+            utterances.appendChild(script);
+        })();
+    }
+</script>
+        
+
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+
+<script>
+    mediumZoom(document.querySelectorAll('div.post-body img'), {
+        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
+    })
+</script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+
+
+
+
+
+
+
+    </body>
+</html>
