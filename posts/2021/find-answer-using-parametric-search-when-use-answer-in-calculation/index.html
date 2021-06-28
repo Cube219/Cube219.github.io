@@ -12,7 +12,7 @@
     
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    <title>About Cube219 | Cube219&#39;s Blog</title>
+    <title>연산에 결과값을 써야 할 때 결과값을 Parametric Search로 구하기 | Cube219&#39;s Blog</title>
 
     <link rel="stylesheet" href="/css/meme.min.14c6a09332f98cc880b00e19d572bb09c9302a3418b8c64e7061d2521b8d103b.css"/>
 
@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" media="print" onload="this.media='all'" />
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" /></noscript>
 
-    <meta name="author" content="Cube219" /><meta name="description" content="게임 개발자 (특히 게임 엔진/그래픽스쪽)가 되고 싶은 사람입니다. 학력 (2013 ~ 2015) 한국디지털미디어고등학교 졸업 (2016 ~ ) 성균관대학교 컴퓨터공학과 재학(군대 끝!) 활동/경험 (2012) 제 29회 한국정보올림피아드(KOI) 전국대회 은상 (2016.07 ~ 2016.12) SW마에스트로 7기 연수생(1단계) (2016) 2016 shake!(경기남부 4개대학 프로그래밍 경시대회) 장..." />
+    <meta name="author" content="Cube219" /><meta name="description" content="최근에 재미있는 풀이를 발견해서 정리해본다. 이 풀이는 결과값(정답)을 구해야 하는데, 결과값을 구하기 위해 계산하는 과정에서 결과값이 필요한 경우를 말한다. 말이 이해가 안 갈수가 있는데, 밑에 문제를 보면 어떠한 유형인지 알 수 있을 것이다. 푸는 방법을 간단히 요약하자면, 결과값을 parametric search를 이용해 임의로 정하고, 계산해서 나온 결과값..." />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
@@ -37,28 +37,39 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Cube219&#39;s Blog" />
-    <meta name="msapplication-starturl" content="../" />
+    <meta name="msapplication-starturl" content="../../../" />
     <meta name="msapplication-TileColor" content="#fff" />
-    <meta name="msapplication-TileImage" content="../icons/mstile-150x150.png" />
+    <meta name="msapplication-TileImage" content="../../../icons/mstile-150x150.png" />
     <link rel="manifest" href="/manifest.json" />
 
     
     
 
     
-    <link rel="canonical" href="https://blog.cube219.me/about/" />
+    <link rel="canonical" href="https://blog.cube219.me/posts/2021/find-answer-using-parametric-search-when-use-answer-in-calculation/" />
     
 
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "datePublished": "2020-11-02T00:00:00+00:00",
-        "dateModified": "2020-11-02T22:23:13+09:00",
-        "url": "https://blog.cube219.me/about/",
-        "name": "About Cube219",
-        "description": "게임 개발자 (특히 게임 엔진/그래픽스쪽)가 되고 싶은 사람입니다. 학력 (2013 ~ 2015) 한국디지털미디어고등학교 졸업 (2016 ~ ) 성균관대학교 컴퓨터공학과 재학(군대 끝!) 활동/경험 (2012) 제 29회 한국정보올림피아드(KOI) 전국대회 은상 (2016.07 ~ 2016.12) SW마에스트로 7기 연수생(1단계) (2016) 2016 shake!(경기남부 4개대학 프로그래밍 경시대회) 장...",
-        "image": "https://blog.cube219.me/images/logo_new.png",
+        "@type": "BlogPosting",
+        "datePublished": "2021-06-28T19:40:20+09:00",
+        "dateModified": "2021-06-28T19:44:57+09:00",
+        "url": "https://blog.cube219.me/posts/2021/find-answer-using-parametric-search-when-use-answer-in-calculation/",
+        "headline": "연산에 결과값을 써야 할 때 결과값을 Parametric Search로 구하기",
+        "description": "최근에 재미있는 풀이를 발견해서 정리해본다. 이 풀이는 결과값(정답)을 구해야 하는데, 결과값을 구하기 위해 계산하는 과정에서 결과값이 필요한 경우를 말한다. 말이 이해가 안 갈수가 있는데, 밑에 문제를 보면 어떠한 유형인지 알 수 있을 것이다. 푸는 방법을 간단히 요약하자면, 결과값을 parametric search를 이용해 임의로 정하고, 계산해서 나온 결과값...",
+        "inLanguage" : "ko-kr",
+        "articleSection": "posts",
+        "wordCount":  1336 ,
+        "image": ["https://blog.cube219.me/posts/2021/find-answer-using-parametric-search-when-use-answer-in-calculation/images/cover.png"],
+        "author": {
+            "@type": "Person",
+            "description": "게임 개발자가 되고 싶은 사람.",
+            "email": "max804800@gmail.com",
+            "image": "https://blog.cube219.me/images/logo_new.png",
+            "url": "https://blog.cube219.me/",
+            "name": "Cube219"
+        },
         "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)",
         "publisher": {
             "@type": "Organization",
@@ -78,7 +89,8 @@
 
     
 
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
+
 
 <meta name="twitter:site" content="@Cube219&#39;s Blog" />
 
@@ -86,12 +98,17 @@
 
 
 
-<meta property="og:title" content="About Cube219" />
-<meta property="og:description" content="게임 개발자 (특히 게임 엔진/그래픽스쪽)가 되고 싶은 사람입니다. 학력 (2013 ~ 2015) 한국디지털미디어고등학교 졸업 (2016 ~ ) 성균관대학교 컴퓨터공학과 재학(군대 끝!) 활동/경험 (2012) 제 29회 한국정보올림피아드(KOI) 전국대회 은상 (2016.07 ~ 2016.12) SW마에스트로 7기 연수생(1단계) (2016) 2016 shake!(경기남부 4개대학 프로그래밍 경시대회) 장..." />
-<meta property="og:url" content="https://blog.cube219.me/about/" />
+<meta property="og:title" content="연산에 결과값을 써야 할 때 결과값을 Parametric Search로 구하기" />
+<meta property="og:description" content="최근에 재미있는 풀이를 발견해서 정리해본다. 이 풀이는 결과값(정답)을 구해야 하는데, 결과값을 구하기 위해 계산하는 과정에서 결과값이 필요한 경우를 말한다. 말이 이해가 안 갈수가 있는데, 밑에 문제를 보면 어떠한 유형인지 알 수 있을 것이다. 푸는 방법을 간단히 요약하자면, 결과값을 parametric search를 이용해 임의로 정하고, 계산해서 나온 결과값..." />
+<meta property="og:url" content="https://blog.cube219.me/posts/2021/find-answer-using-parametric-search-when-use-answer-in-calculation/" />
 <meta property="og:site_name" content="Cube219&#39;s Blog" />
-<meta property="og:locale" content="ko-kr" /><meta property="og:image" content="https://blog.cube219.me/images/logo_new.png" />
-    <meta property="og:type" content="website" />
+<meta property="og:locale" content="ko-kr" /><meta property="og:image" content="https://blog.cube219.me/posts/2021/find-answer-using-parametric-search-when-use-answer-in-calculation/images/cover.png" />
+<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2021-06-28T19:40:20&#43;09:00" />
+    <meta property="article:modified_time" content="2021-06-28T19:44:57&#43;09:00" />
+    
+    <meta property="article:section" content="posts" />
+
 
         <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
 
@@ -152,7 +169,7 @@
             
         
             
-                <li class="menu-item active"><a href="/about/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class="menu-item-name">About</span></a>
+                <li class="menu-item"><a href="/about/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class="menu-item-name">About</span></a>
                 </li>
             
         
@@ -212,16 +229,17 @@
 
             
             
-    
-        <main class="main single" id="main">
+    <main class="main single" id="main">
     <div class="main-inner">
 
         
 
-        <article class="content post" data-align="default" data-type="about" data-toc-num="true">
+        <article class="content post" data-align="default" data-type="posts" data-toc-num="true">
 
             
-            <h1 class="post-title">About Cube219</h1>
+                <img src="images/cover.png" class="article-banner">
+            
+            <h1 class="post-title">연산에 결과값을 써야 할 때 결과값을 Parametric Search로 구하기</h1>
 
             
 
@@ -235,7 +253,7 @@
 <div class="post-meta">
     
         
-        <time datetime="2020-11-02T00:00:00&#43;00:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2020.11.2</time>
+        <time datetime="2021-06-28T19:40:20&#43;09:00" class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;2021.6.28</time>
     
     
     
@@ -243,6 +261,8 @@
         
         
         
+            
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/algorithm/" class="category-link p-category">Algorithm</a></span>
             
         
     
@@ -255,95 +275,33 @@
             
 
             <div class="post-body">
-              <p>게임 개발자 (특히 게임 엔진/그래픽스쪽)가 되고 싶은 사람입니다.</p>
+              <p>최근에 재미있는 풀이를 발견해서 정리해본다. 이 풀이는 <strong>결과값</strong>(정답)을 구해야 하는데, 결과값을 구하기 위해 <strong>계산하는 과정</strong>에서 <strong>결과값</strong>이 <strong>필요</strong>한 경우를 말한다. 말이 이해가 안 갈수가 있는데, 밑에 문제를 보면 어떠한 유형인지 알 수 있을 것이다.</p>
+<p>푸는 방법을 간단히 요약하자면, 결과값을 <strong>parametric search</strong>를 이용해 임의로 정하고, <strong>계산해서 나온 결과값</strong>이랑 <strong>임의로 정한 결과값</strong>을 <strong>비교</strong>해 결과값을 찾으면 된다.</p>
 <hr>
-<h2 id="학력"><a href="#학력" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>학력</h2>
-<ul>
-<li>(2013 ~ 2015) <a href="https://www.dimigo.hs.kr/" target="_blank" rel="noopener">한국디지털미디어고등학교</a> 졸업</li>
-<li>(2016 ~ ) <a href="https://skku.edu/" target="_blank" rel="noopener">성균관대학교</a> 컴퓨터공학과 재학(군대 끝!)</li>
-</ul>
-<h2 id="활동경험"><a href="#활동경험" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>활동/경험</h2>
-<ul>
-<li>(2012) 제 29회 한국정보올림피아드(KOI) 전국대회 은상</li>
-<li>(2016.07 ~ 2016.12) <a href="https://swm.recruiter.co.kr/" target="_blank" rel="noopener">SW마에스트로</a> 7기 연수생(1단계)</li>
-<li>(2016) 2016 shake!(경기남부 4개대학 프로그래밍 경시대회) 장려상</li>
-<li>(2016.12.09 ~ 12.11) <a href="https://www.facebook.com/kgamejam" target="_blank" rel="noopener">대한민국 게임젬 2016</a> 참여</li>
-<li>(2019) <a href="https://research.samsung.com/scpc" target="_blank" rel="noopener">SCPC(Samsung Collegiate Programming Cup)</a> 2019 본선</li>
-<li>(2020) <a href="https://research.samsung.com/scpc" target="_blank" rel="noopener">SCPC(Samsung Collegiate Programming Cup)</a> 2020 예선 2차</li>
-<li>(2020) 2020 <a href="http://icpckorea.org/" target="_blank" rel="noopener">ACM-ICPC</a> Seoul Regional Preliminary Contest  56th (css680)</li>
-</ul>
-<h2 id="프로젝트"><a href="#프로젝트" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>프로젝트</h2>
-<ul>
-<li><a href="https://github.com/Cube219/CubeEngine" target="_blank" rel="noopener">CubeEngine</a> (진행중)
-<ul>
-<li>모듈화를 지향하는 게임 엔진</li>
-<li>물리, 소리 등 주요 기능들을 모듈화 하고, 쉽게 붙혔다 땠다 할 수 있음</li>
-<li><a href="https://www.khronos.org/vulkan/" target="_blank" rel="noopener">Vulkan</a>기반으로 개발중이며, 차후 다른 그래픽스 API도 지원 예정</li>
-<li>그래픽스 / 게임엔진을 공부하기 위해 진행하는 프로젝트</li>
-</ul>
-</li>
-<li><a href="https://github.com/Cube219/MelonCrawler4YTMusic" target="_blank" rel="noopener">MelonCrawler4YTMusic</a> (완료)
-<ul>
-<li>멜론 차트의 음악들을 Youtube Music에 주기적으로 넣어주는 프로그램</li>
-<li><a href="https://www.python.org/" target="_blank" rel="noopener">Python</a>을 이용해 개발</li>
-</ul>
-</li>
-<li><a href="https://github.com/Cube219/BlockBuster" target="_blank" rel="noopener">WebPageAlerter</a> (일시 중단)
-<ul>
-<li>등록한 웹 사이트에 새로운 글이 올라오면 저장하고 알려주는 서비스</li>
-<li>자주 보는 사이트들의 글들을 한번에 모아서 보기 위해 만듬</li>
-<li>백엔드는 <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> + <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript</a>, 프론트엔드는 <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue.js</a> + <a href="https://quasar.dev/" target="_blank" rel="noopener">Quasar framework</a></li>
-<li>최소한의 기능들은 구현되었으나, 너무 시간을 많이 잡아먹는 것 같아서 일시중단</li>
-</ul>
-</li>
-<li><a href="https://github.com/Cube219/BlockBuster" target="_blank" rel="noopener">BlockBuster</a> (완료)
-<ul>
-<li>SW마에스트로 과제로 만들었던 벽돌 깨기</li>
-<li>클라이언트는 <a href="https://unity3d.com/unity" target="_blank" rel="noopener">Unity3d</a>, 서버는 <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> 기반으로 제작</li>
-</ul>
-</li>
-</ul>
+<h1 id="boj-21343---great-expectations"><a href="#boj-21343---great-expectations" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>BOJ 21343 - Great Expectations</h1>
+<p><a href="https://www.acmicpc.net/problem/21343" target="_blank" rel="noopener">BOJ 링크</a></p>
+<p>위 문제를 요약하면, 스피드런을 하는데 특정 시간마다 trick이 있다. 이 trick은 어려워서 특정 확률로 실패할 수 있는데, 실패할 경우 추가 시간 패널티를 얻게 된다. 그리고 이렇게 추가 시간 패널티를 더해서 r시간보다 작아야 한다. 그리고 추가로 스피드런을 하다가 리셋을 할 수 있는데, 이러면 처음부터 다시하나 흘러간 시간은 그대로이다(스피드런을 할 때 리셋을 하고 다시 녹화를 한다고 생각하면 된다). 이럴때 스피드런을 완료하는데 걸리는 시간의 기댓값을 최소화하는 문제다.</p>
+<p>요약한 것을 봐도 잘 이해가 안 가는데, 예제입력 1을 보면 이해가 조금은 된다.</p>
 <hr>
-<h2 id="언어--관심-있는-것"><a href="#언어--관심-있는-것" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>언어 / 관심 있는 것</h2>
-<h3 id="main"><a href="#main" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Main</h3>
-<ul>
-<li>C++
-<ul>
-<li>STL / C++14, 17</li>
-<li><a href="https://en.cppreference.com/w/cpp/header/type_traits" target="_blank" rel="noopener">Type traits</a> / <a href="https://en.wikipedia.org/wiki/Template_metaprogramming" target="_blank" rel="noopener">Template Meta Programming</a></li>
-</ul>
-</li>
-<li>컴퓨터 그래픽스
-<ul>
-<li>특히 실시간</li>
-<li>사실적인 렌더링을 위한 여러 기법들</li>
-<li>PBR</li>
-<li>Ray Tracing</li>
-</ul>
-</li>
-<li>그래픽스 API
-<ul>
-<li>Vulkan</li>
-<li>DirectX11 / 12</li>
-<li>GLSL / HLSL</li>
-</ul>
-</li>
-<li>게임 엔진
-<ul>
-<li><a href="https://unity3d.com/unity" target="_blank" rel="noopener">Unity3d</a></li>
-<li><a href="https://www.unrealengine.com" target="_blank" rel="noopener">Unreal Engine</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="sub"><a href="#sub" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>Sub</h3>
-<ul>
-<li>C#</li>
-<li>Node.js</li>
-<li>Vue.js</li>
-<li>TypeScript</li>
-<li>Go</li>
-<li>python</li>
-</ul>
+<p>일단 dp식을 \( dp[i][j] = i\)번째 trick부터 끝까지 진행하고, \( j\)만큼 패널티를 먹을 때 최소 기댓값 으로 정하자.</p>
+<p>\(dp[i][j]\)를 구할 때 먼저 \(t[i] - t[i-1]\)를 더한다. 그래야 다음 \(i-1\)에서 기댓값을 구할 때, \(i-1이후~\) 값을 구할 수 있기 때문이다. 그리고 이제 성공할 때 경우하고 실패할 때 경우의 기댓값을 구해야 한다.</p>
+<p>만약 <strong>성공하는 경우</strong>에는 패널티가 없기 때문에, 그냥 \(dp[i+1][j]\)를 더하면 된다. 만약 <strong>실패하는 경우</strong>에는 패널티를 먹고 계속 진행하거나, 리셋을 해서 처음부터 다시 하는 경우가 있을 수 있다. 전자는 단순히 \(dp[i+1][j+err[i]] + err[i]\)를 더하면 되는데, 후자는 딱히 이전 dp값으로 표현을 할 수가 없고, 그냥 <strong>결과값</strong>을 넣어야 한다. 식을 정리하면,</p>
+<p>\[dp[i][j] = t[i] - t[i-1] \]
+\[+ p[i] * dp[i+1][j] \]
+\[+ (1-p[i]) * min(dp[i+1][j+err[i]] + err[i], 결과값)\]</p>
+<p>이 된다. 결과값을 구하기 위해 dp를 계산하는데 <strong>dp 계산식</strong>에 <strong>결과값</strong>이 들어가는 모순?이 생겨버린다. 이 문제를 해결하기 위해, 결과값을 \(k\)로 정하고, <strong>계산한 결과값</strong>을 \(k\)랑 비교해서 <strong>parametric search</strong>로 찾으면 된다. 만약 k보다 <strong>더 작은</strong> 결과값이 나오면, 실제 결과값은 더 작을 것이기 때문에 더 작게 조절하고, <strong>더 큰</strong> 결과값이 나오면 실제 결과값은 더 클 것이기 때문에 <strong>더 크게</strong> 조절하면 된다.</p>
+<p><a href="https://github.com/Cube219/PS/blob/main/BOJ/21000~22000/21343%20-%20Great%20Expectations.cpp" target="_blank" rel="noopener">소스코드</a></p>
+<hr>
+<h1 id="boj-6141---sightseeing-cows"><a href="#boj-6141---sightseeing-cows" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>BOJ 6141 - Sightseeing Cows</h1>
+<p><a href="https://www.acmicpc.net/problem/6141" target="_blank" rel="noopener">BOJ 링크</a></p>
+<p>\( \frac { \sum { \text {fun values} } } { \sum{ \text { path cost } } } \) 를 최소화하는 사이클을 찾는 문제이다.</p>
+<hr>
+<p>실은 풀이가 완전히 이해가 되진 않았는데, 그래도 써본다.</p>
+<p>일단 \(결과값 = \frac { \sum \text{fun values} } { \sum \text{path cost} } \) 이 식을 변형하면 \(결과값 * \sum { \text{path cost}} - \sum { \text { fun values } } = 0 \) 이 된다. 이렇게 변형한 이유는 그래야 경로를 돌면서 \( 결과값 * \text{edge cost} - \text{fun value} \) 로 <strong>그때 그때 업데이트</strong>가 가능하게 되서 간선의 비용을 바꿀수 있기 때문이다.</p>
+<p>변형된 계산식으로 계산했을 때, 만약 <strong>음수 사이클</strong>이 나온다면 <strong>변형 식의 값</strong>이 <strong>음수</strong>라는 뜻이고, 이는 \(k\)보다 실제 결과값이 <strong>더 크다</strong>고 볼 수 있다(그래야 변형 식의 값이 커지기 때문에). 반대로 음수 사이클이 <strong>없다면</strong> 실제 결과값이 <strong>더 작다</strong>고 볼 수 있다. 이것을 parametric search로 실제 결과값을 찾으면 된다.</p>
+<p><a href="https://github.com/Cube219/PS/blob/main/BOJ/6000~7000/6141%20-%20Sightseeing%20Cows.cpp" target="_blank" rel="noopener">소스코드</a></p>
+<hr>
+<p>꽤나 신선한 방법이라서 이러한 풀이로 푸는 문제들을 더 풀어보고 싶은데, 딱히 이런 방법을 표현하는 용어도 없어서 찾기가 어렵다. 그나마 이분 탐색/매개 변수 탐색 태그로 찾아보면 좀 나올지도?</p>
 
             </div>
 
@@ -380,9 +338,46 @@
 
 
         
+    
+        
+        
+    
+    
+    
+    
+        <ul class="post-nav">
+            
+            
+                <li class="post-nav-next">
+                    <a href="/posts/2021/find-min-or-max-edge-in-path-using-dsu-and-mst/" rel="next">DSU + MST로 경로에서 최소/최대 간선 구하기 &gt;</a>
+                </li>
+            
+        </ul>
+    
+
 
 
         
+    
+
+        
+
+        
+
+        
+
+        
+            <div id="utterances">
+                <script src="https://utteranc.es/client.js"
+                    repo="Cube219/Cube219.github.io"
+                    issue-term="Comments: find-answer-using-parametric-search-when-use-answer-in-calculation"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </div>
+        
+
     
 
 
@@ -390,7 +385,6 @@
     </div>
 </main>
 
-    
 
             
     <div id="back-to-top" class="back-to-top">
@@ -484,6 +478,36 @@
 
 
 
+
+    
+
+        
+
+        
+
+        
+            <script>
+    function loadComments() {
+        (function() {
+            var utterances = document.getElementById("utterances");
+            var script = document.createElement('script');
+            script.src = 'https://utteranc.es/client.js';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('repo', 'Cube219\/Cube219.github.io');
+            script.setAttribute('issue-term', 'Comments: 연산에 결과값을 써야 할 때 결과값을 Parametric Search로 구하기');
+            const isDark = getCurrentTheme() === 'dark';
+        if (isDark) {
+            script.setAttribute('theme', 'photon-dark');
+        } else {
+            script.setAttribute('theme', 'github-light');
+        }
+            
+            utterances.appendChild(script);
+        })();
+    }
+</script>
+        
 
     
 

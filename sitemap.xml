@@ -3,26 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.cube219.me/categories/algorithm/</loc>
-    <lastmod>2021-04-03T14:44:42+09:00</lastmod>
+    <lastmod>2021-06-28T19:44:57+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
     <loc>https://blog.cube219.me/categories/</loc>
-    <lastmod>2021-04-03T14:44:42+09:00</lastmod>
+    <lastmod>2021-06-28T19:44:57+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
     <loc>https://blog.cube219.me/</loc>
-    <lastmod>2021-04-03T14:44:42+09:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>https://blog.cube219.me/posts/2021/find-min-or-max-edge-in-path-using-dsu-and-mst/</loc>
-    <lastmod>2021-04-03T14:44:42+09:00</lastmod>
+    <lastmod>2021-06-28T19:44:57+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
     <loc>https://blog.cube219.me/posts/</loc>
+    <lastmod>2021-06-28T19:44:57+09:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url><url>
+    <loc>https://blog.cube219.me/posts/2021/find-answer-using-parametric-search-when-use-answer-in-calculation/</loc>
+    <lastmod>2021-06-28T19:44:57+09:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url><url>
+    <loc>https://blog.cube219.me/posts/2021/find-min-or-max-edge-in-path-using-dsu-and-mst/</loc>
     <lastmod>2021-04-03T14:44:42+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
