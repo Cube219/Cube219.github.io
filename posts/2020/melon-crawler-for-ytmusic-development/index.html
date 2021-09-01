@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.84.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -321,7 +321,7 @@
 <p>차트 페이지에서 얻어야 할 정보는 <strong>곡 이름</strong>, <strong>앨범</strong>, 그리고 <strong>작곡가</strong>이다. 얻고자 하는 정보에 마우스 우클릭-&gt;검사(혹은 Ctrl-Shift-I)를 누르면 해당 element로 이동하기 때문에 좀 더 편리하게 구조를 분석할 수 있다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -362,7 +362,7 @@
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
     ...
     <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
@@ -407,7 +407,7 @@
 <p>이 정보만 가지고도 충분히 뽑아올 수 있지만, 좀 더 살펴보니 더 편한 방법이 있었다. 곡 이름, 작곡가, 앨범 정보들이 모두 <code>&lt;div class=&quot;wrap_song_info&quot;&gt;</code> 안에 있어서 저 클래스만 가지고 뽑을 수도 있겠다 라는 생각이 들었다. 실제로 <a href="https://www.w3schools.com/cssref/css_selectors.asp" target="_blank" rel="noopener">CSS Selector</a>로 <code>.wrap_song_info</code> 를 검색하니까 <strong>[1등 곡 이름+작곡가, 1등 곡 앨범, 2등 곡 이름+작곡가, 2등 곡 앨범, &hellip;]</strong> 이렇게 손쉽게 정보를 뽑아올 수 있었다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -421,7 +421,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">melon_page_req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://www.melon.com/chart/index.htm&#34;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">melon_page_req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://www.melon.com/chart/index.htm&#34;</span><span class="p">)</span>
 <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">melon_page_req</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&#34;html.parser&#34;</span><span class="p">)</span>
 <span class="n">song_infos</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&#34;.wrap_song_info&#34;</span><span class="p">)</span>
 
@@ -439,7 +439,7 @@
 <p>완벽해! 하고 프로그램을 돌리니까 오류가 발생했다&hellip; 응답 내용을 보니 <strong>406 Not Acceptable</strong> 이 찍혀 있었다. 그래서 검색해보니까 requests의 <strong>User-Agent</strong>가 몇몇 사이트에서는 <strong>막는</strong> 경우가 있다고 한다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -447,7 +447,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">melon_page_req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">melon_page_req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
     <span class="s2">&#34;https://www.melon.com/chart/index.htm&#34;</span><span class="p">,</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
         <span class="s2">&#34;User-Agent&#34;</span><span class="p">:</span> <span class="s2">&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36&#34;</span>
@@ -468,10 +468,10 @@
 <p>일치하는지 여부 확인은 두 문자열이 정확히 일치하는지를 확인하지 않고, 문자열 중 하나가 다른 문자열에 <strong>포함</strong>될 경우를 일치한다고 정했다. 멜론에서 쓰는 작곡가/앨범 이름이 Youtube Music하고 다른 경우가 종종 있어서 이런 방식을 사용했다. 특히 영어 이름인 경우에 이런 예외가 많았는데, 예를 들어 멜론에서 <strong>아이유</strong> 라는 이름이 Youtube Music에서는 <strong>IU(아이유)</strong> 라고 표기되어 있다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">album_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">song_album</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">song_album</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">album_name</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">album_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">song_album</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">song_album</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">album_name</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>포함 여부는 <code>find()</code>함수를 쓰면 쉽게 알 수 있다.</p>
@@ -504,12 +504,12 @@
 <p>그런데 몇몇 검색에서는 결과값이 전혀 안 나오고 <code>[]</code>만 나오는 현상이 발생했다. 실제로 웹에서 검색을 하면 잘 나와서 검색 결과가 없는게 아닌데 라는 생각으로 라이브러리를 뜯어보았다. 그리고 문제점을 발견했다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">to_int</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">to_int</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
     <span class="n">number</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">locale</span><span class="o">.</span><span class="n">atoi</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
@@ -518,7 +518,7 @@
 <p>위 함수는 숫자가 있는 데이터(조회수, 좋아요 수&hellip;)에서 숫자 정보만 빼기 위해 만든 함수이다. 영미권 언어들은 저런 구현이 가능한게, &lsquo;<strong>153</strong> songs&rsquo;, &lsquo;<strong>156k</strong> follwers&rsquo; 처럼 왠만하면 무조건 숫자가 앞에 나오게 된다. 하지만 한국어의 경우, &lsquo;노래 <strong>153</strong>곡&rsquo;, &lsquo;팔로우 <strong>15.6만</strong>명&rsquo; 처럼 앞에 숫자의 정보가 있고, 숫자 뒤에 접미사까지 붙게 된다. 이 때문에 한국어에서 저 함수를 호출하면 &lsquo;<strong>노래</strong>&lsquo;를 숫자로 변환하려고 하게 되고, 예외가 발생해서 올바른 값이 나오지 않게 된다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -531,7 +531,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">to_int</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">to_int</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
     <span class="n">start_decimal_idx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
     <span class="n">end_decimal_idx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)):</span>
@@ -551,7 +551,7 @@
 <p>배포는 <a href="https://blog.cube219.me/posts/2019/making-a-alerter-for-new-posts/#%EB%B0%B1%EC%97%94%EB%93%9C-%EC%84%9C%EB%B2%84" target="_blank" rel="noopener">이전에 했던 프로젝트</a>랑 비슷하게 <a href="https://www.docker.com/" target="_blank" rel="noopener"><strong>Docker</strong></a>를 이용했다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -564,7 +564,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> python:3.8-alpine</span><span class="err">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> python:3.8-alpine</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app/MelonCrawler4YTMusic</span><span class="err">
 </span><span class="err"></span><span class="k">COPY</span> main.py ./<span class="err">
@@ -580,7 +580,7 @@
 </div><p>파일을 복사하고, pip로 패키지 설치하고, 실행하는 간단한 구조이다. 실행하기 전에 ytmusicapi 수정한 부분을 덮어씌우는 과정이 있다. 이 Dockerfile을 이용해 docker image를 만들면 된다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -594,7 +594,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">mainserver</span><span class="p">:</span><span class="w">

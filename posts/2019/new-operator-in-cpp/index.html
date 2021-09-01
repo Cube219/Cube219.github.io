@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.84.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -278,7 +278,7 @@
               <p>오늘 슬랙을 보다가 <a href="https://twitter.com/Lusain_Kim/status/1125069515220381696" target="_blank" rel="noopener">재미난 글</a>이 올라왔다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -286,7 +286,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 <span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>
 <span class="p">}</span>
@@ -298,10 +298,10 @@
 <p>처음 봤을 때는 재미있는 연산자가 추가되나보다 생각을 했다. 근데 글을 더 읽어보니 이게 이전 버전의 C++에서도 동작을 한다는 것이였고, 실제로 돌려보니 동작을 했다! 여기서 뭔가 이상하다고 생각을 해서 자세히 보니까 진실을 알게 되었다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">=&gt;</span>  <span class="k">while</span><span class="p">((</span><span class="n">x</span><span class="o">--</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">=&gt;</span>  <span class="k">while</span><span class="p">((</span><span class="n">x</span><span class="o">--</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>실제로는 x에 <code>--</code>연산자가 붙고, <code>x--</code>가 0보다 큰지 검사하는 구문이다. 이걸 띄어쓰기를 적절히 활용해서 마치 <code>--&gt;</code>라는 새로운 연산자가 있는것처럼 보이는 것이다.</p>
@@ -310,32 +310,32 @@
 <p>C++에서 볼 수 있는 또다른 재미있는 상황이 있다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>배열에 있는 값에 접근을 할 때, 컴파일러는 위와 같이 처리를 한다. 여기서 +는 앞뒤를 서로 바꿔도 같은 값이기 때문에, 아래의 식들도 모두 같다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="n">i</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="n">i</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>이를 응용하면 다음과 같은 끔찍한(!) 코드도 실행이 된다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">i</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">)[</span><span class="n">d</span><span class="p">];</span>
 <span class="p">}</span>

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.84.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -279,7 +279,7 @@
 <p>이러한 문제를 줄이기 위해, 짧은 문자열인 경우에는 동적 할당 대신에 동적 할당을 하는데 필요한 공간에다가 문자열을 넣어서 할당을 피하는 구조로 되어있다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -291,7 +291,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Layout</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Layout</span>
 <span class="p">{</span>
     <span class="k">union</span>
     <span class="p">{</span>
@@ -306,7 +306,7 @@
 </div><p>이렇게 Heap을 쓰는 경우에 사용하는 <code>HeapLayout</code>, SSO를 쓰는 경우에 사용하는 <code>SSOLayout</code>, 그리고 그냥 메모리 상태를 보여주는 <code>RawLayout </code>이 3가지가 <code>union</code>으로 묶여 있다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -314,7 +314,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">HeapLayout</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">HeapLayout</span>
 <span class="p">{</span>
     <span class="n">value_type</span><span class="o">*</span> <span class="n">mpBegin</span><span class="p">;</span>
     <span class="n">size_type</span> <span class="n">mnSize</span><span class="p">;</span>
@@ -326,7 +326,7 @@
 <p>이럴 경우, 64비트 아키텍처 기준으로는 총 8+8+8=24byte가 사용된다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -356,7 +356,7 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">CharT</span><span class="p">,</span> <span class="n">size_t</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">CharT</span><span class="p">)</span><span class="o">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">CharT</span><span class="p">,</span> <span class="n">size_t</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">CharT</span><span class="p">)</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="nc">SSOPadding</span>
 <span class="p">{</span>
     <span class="kt">char</span> <span class="n">padding</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">CharT</span><span class="p">)</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)];</span>
@@ -390,7 +390,7 @@
 <p>여기서는 남은 문자열 크기(<code>mnRemainingSize</code>)를 padding까지 해서 무조건 <code>HeapLayout</code>의 마지막 byte에 두는데, 이는 지금 Heap인지 SSO인지 확인하는데 이 byte를 쓰기 때문이다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -447,7 +447,7 @@
 </span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
 </span><span class="cp"></span>    <span class="c1">// Big Endian use LSB, unless we want to reorder struct layouts on endianness, Bit is set when we are in Heap
 </span><span class="c1"></span>    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kHeapMask</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
     <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kSSOMask</span>  <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
@@ -510,7 +510,7 @@
 <p>굳이 <code>bool</code>변수를 안 넣고 이렇게 masking bit를 넣는 것은 공간 낭비를 최소화하려고 그런게 아닐까 생각한다.</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -523,7 +523,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Layout</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Layout</span>
 <span class="p">{</span>
     <span class="p">...</span>
         
