@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.87.0" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -1212,7 +1212,7 @@ docker build -t cube219/wpa-server:latest -t cube219/wpa-server:v<span class="nv
 <p><img src="images/proxy-logic.png" alt="프록시 로직"></p>
 <p>먼저 백엔드 서버 도메인인 wpa-server.cube219.me와 프론트엔드 서버 도메인인 wpa.cube219.me를 <strong>같은</strong> 프록시 서버 주소를 가리키게 설정을 한다. 그러면 프록시 서버에서는 들어온 요청이 백엔드 도메인인지, 프론트엔드 도메인인지 확인 후 알맞은 서버로 연결을 한다.</p>
 <p>이것도 Nginx로 구현이 가능하다.</p>
-<pre><code>server {
+<pre tabindex="0"><code>server {
     listen 80;
     server_name wpa-server.cube219.me;
     return 301 https://wpa-server.cube219.me$request_uri;

@@ -10,7 +10,7 @@
         <title>Cube219&#39;s Blog</title>
         <link>https://blog.cube219.me/</link>
         <description>게임 개발자가 되고 싶은 사람.</description>
-        <generator>Hugo 0.87.0 https://gohugo.io/</generator>
+        <generator>Hugo 0.88.1 https://gohugo.io/</generator>
         
             <language>ko-kr</language>
         
@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Wed, 01 Sep 2021 12:21:27 &#43;0000</lastBuildDate>
+        <lastBuildDate>Wed, 08 Sep 2021 08:49:45 &#43;0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://blog.cube219.me/rss.xml" />
         
@@ -79,7 +79,7 @@
 &lt;li&gt;\(B_{i+1} - B_i ≤ 1\)&lt;/li&gt;
 &lt;li&gt;\(B_0 = 0\)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;가 성립한다. 이러면 \(B_n\)의 최댓값을 구할 수 있고 전체에서 최소 1의 개수를 알 수 있다(\(0\)의 최댓값 → \(1\)의 최솟값). 이제 \(1\) ~ \(n\)범위에서 최소 1의 개수를 알았으니, 뒤에서부터 보면서 와 \(B_{i}\)과 \(B_{i - 1}\) 값이 다르면 1, 같으면 0을 넣으면 된다. 간선의 비용들이 전부 &lt;strong&gt;양수&lt;/strong&gt;이므로, &lt;strong&gt;다익스트라&lt;/strong&gt; 알고리즘을 사용해도 된다.&lt;/p&gt;
+&lt;p&gt;가 성립한다. 이러면 \(B_n\)의 최댓값을 구할 수 있고 전체에서 최소 1의 개수를 알 수 있다(\(0\)의 최댓값 → \(1\)의 최솟값). 이제 \(1\) ~ \(n\)범위에서 최소 1의 개수를 알았으니, 뒤에서부터 보면서 \(B_{i}\)와 \(B_{i - 1}\) 값이 같으면 1, 다르면 0을 넣으면 된다. 간선의 비용들이 전부 &lt;strong&gt;양수&lt;/strong&gt;이므로, &lt;strong&gt;다익스트라&lt;/strong&gt; 알고리즘을 사용해도 된다.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://atcoder.jp/contests/abc216/submissions/25499344&#34;&gt;소스코드&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;실은 이 문제는 &lt;strong&gt;그리디 + 세그먼트 트리&lt;/strong&gt;로 푸는 것이 더 쉽다. 쿼리를 \(R\)이 &lt;strong&gt;작은 순&lt;/strong&gt;으로 정렬하고, 현재 해당 구간에서 \(1\)의 개수를 세고 부족한 1의 개수만큼 현재 구간의 &lt;strong&gt;오른쪽부터&lt;/strong&gt; 채워주면 된다. 넣어줄 \(1\)의 위치는 &lt;strong&gt;스택&lt;/strong&gt;을 이용해 저장하면 된다. &lt;a href=&#34;https://github.com/Cube219/PS/commit/0e883bcddad8903f7c4c9585c6234015d43a9847&#34;&gt;소스코드&lt;/a&gt;&lt;/p&gt;
@@ -2955,21 +2955,21 @@
 &lt;p&gt;예를 들어 &lt;strong&gt;AProject&lt;/strong&gt;에서 &lt;strong&gt;B-1.0.2&lt;/strong&gt; 라이브러리를 쓴다고 하자. 이때 새로운 &lt;strong&gt;BProject&lt;/strong&gt;를 만들고 이 프로젝트는 &lt;strong&gt;B-4.5.1&lt;/strong&gt; 라이브러리를 쓰도록 설정했다. 이러면 python(정확히는 &lt;a href=&#34;https://pypi.org/project/pip/&#34;&gt;pip&lt;/a&gt;)은 기존에 설치되어있던 B-1.0.2를 B-4.5.1로 &lt;strong&gt;업데이트&lt;/strong&gt; 하게 된다. 그러면 이제 &lt;strong&gt;AProject&lt;/strong&gt;는 &lt;strong&gt;B-4.5.1&lt;/strong&gt; 라이브러리를 쓰게 되고, 버전이 의도치 않게 올라갔기 때문에 문제가 발생할 가능성이 생기게 된다.&lt;/p&gt;
 &lt;p&gt;이 문제를 해결하기 위해서는 각 프로젝트마다 &lt;strong&gt;독립된 환경&lt;/strong&gt;을 구축할 필요가 있다. 이러한 것들을 도와주는 여러 프로그램들이 있는데, 필자는 &lt;a href=&#34;https://virtualenv.pypa.io/en/latest/&#34;&gt;&lt;strong&gt;Virtualenv&lt;/strong&gt;&lt;/a&gt;를 사용했다. Virtualenv는 쉽게 말해 라이브러리랑 python 그 자체를 &lt;strong&gt;한 폴더&lt;/strong&gt;에다가 넣어두고, 실제로 사용할 땐 그 폴더 안에서 동작하도록 &lt;strong&gt;가상화&lt;/strong&gt;해준다.&lt;/p&gt;
 &lt;p&gt;사용법은 아주 간단하다. 먼저 Virtualenv를 설치해 준다. (이미 설치가 되어있다면 할 필요 없음)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo pip install virtualenv
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sudo pip install virtualenv
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;Windows의 경우 &lt;code&gt;sudo&lt;/code&gt;를 빼주면 된다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;설치가 되었으면 가상환경을 구축할 프로젝트 폴더로 가서&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ virtualenv env
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ virtualenv env
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;를 입력하면, &lt;code&gt;env&lt;/code&gt;라는 폴더가 생기게 된다.&lt;/p&gt;
 &lt;p&gt;폴더가 생겼다고 바로 쓸 수 있는 것은 아니다. 작업을 시작하기 전에 수동으로 &lt;strong&gt;활성화&lt;/strong&gt;해야 한다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ source env/bin/activate
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ source env/bin/activate
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;Windows의 경우 &lt;code&gt;./env/Scripts/activate&lt;/code&gt; 라고 입력하면 된다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;를 입력하면 가상환경이 활성화가 된다. 이제 &lt;code&gt;pip&lt;/code&gt;나 &lt;code&gt;python&lt;/code&gt; 명령어를 실행하면 &lt;code&gt;env&lt;/code&gt;폴더 내부에서 처리하게 된다.&lt;/p&gt;
 &lt;p&gt;작업을 다 끝내고 가상환경을 &lt;strong&gt;비활성화&lt;/strong&gt; 하고 싶으면 간단하게&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ deactivate
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ deactivate
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;를 입력하면 된다.&lt;/p&gt;
 &lt;p&gt;이외에 여러가지 찾아보니까 부실한 pip를 대신해 &lt;a href=&#34;https://python-poetry.org/&#34;&gt;&lt;strong&gt;Poetry&lt;/strong&gt;&lt;/a&gt;라는 패키지 매니저도 있었다. 하지만 프로젝트 규모도 크지 않고, 무엇보다 귀찮아서 그냥 pip를 쓰기로 했다.&lt;/p&gt;
 &lt;p&gt;이외에 편집기로는 기존에 쓰던 &lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;&lt;strong&gt;VSCode&lt;/strong&gt;&lt;/a&gt;를 이용했다.&lt;/p&gt;
@@ -4251,7 +4251,7 @@ docker build -t cube219/wpa-server:latest -t cube219/wpa-server:v&lt;span class=
 &lt;p&gt;&lt;img src=&#34;images/proxy-logic.png&#34; alt=&#34;프록시 로직&#34;&gt;&lt;/p&gt;
 &lt;p&gt;먼저 백엔드 서버 도메인인 wpa-server.cube219.me와 프론트엔드 서버 도메인인 wpa.cube219.me를 &lt;strong&gt;같은&lt;/strong&gt; 프록시 서버 주소를 가리키게 설정을 한다. 그러면 프록시 서버에서는 들어온 요청이 백엔드 도메인인지, 프론트엔드 도메인인지 확인 후 알맞은 서버로 연결을 한다.&lt;/p&gt;
 &lt;p&gt;이것도 Nginx로 구현이 가능하다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;server {
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;server {
     listen 80;
     server_name wpa-server.cube219.me;
     return 301 https://wpa-server.cube219.me$request_uri;
