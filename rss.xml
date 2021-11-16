@@ -10,7 +10,7 @@
         <title>Cube219&#39;s Blog</title>
         <link>https://blog.cube219.me/</link>
         <description>게임 개발자가 되고 싶은 사람.</description>
-        <generator>Hugo 0.88.1 https://gohugo.io/</generator>
+        <generator>Hugo 0.89.3 https://gohugo.io/</generator>
         
             <language>ko-kr</language>
         
@@ -23,10 +23,108 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Wed, 08 Sep 2021 08:49:45 &#43;0000</lastBuildDate>
+        <lastBuildDate>Tue, 16 Nov 2021 07:51:19 &#43;0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://blog.cube219.me/rss.xml" />
         
+        
+            <item>
+                <title>Stock Price Prediction 문제를 Segment Tree 없이 풀기</title>
+                <link>https://blog.cube219.me/posts/2021/solve-stock-price-prediction-problem-without-segment-tree/</link>
+                <guid isPermaLink="true">https://blog.cube219.me/posts/2021/solve-stock-price-prediction-problem-without-segment-tree/</guid>
+                <pubDate>Tue, 16 Nov 2021 16:29:20 &#43;0900</pubDate>
+                
+                    <author>max804800@gmail.com (Cube219)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description>&lt;p&gt;2021 ICPC Seoul Regional에서 K번으로 &lt;strong&gt;Stock Price Prediction&lt;/strong&gt;이라는 문제가 나왔다. 실제 대회에서는 못 풀었는데, 알고보니 최근에 비슷한 문제 (BOJ 20298 - 파인애플 피자, BOJ 3308 - Matching, SCPC 2021 예선 2차 4번 - 패턴 매칭)가 있는, &lt;strong&gt;Well-known&lt;/strong&gt;이라고 한다. 어쩐지 많이 풀더라&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;boj-23576---stock-price-prediction&#34;&gt;BOJ 23576 - Stock Price Prediction&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/23576&#34;&gt;BOJ 링크&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;문제 내용이 긴데, 간단히 요약하자면&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt; 배열의 &lt;strong&gt;rank&lt;/strong&gt;(가장 작은 값부터 0, 1, ..로 바꾸는 것)가 있을 때, &lt;code&gt;y&lt;/code&gt; 배열의 &lt;strong&gt;sub-배열&lt;/strong&gt;들 중에 rank 값이 &lt;code&gt;x&lt;/code&gt; 배열의 rank 값과 &lt;strong&gt;같은&lt;/strong&gt; sub-배열의 위치들을 전부 출력하면 된다.&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;문자열 매칭 알고리즘을 쓰면 될 것 같긴 한데, 문제는 &lt;code&gt;y&lt;/code&gt;배열의 sub-배열이 바뀌면서 같은 값이라도 &lt;strong&gt;rank가 달라질 수가 있다&lt;/strong&gt;는 점이다. 하지만 &lt;strong&gt;KMP를 변형&lt;/strong&gt;하면 해결이 가능하다! KMP에서 &lt;strong&gt;문자가 같은지 비교하는 부분&lt;/strong&gt;만 수정하면 되는데, 이 문제에서는&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;두 문자열&lt;/strong&gt;에서 문자가 각자 하나 추가될 때, 추가된 문자보다 &lt;strong&gt;작은 문자의 수&lt;/strong&gt;와 &lt;strong&gt;큰 문자의 수&lt;/strong&gt;가 두 문자열이 &lt;strong&gt;서로 같은지&lt;/strong&gt; 확인하면 된다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;dl&gt;
+&lt;dt&gt;proof)&lt;/dt&gt;
+&lt;dd&gt;문자열에 문자 &lt;code&gt;c&lt;/code&gt;가 추가된다 했을 때, &lt;code&gt;c&lt;/code&gt;보다 &lt;strong&gt;작은 문자의 수&lt;/strong&gt;를 &lt;code&gt;lcnt&lt;/code&gt;, &lt;strong&gt;큰 문자의 수&lt;/strong&gt;를 &lt;code&gt;gcnt&lt;/code&gt;라 하자. 이제 rank가 어떻게 변하는지 보면&lt;/dd&gt;
+&lt;dd&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;c&lt;/code&gt;보다 &lt;strong&gt;작은 문자&lt;/strong&gt;들: &lt;code&gt;c&lt;/code&gt;가 추가되어도 rank에 변화가 없음&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/dd&gt;
+&lt;dd&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;code&gt;c&lt;/code&gt;: 작은 문자들 다음이므로 &lt;code&gt;lcnt&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/dd&gt;
+&lt;dd&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;code&gt;c&lt;/code&gt;보다 &lt;strong&gt;큰 문자&lt;/strong&gt;들: &lt;code&gt;c&lt;/code&gt;에 의해 한 칸씩 밀리므로 +1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/dd&gt;
+&lt;dd&gt;이제 두 문자열의 &lt;code&gt;lcnt&lt;/code&gt;와 &lt;code&gt;gcnt&lt;/code&gt;가 서로 같다면 바뀌는 rank도 전부 같게 되므로 두 문자열은 그대로 서로 같아진다.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;문자의 수는 &lt;strong&gt;Segment Tree&lt;/strong&gt;를 이용해 \( O(logN) \)에 셀 수 있고, 전체 시간복잡도는 \( O((N + M) logN) \)이다. 주의할 점은 일치하지 않아서 fail함수를 실행하고 문자열을 &lt;strong&gt;옮길 때&lt;/strong&gt; 앞에 있는 문자들을 Segment Tree에서 &lt;strong&gt;제거&lt;/strong&gt;해줘야 한다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Cube219/PS/blob/main/BOJ/23000~24000/23576%20-%20Stock%20Price%20Prediction.cpp&#34;&gt;소스코드&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;위 방식으로 앞에서 언급한 &lt;a href=&#34;https://www.acmicpc.net/problem/20298&#34;&gt;BOJ 20298 - 파인애플 피자&lt;/a&gt;, &lt;a href=&#34;https://www.acmicpc.net/problem/3308&#34;&gt;BOJ 3308 - Matching&lt;/a&gt; 문제도 풀 수 있다. 전자는 &lt;code&gt;y&lt;/code&gt; 배열이 원형인 것만 고려하면 같은 문제고, 후자는 &lt;code&gt;x&lt;/code&gt; 배열 입력 방식만 조금 다른 것을 빼면 같은 문제다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;segment-tree-없이-풀기---배열에-중복이-없는-경우&#34;&gt;Segment Tree 없이 풀기 - 배열에 중복이 없는 경우&lt;/h1&gt;
+&lt;p&gt;위 방식처럼 Segment Tree를 이용해 풀면 시간제한이 빡빡하다. Fenwick Tree나 바텀업 Segment Tree로는 통과하지만, 탑다운 Segment Tree로는 어려울 수도 있다. 하지만 저 3문제 중에서 가장 먼저 나온 Matching 문제의 해설을 찾아봤는데, Segment Tree &lt;strong&gt;없이&lt;/strong&gt; \( O(N + M) \)으로 푸는 방법이 존재하고, 그것이 정해라고 한다!&lt;/p&gt;
+&lt;h2 id=&#34;boj-3308---matching&#34;&gt;BOJ 3308 - Matching&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/3308&#34;&gt;BOJ 링크&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;이 문제는 위 문제랑 거의 같지만 입력 형식이 조금 다르고, 배열에 &lt;strong&gt;중복이 없고&lt;/strong&gt;, &lt;strong&gt;N의 범위&lt;/strong&gt;가 1,000,000으로 커졌다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt;배열은 읽어오면서 &lt;code&gt;x[v - 1] = i;&lt;/code&gt;로 넣어주면 된다. 이제 KMP에서 문자가 같은지 비교하는 부분을 다음과 같이 수정하면 된다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt;배열 기준으로 문자 &lt;code&gt;c&lt;/code&gt;가 추가되고, 문자 &lt;code&gt;c&lt;/code&gt;보다 &lt;strong&gt;앞에 있는 문자들 중&lt;/strong&gt;에 &lt;code&gt;c&lt;/code&gt; &lt;strong&gt;다음으로 작은 문자의 위치&lt;/strong&gt;를 &lt;code&gt;lpos&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt; &lt;strong&gt;다음으로 큰 문자의 위치&lt;/strong&gt;를 &lt;code&gt;gpos&lt;/code&gt;라 할 때, 대응되는 &lt;code&gt;y&lt;/code&gt;배열의 &lt;code&gt;lpos&lt;/code&gt;, &lt;code&gt;gpos&lt;/code&gt;의 문자(&lt;code&gt;lc&lt;/code&gt;, &lt;code&gt;gc&lt;/code&gt;)와 추가되는 문자 &lt;code&gt;c2&lt;/code&gt;의 &lt;strong&gt;대소관계&lt;/strong&gt;가 &lt;code&gt;lc &amp;lt; c2 &amp;amp;&amp;amp; c2 &amp;lt; gc&lt;/code&gt; 인지 확인한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/p1.png&#34; alt=&#34;p1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;말로는 설명하기 까다로워서 그림으로 예시를 들어 설명한다. 현재 &lt;strong&gt;빨간색 위치&lt;/strong&gt;를 검사하는 단계이다. 이때 &lt;code&gt;x&lt;/code&gt;배열의 문자는 &lt;strong&gt;3&lt;/strong&gt;이고, 3 다음으로 작은 &lt;strong&gt;1의 위치&lt;/strong&gt;를 &lt;code&gt;lpos&lt;/code&gt;, 3 다음으로 큰 &lt;strong&gt;4의 위치&lt;/strong&gt;를 &lt;code&gt;gpos&lt;/code&gt;로 정한다. 이제 &lt;code&gt;y&lt;/code&gt;배열에서 대응되는 값들의 대소관계를 비교해, 만족하면 다음으로 넘어가고, 아니면 &lt;code&gt;x&lt;/code&gt;배열을 이동시킨다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;dl&gt;
+&lt;dt&gt;대략적인 proof)&lt;/dt&gt;
+&lt;dd&gt;바로 다음으로 작은/큰 문자들의 대소관계를 비교하기 때문에, 만약 저 대소관계를 만족한다면 &lt;strong&gt;남은 다른 문자&lt;/strong&gt;들은 전부 &lt;code&gt;x[lpos]&lt;/code&gt;보다 작거나 &lt;code&gt;x[gpos]&lt;/code&gt;보다 크게 된다. 이러면 결국 위에서 언급한 &lt;code&gt;lcnt&lt;/code&gt;와 &lt;code&gt;gcnt&lt;/code&gt;도 두 문자열이 서로 같게 되고, 위의 증명을 사용할 수 있다.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;이제 범위로 쿼리를 날릴 필요 없이 &lt;code&gt;lpos&lt;/code&gt;, &lt;code&gt;gpos&lt;/code&gt;에 대응되는 값만 가져오면 돼서 \( logN \)을 없앨 수 있다. 하지만 각 위치에 대응되는 &lt;code&gt;lpos&lt;/code&gt;, &lt;code&gt;gpos&lt;/code&gt;를 그냥 \( O(N^2) \)에 구하게 되면 오히려 더 느려지므로 빠르게 구하는 방법을 생각해야 한다. 이는 &lt;strong&gt;Doubly Linked List&lt;/strong&gt;를 이용해 \( O(N) \)에 구할 수 있다.&lt;/p&gt;
+&lt;p&gt;일단 Linked List에 &lt;code&gt;0&lt;/code&gt;부터 &lt;code&gt;N-1&lt;/code&gt;까지 순서대로 넣어준다. 그리고 &lt;code&gt;x&lt;/code&gt;배열을 &lt;strong&gt;뒤에서&lt;/strong&gt;부터 돌면서 Linked List를 이용해 &lt;strong&gt;해당 값&lt;/strong&gt;보다 &lt;strong&gt;한 단계 작은/큰 값&lt;/strong&gt;을 찾고, 해당 값의 &lt;strong&gt;위치&lt;/strong&gt;(&lt;code&gt;lpos&lt;/code&gt;, &lt;code&gt;gpos&lt;/code&gt;)를 구한다. 그리고 다음 루프로 넘어가기 전에 &lt;strong&gt;해당 값&lt;/strong&gt;을 Linked List에서 &lt;strong&gt;지워&lt;/strong&gt;준다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Cube219/PS/blob/main/BOJ/3000~4000/3308%20-%20Matching(WithoutSegTree).cpp&#34;&gt;소스코드&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;segment-tree-없이-풀기---배열에-중복이-있는-경우&#34;&gt;Segment Tree 없이 풀기 - 배열에 중복이 있는 경우&lt;/h1&gt;
+&lt;p&gt;만약 배열에 &lt;strong&gt;중복이 있는 경우&lt;/strong&gt;라면 위의 방법을 그대로 사용하거나, 크거나 같음/작거나 같음으로 하면 &lt;strong&gt;안 맞는&lt;/strong&gt; 경우가 생긴다. 대신에 만약 추가되는 문자가 &lt;strong&gt;이미 존재&lt;/strong&gt;하는 경우에는, &lt;strong&gt;이미 존재하는 문자의 위치&lt;/strong&gt;를 찾고(&lt;code&gt;spos&lt;/code&gt;), &lt;code&gt;y&lt;/code&gt; 배열에서도 &lt;strong&gt;같은지 확인&lt;/strong&gt;하면 된다. 생각해보면 이미 있는 문자가 또 추가되는 경우에는, 다른 문자들의 rank가 &lt;strong&gt;변하지 않으므로&lt;/strong&gt; 그냥 실제 매칭되는 문자도 같은지만 확인하면 된다.&lt;/p&gt;
+&lt;p&gt;이것을 처리하기 위해서 Linked List에 추가로 해당 &lt;strong&gt;값의 개수&lt;/strong&gt;인 &lt;code&gt;cnt&lt;/code&gt;정보도 넣어둔다. &lt;code&gt;x&lt;/code&gt;배열을 뒤에서부터 돌면서 만약 해당 값의 &lt;code&gt;cnt&lt;/code&gt;가 &lt;strong&gt;2 이상&lt;/strong&gt;이라면 해당 위치 앞에 &lt;strong&gt;같은 값이 있다&lt;/strong&gt;는 의미이므로, 해당 위치에 &lt;code&gt;spos&lt;/code&gt;를 기록한다. &lt;code&gt;spos&lt;/code&gt;는 미리 &lt;strong&gt;해당 값의 가장 왼쪽 위치&lt;/strong&gt;로 찾아두면 된다. 기록 후 해당 값의 &lt;code&gt;cnt&lt;/code&gt;를 &lt;strong&gt;감소&lt;/strong&gt;시키고 &lt;strong&gt;0&lt;/strong&gt;이 된다면 Linked List에서 &lt;strong&gt;지워&lt;/strong&gt;준다.&lt;/p&gt;
+&lt;p&gt;확인하는 함수에서는 먼저 &lt;code&gt;spos&lt;/code&gt;가 &lt;strong&gt;기록되어 있는지 확인&lt;/strong&gt; 한 후, 되어 있으면 해당 위치와 &lt;code&gt;spos&lt;/code&gt; 위치의 문자가 &lt;strong&gt;같은지 비교&lt;/strong&gt;하면 되고, 기록이 안 되어 있으면 &lt;strong&gt;기존 방식&lt;/strong&gt;을 쓰면 된다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Cube219/PS/blob/main/BOJ/23000~24000/23576%20-%20Stock%20Price%20Prediction(WithoutSegTree).cpp&#34;&gt;소스코드 (BOJ 23576 - Stock Price Prediction)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Cube219/PS/blob/main/BOJ/20000~21000/20298%20-%20%ED%8C%8C%EC%9D%B8%EC%95%A0%ED%94%8C%20%ED%94%BC%EC%9E%90(WithoutSegTree).cpp&#34;&gt;소스코드 (BOJ 0298 - 파인애플 피자)&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;얼마나-빨라질까&#34;&gt;얼마나 빨라질까?&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;images/23576.png&#34; alt=&#34;23576&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stock Price Prediction&lt;/strong&gt; 문제는 약 2.72배 빨라졌다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/20298.png&#34; alt=&#34;20298&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;파인애플 피자&lt;/strong&gt; 문제는 약 3.4배 빨라졌다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/3308.png&#34; alt=&#34;3308&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Matching&lt;/strong&gt; 문제는 약 3.1배 빨라졌다.&lt;/p&gt;
+&lt;p&gt;전체적으로 &lt;strong&gt;약 3배&lt;/strong&gt; 정도 빨라졌음을 볼 수 있다.&lt;/p&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://blog.cube219.me/categories/algorithm/">Algorithm</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>ABC216G - 01Sequence와 소 게임(牛ゲー)</title>

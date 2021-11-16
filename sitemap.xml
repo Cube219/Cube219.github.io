@@ -2,33 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.cube219.me/posts/2021/abc216g-and-cow-game/</loc>
-    <lastmod>2021-09-08T17:47:03+09:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url><url>
     <loc>https://blog.cube219.me/categories/algorithm/</loc>
-    <lastmod>2021-09-08T17:47:03+09:00</lastmod>
+    <lastmod>2021-11-16T16:30:47+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
     <loc>https://blog.cube219.me/categories/</loc>
-    <lastmod>2021-09-08T17:47:03+09:00</lastmod>
+    <lastmod>2021-11-16T16:30:47+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
     <loc>https://blog.cube219.me/</loc>
-    <lastmod>2021-09-08T17:47:03+09:00</lastmod>
+    <lastmod>2021-11-16T16:46:04+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
     <loc>https://blog.cube219.me/posts/</loc>
-    <lastmod>2021-09-08T17:47:03+09:00</lastmod>
+    <lastmod>2021-11-16T16:30:47+09:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url><url>
+    <loc>https://blog.cube219.me/posts/2021/solve-stock-price-prediction-problem-without-segment-tree/</loc>
+    <lastmod>2021-11-16T16:30:47+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
     <loc>https://blog.cube219.me/about/</loc>
-    <lastmod>2021-09-01T21:14:21+09:00</lastmod>
+    <lastmod>2021-11-16T16:46:04+09:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url><url>
+    <loc>https://blog.cube219.me/posts/2021/abc216g-and-cow-game/</loc>
+    <lastmod>2021-09-08T17:47:03+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
