@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
 
     <meta name="generator" content="Hugo 0.91.2" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,18 +17,18 @@
 
     <title>Variadic Template에서 일부 Parameter Type을 바꾸기 | Cube219&#39;s Blog</title>
 
-    <link rel="stylesheet" href="/css/meme.min.14c6a09332f98cc880b00e19d572bb09c9302a3418b8c64e7061d2521b8d103b.css"/>
+    <link rel="stylesheet" href="/css/meme.min.c1d00a49351e6c520716a034dfb36e5ce96fa56ba156dea1d3d11c00bbbb0aba.css"/>
 
     
     
-        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.f510ee18539997618746194a58b59c626566191a3af103e5f9018c2fe66091d0.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.83eabbfe3617d36ed66f023d2366a8c42ad0638bc398aa7be9271dd6cea2c759.js"></script>
 
     
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" media="print" onload="this.media='all'" />
-        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%7cNoto&#43;Sans&#43;KR%7cSource&#43;Code&#43;Pro:400,400i,700,700i%7cComfortaa:700&amp;display=swap" /></noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&amp;family=Fira&#43;Code:wght@400;700&amp;family=Inter:wght@400;600&amp;family=Noto&#43;Sans&#43;KR&amp;display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&amp;family=Fira&#43;Code:wght@400;700&amp;family=Inter:wght@400;600&amp;family=Noto&#43;Sans&#43;KR&amp;display=swap" /></noscript>
 
     <meta name="author" content="Cube219" /><meta name="description" content="개인적으로 만들고 있는 게임 엔진에서 문자열 formatting은 {fmt} 라이브러리를 사용하고 있다. 이게 예전 버전에서는 UTF-16 / 32(char16_t, char32_t)가 지원이 안 되어서 소스코드를 수정해서 쓰고 있었지만, C-style 문자열(const char16_t*, …)을 parameter로 넘기면 컴파일 오류가 발생한다. 고치려고 했지만 너무 복잡할 것 같아서..." />
 
@@ -128,6 +131,9 @@
 
 
     
+    
+
+    
 </head>
 
     <body>
@@ -158,7 +164,7 @@
             
         
             
-                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">Posts</span></a>
+                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">Posts</span></a>
                 </li>
             
         
@@ -511,7 +517,7 @@
         
 
         
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha256-gPJfuwTULrEAAcI3X4bALVU/2qBU+QY/TpoD3GO+Exw=" crossorigin="anonymous">
 <script>
     if (typeof renderMathInElement === 'undefined') {
         var getScript = (options) => {
@@ -524,16 +530,16 @@
             document.body.appendChild(script);
         };
         getScript({
-            src: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js',
-            integrity: 'sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4',
+            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js',
+            integrity: 'sha256-YTW9cMncW/ZQMhY69KaUxIa2cPTxV87Uh627Gf5ODUw=',
             onload: () => {
                 getScript({
-                    src: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mhchem.min.js',
-                    integrity: 'sha384-5gCAXJ0ZgozlShOzzT0OWArn7yCPGWVIvgo+BAd8NUKbCmulrJiQuCVR9cHlPHeG',
+                    src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/mhchem.min.js',
+                    integrity: 'sha256-yzSfYeVsWJ1x+2g8CYHsB/Mn7PcSp8122k5BM4T3Vxw=',
                     onload: () => {
                         getScript({
-                            src: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js',
-                            integrity: 'sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa',
+                            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js',
+                            integrity: 'sha256-fxJzNV6hpc8tgW8tF0zVobKa71eTCRGTgxFXt1ZpJNM=',
                             onload: () => {
                                 renderKaTex();
                             }
@@ -597,6 +603,8 @@
 </script>
         
 
+        
+
     
 
 
@@ -604,7 +612,10 @@
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>
