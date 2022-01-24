@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-kr">
     <title type="text">Cube219&#39;s Blog</title>
     <subtitle type="html">게임 개발자가 되고 싶은 사람.</subtitle>
-    <updated>2022-01-12T07:11:56&#43;00:00</updated>
+    <updated>2022-01-24T06:07:24&#43;00:00</updated>
     <id>https://blog.cube219.me/</id>
     <link rel="alternate" type="text/html" href="https://blog.cube219.me/" />
     <link rel="self" type="application/atom&#43;xml" href="https://blog.cube219.me/atom.xml" />
@@ -15,12 +15,12 @@
                 <email>max804800@gmail.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
-    <generator uri="https://gohugo.io/" version="0.91.2">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.92.0">Hugo</generator>
         <entry>
             <title type="text">code-server로 웹 브라우저에서 Problem Solving 하기</title>
             <link rel="alternate" type="text/html" href="https://blog.cube219.me/posts/2022/problem-solving-in-web-browser-using-code-server/" />
             <id>https://blog.cube219.me/posts/2022/problem-solving-in-web-browser-using-code-server/</id>
-            <updated>2022-01-12T15:20:10&#43;09:00</updated>
+            <updated>2022-01-24T14:55:04&#43;09:00</updated>
             <published>2022-01-12T15:11:27&#43;09:00</published>
             <author>
                     <name>Cube219</name>
@@ -185,8 +185,25 @@
 &lt;blockquote&gt;
 &lt;p&gt;code-server가 Linux에서 돌아가기 때문에 빌드나 디버그를 gcc/gdb를 사용해서 가능한 것 같다. 아마 Windows에서는 이 방식이 불가능 할 것이다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;images/debug.png&#34; alt=&#34;Debugging 모습&#34;&gt;
-Chrome에서 돌아가는 모습이다. 아직 아이패드가 안 와서 아이패드에서는 확인을 못 했으나, 지인의 갤럭시 탭에서 돌아가는 것을 확인해서 아마 아이패드에서도 잘 돌아갈 것이다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/debug.png&#34; alt=&#34;Debugging 모습&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Chrome에서 돌아가는 모습이다. 아직 아이패드가 안 와서 아이패드에서는 확인을 못 했으나, 지인의 갤럭시 탭에서 돌아가는 것을 확인해서 아마 아이패드에서도 잘 돌아갈 것이다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;( + 2022-01-24 추가)&lt;/p&gt;
+&lt;p&gt;아이패드가 와서 아이패드에서 돌려보았다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/ipad-with-problem.png&#34; alt=&#34;아이패드에서 문제 페이지와 함께 돌린 모습&#34;&gt;
+&lt;img src=&#34;images/ipad-with-note.png&#34; alt=&#34;아이패드에서 Note와 함께 돌린 모습&#34;&gt;&lt;/p&gt;
+&lt;p&gt;위 사진처럼 옆에다가 노트나 문제를 띄우고 사용하고 있다. 잘 작동하는데 몇 가지 불편한 점들이 있었다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;왜 Safari에서는 설치한 &lt;strong&gt;글꼴&lt;/strong&gt;이 반영이 안 되는지 모르겠다. 그래서 기본 글꼴 중 괜찮은 글꼴을 찾아서 바꿨다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;단축키&lt;/strong&gt;가 macOS 기반으로 바뀌는데, 이게 Windows랑은 미묘하게 달라서 적응이 잘 안된다.&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;위에 주소창을 숨기는 전체화면 모드는 없는건가? 찾아봤는데 딱히 찾을 수 없었다.&lt;/del&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;공유&lt;/strong&gt; 버튼을 누르고 &lt;strong&gt;홈 화면에 추가&lt;/strong&gt;를 하면 전체화면으로 열린다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;마우스가 없다보니 &lt;strong&gt;터치&lt;/strong&gt;를 해야하는데 이게 생각보다 불편하다. 특히 창을 드래그해서 이동시키는 방법을 모르겠다. 그렇다고 트랙패드가 달린 매직키보드를 사기에는 너무 비싸다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;그래도 사용하는데 큰 지장은 없고, 전에 쓰던 게이밍 노트북보다 훨씬 가볍고 배터리도 오래가서 상당히 만족한다.&lt;/p&gt;
 </content>
             
             
