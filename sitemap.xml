@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.cube219.me/about/</loc>
+    <lastmod>2022-02-02T22:31:26+09:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url><url>
+    <loc>https://blog.cube219.me/</loc>
+    <lastmod>2022-02-02T22:31:26+09:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url><url>
     <loc>https://blog.cube219.me/categories/</loc>
     <lastmod>2022-01-24T14:55:04+09:00</lastmod>
     <changefreq>daily</changefreq>
@@ -9,11 +19,6 @@
   </url><url>
     <loc>https://blog.cube219.me/posts/2022/problem-solving-in-web-browser-using-code-server/</loc>
     <lastmod>2022-01-24T14:55:04+09:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>https://blog.cube219.me/</loc>
-    <lastmod>2022-01-24T15:05:14+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
@@ -44,11 +49,6 @@
   </url><url>
     <loc>https://blog.cube219.me/posts/2021/solve-stock-price-prediction-problem-without-segment-tree/</loc>
     <lastmod>2021-11-16T16:30:47+09:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>https://blog.cube219.me/about/</loc>
-    <lastmod>2022-01-24T15:05:14+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url><url>
