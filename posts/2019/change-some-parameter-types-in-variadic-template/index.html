@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.92.2" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.0" /><meta name="theme-color" content="#fff" />
     <meta name="color-scheme" content="light dark">
 
     
@@ -21,7 +21,7 @@
 
     
     
-        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.83eabbfe3617d36ed66f023d2366a8c42ad0638bc398aa7be9271dd6cea2c759.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.c1c2ce1e6fcbd6d0e50d6180406e7cf925ba7918f14f032b2d827998a86ed76e.js"></script>
 
     
 
@@ -293,12 +293,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">S</span><span class="p">,</span> <span class="k">typename</span> <span class="p">...</span><span class="n">Args</span><span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="n">eastl</span><span class="o">::</span><span class="n">basic_string</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">char_t</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span> <span class="n">Format</span><span class="p">(</span><span class="k">const</span> <span class="n">S</span><span class="o">&amp;</span> <span class="n">format_str</span><span class="p">,</span> <span class="k">const</span> <span class="n">Args</span><span class="o">&amp;</span> <span class="p">...</span><span class="n">args</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">format_str</span><span class="p">,</span> <span class="n">convert_string</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">S</span><span class="p">,</span> <span class="k">typename</span> <span class="p">...</span><span class="n">Args</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="n">eastl</span><span class="o">::</span><span class="n">basic_string</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">char_t</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">&gt;</span> <span class="n">Format</span><span class="p">(</span><span class="k">const</span> <span class="n">S</span><span class="o">&amp;</span> <span class="n">format_str</span><span class="p">,</span> <span class="k">const</span> <span class="n">Args</span><span class="o">&amp;</span> <span class="p">...</span><span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">format_str</span><span class="p">,</span> <span class="n">convert_string</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>fmt::format</code>함수를 참조해서 wrapper를 만들었다.</p>
 <p>각 parameter마다 <code>convert_string</code>함수를 거쳐서 특정 type에서는 변환해 다른 타입으로 반환하게 하면 된다. 이제 구현만 하면 되는데&hellip; 여기서 문제가 발생한다.</p>
@@ -323,14 +323,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// Not a string
-</span><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">S</span><span class="p">,</span> <span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;!</span><span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">internal</span><span class="o">::</span><span class="n">is_string</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;&gt;::</span><span class="n">type</span>
-    <span class="n">convert_string</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Not a string
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">S</span><span class="p">,</span> <span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;!</span><span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">internal</span><span class="o">::</span><span class="n">is_string</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;&gt;::</span><span class="n">type</span>
+</span></span><span class="line"><span class="cl">    <span class="n">convert_string</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>is_string&lt;T&gt;</code>는 해당 타입이 string인 경우 true가 되는 type traits이다. 내부적으로는 <code>string_view</code>를 만들 수 있는지로 확인한다.</p>
 <p>간단하게, string이 아닌 경우 parameter의 type으로 그냥 반환한다.</p>
@@ -348,16 +348,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// Same string type
-</span><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">S</span><span class="p">,</span> <span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span>
-<span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">internal</span><span class="o">::</span><span class="n">is_string</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&amp;&amp;</span>
-    <span class="n">IS_SAME_STR_TYPE</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;&gt;::</span><span class="n">type</span>
-    <span class="n">convert_string</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Same string type
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">S</span><span class="p">,</span> <span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">internal</span><span class="o">::</span><span class="n">is_string</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IS_SAME_STR_TYPE</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;&gt;::</span><span class="n">type</span>
+</span></span><span class="line"><span class="cl">    <span class="n">convert_string</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>같은 type인지는 <code>IS_SAME_STR_TYPE</code> 매크로에서 확인한다. 구현 내용은 생략한다.</p>
 <blockquote>
@@ -379,17 +379,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// Different string type
-</span><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">S</span><span class="p">,</span> <span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span>
-<span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">internal</span><span class="o">::</span><span class="n">is_string</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="o">&amp;&amp;</span>
-    <span class="o">!</span><span class="n">IS_SAME_STR_TYPE</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">basic_string_view</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;&gt;::</span><span class="n">type</span>
-    <span class="n">convert_string</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">auto</span><span class="o">&amp;</span> <span class="n">tempStr</span> <span class="o">=</span> <span class="n">GetTempString</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">tempStr</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Different string type
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">S</span><span class="p">,</span> <span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">internal</span><span class="o">::</span><span class="n">is_string</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="o">&amp;&amp;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">!</span><span class="n">IS_SAME_STR_TYPE</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="n">fmt</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">basic_string_view</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;&gt;::</span><span class="n">type</span>
+</span></span><span class="line"><span class="cl">    <span class="n">convert_string</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span><span class="o">&amp;</span> <span class="n">tempStr</span> <span class="o">=</span> <span class="n">GetTempString</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">tempStr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>이 경우에는, <code>enable_if</code>에서 2번때 template parameter가 다른 것을 볼 수가 있다. <code>const T&amp;</code> 대신에 <code>basic_string_view&lt;S&gt;</code>를 반환하게 만들어서 다른 type을 반환하게 만들었고, 내부에서는 변환한 임시 string을 반환한다.</p>
 <hr>

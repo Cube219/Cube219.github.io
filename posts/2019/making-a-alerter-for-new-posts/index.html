@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.92.2" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.0" /><meta name="theme-color" content="#fff" />
     <meta name="color-scheme" content="light dark">
 
     
@@ -21,7 +21,7 @@
 
     
     
-        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.83eabbfe3617d36ed66f023d2366a8c42ad0638bc398aa7be9271dd6cea2c759.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.c1c2ce1e6fcbd6d0e50d6180406e7cf925ba7918f14f032b2d827998a86ed76e.js"></script>
 
     
 
@@ -366,33 +366,33 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">WebSiteInfo</span>
-<span class="p">{</span>
-    <span class="nx">_id</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">url</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">crawlUrl</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">cssSelector</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">lastUrl</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">category</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">checkingCycleSec</span>: <span class="kt">number</span><span class="p">;</span>
-    <span class="nx">isDisabled</span>: <span class="kt">boolean</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">WebPageInfo</span>
-<span class="p">{</span>
-    <span class="nx">_id</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">siteId</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">siteTitle</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">url</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">imageUrl</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">desc</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">category</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">time</span>: <span class="kt">Date</span><span class="p">;</span>
-    <span class="nx">isRead</span>: <span class="kt">boolean</span><span class="p">;</span>
-    <span class="nx">isArchieved</span>: <span class="kt">boolean</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">WebSiteInfo</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">_id</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">crawlUrl</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">cssSelector</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">lastUrl</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">category</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">checkingCycleSec</span>: <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">isDisabled</span>: <span class="kt">boolean</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">WebPageInfo</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">_id</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">siteId</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">siteTitle</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">imageUrl</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">desc</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">category</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">time</span>: <span class="kt">Date</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">isRead</span>: <span class="kt">boolean</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">isArchieved</span>: <span class="kt">boolean</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><code>WebSiteInfo</code>는 크롤링할 웹 사이트들의 정보들을 정의했다. 웹사이트의 기본적인 정보와 새로운 글이 올라왔는지 확인하기 위한 정보들을 가지고 있다.</p>
 <p><code>WebPageInfo</code>에는 저장한 페이지 정보들을 정의했다.</p>
@@ -407,11 +407,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:title&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;제목&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:url&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;https://blog.cube219.me/...&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:image&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;...image.png&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:description&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;설명&#34;</span><span class="p">&gt;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:title&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;제목&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:url&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;https://blog.cube219.me/...&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:image&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;...image.png&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">&#34;og:description&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;설명&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>이런 태그들을 찾아서 데이터를 뽑아야 하는데, <a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="noopener"><strong>cheerio</strong></a>를 사용해 뽑아냈다.</p>
 <div class="highlight"><div class="chroma">
@@ -451,40 +451,40 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">selected</span>: <span class="kt">Cheerio</span><span class="p">;</span>
-
-<span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-<span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:title&#34;]&#39;</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">title</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">title</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-<span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:url&#34;]&#39;</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">url</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">url</span> <span class="o">=</span> <span class="nx">pageUrl</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">let</span> <span class="nx">imageUrl</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-<span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:image&#34;]&#39;</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">imageUrl</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">let</span> <span class="nx">desc</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-<span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:description&#34;]&#39;</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">desc</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">selected</span>: <span class="kt">Cheerio</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:title&#34;]&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">title</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">title</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:url&#34;]&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span> <span class="o">=</span> <span class="nx">pageUrl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">imageUrl</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:image&#34;]&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">imageUrl</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">desc</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">selected</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;meta[property=&#34;og:description&#34;]&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">desc</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>CSS Selector로 해당하는 태그를 선택해 해당 태그의 정보를 가져올 수 있다. <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery</a>와 상당히 유사해서 쉽게 쓸 수 있었다.</p>
 <p>만약 페이지에 Open Graph 정보가 없으면 최소한의 정보인 title, url만 각각 <code>&lt;title&gt;</code>태그, 페이지 url로 대체한다.</p>
@@ -522,34 +522,34 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">public</span> <span class="nx">run</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">isDisabled</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span> <span class="o">=</span> <span class="mi">3600</span><span class="p">;</span>
-
-        <span class="nx">DB</span><span class="p">.</span><span class="nx">updateWebSite</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">_id</span><span class="p">,</span> <span class="p">{</span> <span class="nx">checkingCycleSec</span>: <span class="kt">3600</span> <span class="p">});</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Delay checking when initialized
-</span><span class="c1"></span>    <span class="c1">// because of preventing checking many sites at same time
-</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">delayTimeSec</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">checkImmediately</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="nx">delayTimeSec</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kr">public</span> <span class="nx">checkImmediately</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">this</span><span class="p">.</span><span class="nx">runInternal</span><span class="p">();</span>
-
-    <span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">runInternal</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">public</span> <span class="nx">run</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">isDisabled</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span> <span class="o">=</span> <span class="mi">3600</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">DB</span><span class="p">.</span><span class="nx">updateWebSite</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">_id</span><span class="p">,</span> <span class="p">{</span> <span class="nx">checkingCycleSec</span>: <span class="kt">3600</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Delay checking when initialized
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// because of preventing checking many sites at same time
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">const</span> <span class="nx">delayTimeSec</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">checkImmediately</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="nx">delayTimeSec</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">public</span> <span class="nx">checkImmediately</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">runInternal</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">runInternal</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">checkingCycleSec</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>주기적으로 검사를 해야 하기 때문에 <code>setInterval</code>함수를 이용했다. 여기서 <code>run</code>함수는 실행하자 마자 바로 검사를 하는 것이 아니라 <strong>일정 딜레이 후</strong> 검사를 하는데, 이는 서버가 켜지면서 등록된 모든 Wathcer들이 바로 동시에 검사하는 것을 막기 위해서다. 굳이 필요할 것 같진 않은데 그래도 혹시나 해서 넣었다.</p>
 <p>이제 웹 사이트에 새로운 글이 올라왔는지 확인을 하는 함수를 만들어야 한다. 확인하는 방법으로는 지정한 웹 사이트 HTML을 가져오고, 최신 글로 가는 링크를 뽑아서 기존에 저장한 링크와 같은지 확인해 안 같으면 새로운 글이 올라온 것으로 확인할 수 있다.</p>
@@ -591,39 +591,39 @@
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">private</span> <span class="kr">async</span> <span class="nx">checkNewPage</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">isBusy</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
-    <span class="kd">let</span> <span class="nx">res</span>: <span class="kt">any</span><span class="p">;</span>
-    <span class="k">try</span> <span class="p">{</span>
-        <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">rq</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">crawlUrl</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InvalidUrlError</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">crawlUrl</span><span class="p">);</span>
-        <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
-
-        <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">try</span> <span class="p">{</span>
-        <span class="kr">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-        <span class="kr">const</span> <span class="nx">aElement</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">cssSelector</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-
-        <span class="kr">const</span> <span class="nx">pageUrl</span> <span class="o">=</span> <span class="nx">relToAbsUrl</span><span class="p">(</span><span class="nx">aElement</span><span class="p">.</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
-
-        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">lastUrl</span> <span class="o">!=</span> <span class="nx">pageUrl</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">savePage</span><span class="p">(</span><span class="nx">pageUrl</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InvalidCssSelectorError</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">cssSelector</span><span class="p">);</span>
-        <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
-
-        <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">this</span><span class="p">.</span><span class="nx">isBusy</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">private</span> <span class="kr">async</span> <span class="nx">checkNewPage</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">isBusy</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">res</span>: <span class="kt">any</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">rq</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">crawlUrl</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InvalidUrlError</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">crawlUrl</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">aElement</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">cssSelector</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kr">const</span> <span class="nx">pageUrl</span> <span class="o">=</span> <span class="nx">relToAbsUrl</span><span class="p">(</span><span class="nx">aElement</span><span class="p">.</span><span class="nx">attribs</span><span class="p">.</span><span class="nx">href</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">lastUrl</span> <span class="o">!=</span> <span class="nx">pageUrl</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">savePage</span><span class="p">(</span><span class="nx">pageUrl</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InvalidCssSelectorError</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">cssSelector</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">isBusy</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>실제 코드에서도 <code>crawlUrl</code>로 지정한 페이지를 가져오고, <code>cssSelector</code>로 해당 <code>&lt;a&gt;</code> 태그의 href 속성을 가져온다. 그리고 이 주소가 <code>lastUrl</code>과 다르면, 새로운 글이 올라왔다는 뜻이므로 해당 페이지를 저장한다.</p>
 <div class="highlight"><div class="chroma">
@@ -641,18 +641,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">private</span> <span class="kr">async</span> <span class="nx">savePage</span><span class="p">(</span><span class="nx">pageUrl</span>: <span class="kt">string</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">info</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getPageInfo</span><span class="p">(</span><span class="nx">pageUrl</span><span class="p">);</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nx">siteId</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">_id</span><span class="p">;</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nx">siteTitle</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nx">category</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">category</span><span class="p">;</span>
-
-    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">insertPage</span><span class="p">(</span><span class="nx">info</span><span class="p">,</span> <span class="nx">pageUrl</span><span class="p">);</span>
-
-    <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">lastUrl</span> <span class="o">=</span> <span class="nx">pageUrl</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">private</span> <span class="kr">async</span> <span class="nx">savePage</span><span class="p">(</span><span class="nx">pageUrl</span>: <span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">info</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getPageInfo</span><span class="p">(</span><span class="nx">pageUrl</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nx">siteId</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">_id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nx">siteTitle</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nx">category</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">category</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">insertPage</span><span class="p">(</span><span class="nx">info</span><span class="p">,</span> <span class="nx">pageUrl</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">siteInfo</span><span class="p">.</span><span class="nx">lastUrl</span> <span class="o">=</span> <span class="nx">pageUrl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>페이지 저장은 간단하게 <code>getPageInfo</code>를 통해 해당 페이지 정보를 얻고, 저 함수로 얻을 수 없는 사이트 정보, 카테고리도 추가한 후 DB에 해당 페이지를 삽입한다. 그리고 <code>lastUrl</code>을 갱신한다.</p>
 <h2 id="db"><a href="#db" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>DB</h2>
@@ -680,24 +680,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kd">let</span> <span class="nx">query</span>: <span class="kt">mongoose.DocumentQuery</span><span class="p">&lt;</span><span class="nt">ISavedWebPage</span><span class="err">[],</span> <span class="na">ISavedWebPage</span><span class="p">&gt;;</span>
-
-<span class="k">if</span><span class="p">(</span><span class="nx">fromArchieved</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">query</span> <span class="o">=</span> <span class="nx">SavedWebPageModel</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">condition</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">query</span> <span class="o">=</span> <span class="nx">ArchievedWebPageModel</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">condition</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">afterId</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">query</span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&#34;_id&#34;</span><span class="p">).</span><span class="nx">lt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">afterId</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">startIndex</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">query</span><span class="p">.</span><span class="nx">skip</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">startIndex</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">query</span><span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kr">const</span> <span class="nx">queryRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">query</span><span class="p">.</span><span class="nx">sort</span><span class="p">({</span> <span class="nx">_id</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span> <span class="p">});</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">query</span>: <span class="kt">mongoose.DocumentQuery</span><span class="p">&lt;</span><span class="nt">ISavedWebPage</span><span class="err">[],</span> <span class="na">ISavedWebPage</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">fromArchieved</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">query</span> <span class="o">=</span> <span class="nx">SavedWebPageModel</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">condition</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">query</span> <span class="o">=</span> <span class="nx">ArchievedWebPageModel</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">condition</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">afterId</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">query</span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s2">&#34;_id&#34;</span><span class="p">).</span><span class="nx">lt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">afterId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">startIndex</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">query</span><span class="p">.</span><span class="nx">skip</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">startIndex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">query</span><span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">queryRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">query</span><span class="p">.</span><span class="nx">sort</span><span class="p">({</span> <span class="nx">_id</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span> <span class="p">});</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>저장된 웹 페이지들을 가져오는 코드의 일부분이다. 저장된 페이지들을 가져올 때는 특정 개수나 특정 id이후, 특정 index이후 등 여러 조건들이 들어가게 되고, 이는 조건 JSON 객체를 복잡하게 만든다. 이것을 쿼리 빌더를 이용하면 <code>.limit</code>, <code>.where</code>와 같은 함수를 이용해 조건을 붙일 수 있고, 좀 더 직관적으로 코드를 짤 수 있었다.</p>
 <p>컬렉션 <em>(RDBMS의 테이블에 해당)</em> 으로는 해당 서버의 버전 정보를 담는 <strong>app_infos</strong>, 웹 사이트 정보인 <strong>web_site_infos</strong>, 저장된 웹 페이지인 <strong>saved_web_pages</strong>, 따로 보관한 웹 페이지인 <strong>archieved_web_pages</strong>, 그리고 카테고리인 <strong>category_infos</strong>로 나누었다.</p>
@@ -715,12 +715,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">async</span> <span class="nx">getWebSites</span><span class="p">()</span>
-<span class="kr">async</span> <span class="nx">getWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">)</span>
-<span class="kr">async</span> <span class="nx">insertWebSite</span><span class="p">(</span><span class="nx">info</span>: <span class="kt">WebSiteInfo</span><span class="p">)</span>
-<span class="kr">async</span> <span class="nx">deleteWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">deleteAllPages</span>: <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
-<span class="kr">async</span> <span class="nx">updateWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">params</span>: <span class="kt">UpdateWebSiteParams</span><span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">async</span> <span class="nx">getWebSites</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kr">async</span> <span class="nx">getWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">async</span> <span class="nx">insertWebSite</span><span class="p">(</span><span class="nx">info</span>: <span class="kt">WebSiteInfo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">async</span> <span class="nx">deleteWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">deleteAllPages</span>: <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">async</span> <span class="nx">updateWebSite</span><span class="p">(</span><span class="nx">id</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">params</span>: <span class="kt">UpdateWebSiteParams</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>예를 들어 웹 사이트의 경우 사이트를 검색/추가/수정/제거 기능을 하는 함수들을 만들고 함수 내부에서는 web_site_info 컬렉션을 수정하도록 되어있다.</p>
 <h2 id="apiserver"><a href="#apiserver" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>APIServer</h2>
@@ -767,41 +767,41 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="c1">// koa 초기화하는 부분 일부 코드
-</span><span class="c1"></span><span class="p">...</span>
-<span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">enableAuth</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
-<span class="p">}</span>
-<span class="p">...</span>
-
-<span class="kr">private</span> <span class="kr">async</span> <span class="nx">authMiddleware</span><span class="p">(</span><span class="nx">ctx</span>: <span class="kt">koa.ParameterizedContext</span><span class="p">,</span> <span class="nx">next</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;)</span>
-<span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s2">&#34;x-access-token&#34;</span><span class="p">]</span> <span class="kr">as</span> <span class="kt">string</span><span class="p">;</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">try</span> <span class="p">{</span>
-        <span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">jwtSecretKey</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">e</span> <span class="k">instanceof</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">TokenExpiredError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
-            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s2">&#34;Token expired&#34;</span><span class="p">;</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">e</span> <span class="k">instanceof</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">JsonWebTokenError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
-            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s2">&#34;Token error&#34;</span><span class="p">;</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">await</span> <span class="nx">next</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// koa 초기화하는 부분 일부 코드
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">enableAuth</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">private</span> <span class="kr">async</span> <span class="nx">authMiddleware</span><span class="p">(</span><span class="nx">ctx</span>: <span class="kt">koa.ParameterizedContext</span><span class="p">,</span> <span class="nx">next</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s2">&#34;x-access-token&#34;</span><span class="p">]</span> <span class="kr">as</span> <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">jwtSecretKey</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">e</span> <span class="k">instanceof</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">TokenExpiredError</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s2">&#34;Token expired&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">e</span> <span class="k">instanceof</span> <span class="nx">jwt</span><span class="p">.</span><span class="nx">JsonWebTokenError</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s2">&#34;Token error&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="nx">e</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>토큰 확인은 요청한 주소로 라우팅 하기 전에 미들웨어를 하나 거쳐서 확인한다. 이 미들웨어에서는 <code>x-access-token</code>에 들어있는 토큰을 가져와서 이 토큰이 유효한지 <code>jwt.verify</code>함수를 통해 확인하고, 유효하면 다음 단계로 넘어가고 유효하지 않으면 토큰 에러를 발생 시키고 진행을 중단한다.</p>
 <h3 id="오류-처리"><a href="#오류-처리" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>오류 처리</h3>
@@ -832,29 +832,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">WPAError</span> <span class="kr">extends</span> <span class="nb">Error</span> <span class="p">{</span>
-    <span class="nx">statusCode</span>: <span class="kt">number</span><span class="p">;</span>
-    <span class="nx">responseMessage</span>: <span class="kt">string</span><span class="p">;</span>
-
-    <span class="kr">constructor</span><span class="p">(</span><span class="nx">message</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">statusCode</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kr">super</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
-        
-        <span class="k">this</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="nx">statusCode</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">responseMessage</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kr">export</span> <span class="kr">class</span> <span class="nx">MissingRequiredParametersError</span> <span class="kr">extends</span> <span class="nx">WPAError</span> <span class="p">{</span>
-    <span class="nx">missingParams</span>: <span class="kt">string</span><span class="p">[];</span>
-
-    <span class="kr">constructor</span><span class="p">(</span><span class="nx">missingParams</span>: <span class="kt">string</span><span class="p">[])</span> <span class="p">{</span>
-        <span class="kr">super</span><span class="p">(</span><span class="sb">`Missing required parameters (</span><span class="si">${</span><span class="nx">missingParams</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">)`</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;MissingRequiredParametersError&#39;</span><span class="p">;</span>
-        <span class="nb">Object</span><span class="p">.</span><span class="nx">setPrototypeOf</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">MissingRequiredParametersError</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
-
-        <span class="k">this</span><span class="p">.</span><span class="nx">missingParams</span> <span class="o">=</span> <span class="nx">missingParams</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">WPAError</span> <span class="kr">extends</span> <span class="nb">Error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">statusCode</span>: <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">responseMessage</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">constructor</span><span class="p">(</span><span class="nx">message</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">statusCode</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">super</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="nx">statusCode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">responseMessage</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">MissingRequiredParametersError</span> <span class="kr">extends</span> <span class="nx">WPAError</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">missingParams</span>: <span class="kt">string</span><span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">constructor</span><span class="p">(</span><span class="nx">missingParams</span>: <span class="kt">string</span><span class="p">[])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kr">super</span><span class="p">(</span><span class="sb">`Missing required parameters (</span><span class="si">${</span><span class="nx">missingParams</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">)`</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;MissingRequiredParametersError&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Object</span><span class="p">.</span><span class="nx">setPrototypeOf</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">MissingRequiredParametersError</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">missingParams</span> <span class="o">=</span> <span class="nx">missingParams</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>부모 클래스로 <code>WPAError</code>를 만들었다. 이 클래스는 오류가 발생했을 때 클라이언트에게 보여 줄 <strong>상태 코드</strong>와 <strong>응답 메시지</strong>를 가지고 있다. 그리고 자식 클래스들은 생성자에서 해당 오류의 상태 코드와 메시지 내용을 넣어 준다.</p>
 <div class="highlight"><div class="chroma">
@@ -877,23 +877,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kr">async</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">try</span> <span class="p">{</span>
-        <span class="k">await</span> <span class="nx">next</span><span class="p">();</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">err</span> <span class="k">instanceof</span> <span class="nx">WPAError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ctx</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">;</span>
-            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">responseMessage</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">ctx</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nx">ctx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">Log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`APIServer: Error in </span><span class="si">${</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="err">\</span><span class="sb">n        </span><span class="si">${</span><span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kr">async</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">err</span> <span class="k">instanceof</span> <span class="nx">WPAError</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">responseMessage</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="nx">koaApp</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`APIServer: Error in </span><span class="si">${</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="err">\</span><span class="sb">n        </span><span class="si">${</span><span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>그리고 <strong>에러를 처리하는 미들웨어</strong>를 가장 위쪽에 등록을 한다. 그러면 라우팅하는 함수에서 위에서 정의한 Error들을 던지면 여기서 받게 된다. 받은 에러가 <code>WPAError</code>의 자식이면 해당하는 상태 코드와 메시지를 보내고, 아니면 그냥 Internal Server Error(500)을 보낸다. 이렇게 에러를 처리하는 부분을 한 곳으로 모아서 처리를 했다.</p>
 <h2 id="pushserver"><a href="#pushserver" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>PushServer</h2>
@@ -924,20 +924,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">propA</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">type</span><span class="o">:</span> <span class="nb">Number</span>
-    <span class="p">},</span>
-    <span class="nx">propB</span><span class="o">:</span> <span class="p">{</span>
-      <span class="k">default</span><span class="o">:</span> <span class="s1">&#39;default value&#39;</span>
-    <span class="p">},</span>
-    <span class="nx">propC</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">type</span><span class="o">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Boolean</span><span class="p">]</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">propA</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">type</span><span class="o">:</span> <span class="nb">Number</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">propB</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">default</span><span class="o">:</span> <span class="s1">&#39;default value&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">propC</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">type</span><span class="o">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Boolean</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>예를 들어 컴포넌트의 prop들을 설정하려면 위에처럼 각 prop들의 정보를 object로 넣어줘야 하는데, decorator를 이용하면</p>
 <div class="highlight"><div class="chroma">
@@ -952,15 +952,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Vue</span><span class="p">,</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">Prop</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue-property-decorator&#39;</span>
-
-<span class="err">@</span><span class="nx">Component</span>
-<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">YourComponent</span> <span class="kr">extends</span> <span class="nx">Vue</span> <span class="p">{</span>
-  <span class="err">@</span><span class="nx">Prop</span><span class="p">(</span><span class="nb">Number</span><span class="p">)</span> <span class="nx">readonly</span> <span class="nx">propA</span><span class="o">:</span> <span class="nx">number</span> <span class="o">|</span> <span class="kc">undefined</span>
-  <span class="err">@</span><span class="nx">Prop</span><span class="p">({</span> <span class="k">default</span><span class="o">:</span> <span class="s1">&#39;default value&#39;</span> <span class="p">})</span> <span class="nx">readonly</span> <span class="nx">propB</span><span class="o">!:</span> <span class="nx">string</span>
-  <span class="err">@</span><span class="nx">Prop</span><span class="p">([</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Boolean</span><span class="p">])</span> <span class="nx">readonly</span> <span class="nx">propC</span><span class="o">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="kr">boolean</span> <span class="o">|</span> <span class="kc">undefined</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Vue</span><span class="p">,</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">Prop</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue-property-decorator&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">Component</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">YourComponent</span> <span class="kr">extends</span> <span class="nx">Vue</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="nx">Prop</span><span class="p">(</span><span class="nb">Number</span><span class="p">)</span> <span class="nx">readonly</span> <span class="nx">propA</span><span class="o">:</span> <span class="nx">number</span> <span class="o">|</span> <span class="kc">undefined</span>
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="nx">Prop</span><span class="p">({</span> <span class="k">default</span><span class="o">:</span> <span class="s1">&#39;default value&#39;</span> <span class="p">})</span> <span class="nx">readonly</span> <span class="nx">propB</span><span class="o">!:</span> <span class="nx">string</span>
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="nx">Prop</span><span class="p">([</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Boolean</span><span class="p">])</span> <span class="nx">readonly</span> <span class="nx">propC</span><span class="o">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="kr">boolean</span> <span class="o">|</span> <span class="kc">undefined</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>이렇게 깔끔하게 쉽게 prop들을 정의할 수가 있다.</p>
 <p>다만 아직 정식 기능이 아닌 decorator를 이용하기 때문에 JavaScript는 <a href="https://babeljs.io/docs/en/babel-plugin-proposal-decorators" target="_blank" rel="noopener"><strong>babel</strong></a>을 이용해야 하고, TypeScript는 <strong>컴파일러 옵션</strong>에 <code>experimentalDecorators</code>를 <code>true</code>로 <a href="https://www.typescriptlang.org/docs/handbook/decorators.html" target="_blank" rel="noopener">설정</a>해줘야 한다.</p>
@@ -1013,38 +1013,38 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="nv">DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span> dirname <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span> <span class="k">)</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span> <span class="k">)</span><span class="s2">&#34;</span>
-
-<span class="nb">cd</span> <span class="nv">$DIR</span>
-
-<span class="nb">echo</span>
-<span class="nb">echo</span> <span class="s2">&#34;Getting wpa-server source from github...&#34;</span>
-
-<span class="k">if</span> <span class="o">[</span> -d <span class="s2">&#34;src&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-   <span class="nb">cd</span> src
-   git pull
-<span class="k">else</span>
-   git clone https://github.com/Cube219/WebPageAlerter.git src
-   <span class="nb">cd</span> src
-<span class="k">fi</span>
-
-<span class="nv">VER</span><span class="o">=</span><span class="k">$(</span>cat package.json <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> grep version <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> head -1 <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> awk -F: <span class="s1">&#39;{ print $2 }&#39;</span> <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> sed <span class="s1">&#39;s/[&#34;,]//g&#39;</span> <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> tr -d <span class="s1">&#39;[[:space:]]&#39;</span><span class="k">)</span>
-
-<span class="nb">echo</span>
-<span class="nb">echo</span> <span class="s2">&#34;Building docker images... (version: </span><span class="nv">$VER</span><span class="s2">)&#34;</span>
-
-docker build -t cube219/wpa-server:latest -t cube219/wpa-server:v<span class="nv">$VER</span> .
-
-<span class="nb">echo</span>
-<span class="nb">echo</span> <span class="s2">&#34;Successfully build docker images.&#34;</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span> <span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span> dirname <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">&#34;</span> <span class="k">)</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span> <span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="nv">$DIR</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Getting wpa-server source from github...&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -d <span class="s2">&#34;src&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">cd</span> src
+</span></span><span class="line"><span class="cl">   git pull
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">   git clone https://github.com/Cube219/WebPageAlerter.git src
+</span></span><span class="line"><span class="cl">   <span class="nb">cd</span> src
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">VER</span><span class="o">=</span><span class="k">$(</span>cat package.json <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="p">|</span> grep version <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="p">|</span> head -1 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="p">|</span> awk -F: <span class="s1">&#39;{ print $2 }&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="p">|</span> sed <span class="s1">&#39;s/[&#34;,]//g&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="p">|</span> tr -d <span class="s1">&#39;[[:space:]]&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Building docker images... (version: </span><span class="nv">$VER</span><span class="s2">)&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker build -t cube219/wpa-server:latest -t cube219/wpa-server:v<span class="nv">$VER</span> .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Successfully build docker images.&#34;</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>자동으로 GitHub에서 소스를 가져와서 이미지를 빌드하는 스크립트이다. 버전 정보는 <code>package.json</code>파일에서 가져온다.</p>
 <div class="highlight"><div class="chroma">
@@ -1080,36 +1080,36 @@ docker build -t cube219/wpa-server:latest -t cube219/wpa-server:v<span class="nv
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> node:10.14.1-alpine AS installer</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/WebPageAlerter/build</span><span class="err">
-</span><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">RUN</span> npm install --production<span class="err">
-</span><span class="err"></span><span class="k">RUN</span> npm install -g --production typescript<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c"># ----------------------------</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">FROM</span><span class="s"> installer AS builder</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/WebPageAlerter/build</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">COPY</span> ./src src<span class="err">
-</span><span class="err"></span><span class="k">COPY</span> tsconfig.json .<span class="err">
-</span><span class="err"></span><span class="k">RUN</span> tsc<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="c"># ----------------------------</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">FROM</span><span class="s"> node:10.14.1-alpine</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app/WebPageAlerter</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/src/WebPageAlerter/build/dist dist<span class="err">
-</span><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/src/WebPageAlerter/build/node_modules node_modules<span class="err">
-</span><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;dist/main.js&#34;</span> <span class="p">]</span><span class="err">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> node:10.14.1-alpine AS installer</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/WebPageAlerter/build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install --production<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> npm install -g --production typescript<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># ----------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> installer AS builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /usr/src/WebPageAlerter/build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./src src<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> tsconfig.json .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> tsc<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># ----------------------------</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> node:10.14.1-alpine</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /app/WebPageAlerter</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/src/WebPageAlerter/build/dist dist<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /usr/src/WebPageAlerter/build/node_modules node_modules<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> package*.json ./<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;node&#34;</span><span class="p">,</span> <span class="s2">&#34;dist/main.js&#34;</span> <span class="p">]</span><span class="err">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>Dockerfile 내용이다. 간략하게 설명하면</p>
 <ol>
@@ -1161,45 +1161,45 @@ docker build -t cube219/wpa-server:latest -t cube219/wpa-server:v<span class="nv
 </span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">mainserver</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;cube219/wpa-server:latest&#34;</span><span class="w">
-</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">wpa-server</span><span class="w">
-</span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">mongodb</span><span class="w">
-</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;8000:8000&#34;</span><span class="w">
-</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">./logs:/app/WebPageAlerter/logs</span><span class="w">
-</span><span class="w">      </span>- <span class="l">./page_data:/app/WebPageAlerter/page_data</span><span class="w">
-</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">API_SERVER_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">8000</span><span class="w">
-</span><span class="w">
-</span><span class="w">      </span><span class="nt">API_SERVER_USE_HTTP2</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w">      </span><span class="nt">API_SERVER_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">$PASSWORD</span><span class="w">
-</span><span class="w">      </span><span class="nt">JWT_SIGNATURE_SECRET_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">$SIG_KEY</span><span class="w">
-</span><span class="w">      </span><span class="nt">API_SERVER_ENABLE_AUTH</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w">      </span><span class="nt">DB_URL</span><span class="p">:</span><span class="w"> </span><span class="l">mongodb</span><span class="w">
-</span><span class="w">      </span><span class="nt">DB_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">27017</span><span class="w">
-</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">backend</span><span class="w">
-</span><span class="w">  </span><span class="nt">mongodb</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;mongo:latest&#34;</span><span class="w">
-</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">wpa-db</span><span class="w">
-</span><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">mongodb</span><span class="w">
-</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">./db_data:/data/db</span><span class="w">
-</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">backend</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">backend</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">bridge</span><span class="w">
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mainserver</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;cube219/wpa-server:latest&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">wpa-server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">mongodb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8000:8000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./logs:/app/WebPageAlerter/logs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./page_data:/app/WebPageAlerter/page_data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">API_SERVER_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">8000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">API_SERVER_USE_HTTP2</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">API_SERVER_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">$PASSWORD</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">JWT_SIGNATURE_SECRET_KEY</span><span class="p">:</span><span class="w"> </span><span class="l">$SIG_KEY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">API_SERVER_ENABLE_AUTH</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">DB_URL</span><span class="p">:</span><span class="w"> </span><span class="l">mongodb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">DB_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">27017</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">backend</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mongodb</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;mongo:latest&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">wpa-db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l">mongodb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./db_data:/data/db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">backend</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backend</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">bridge</span><span class="w">
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>서버에 들어갈 매개변수들을 설정하고, 컨테이너가 재 시작해도 데이터가 안 날아가게 볼륨을 마운트하고, db와 연결하는 이 모든 과정들을 쉽게 할 수 있었다. 만약 이미지가 업데이트가 되었다면 그냥</p>
 <p><code>$ docker-compose -f docker-compose.yml up -d</code></p>

@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.92.2" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.0" /><meta name="theme-color" content="#fff" />
     <meta name="color-scheme" content="light dark">
 
     
@@ -21,7 +21,7 @@
 
     
     
-        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.83eabbfe3617d36ed66f023d2366a8c42ad0638bc398aa7be9271dd6cea2c759.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.c1c2ce1e6fcbd6d0e50d6180406e7cf925ba7918f14f032b2d827998a86ed76e.js"></script>
 
     
 
@@ -292,13 +292,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// 출력: 4, 3, 2, 1, 0
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 출력: 4, 3, 2, 1, 0
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>C++에 새로운 연산자가 추가되었다는 내용이였는데, <code>while</code>문에 <code>--&gt;</code>를 쓰면 x가 하나씩 줄면서 반복문을 돌게 된다는 것이다.</p>
 <p>처음 봤을 때는 재미있는 연산자가 추가되나보다 생각을 했다. 근데 글을 더 읽어보니 이게 이전 버전의 C++에서도 동작을 한다는 것이였고, 실제로 돌려보니 동작을 했다! 여기서 뭔가 이상하다고 생각을 해서 자세히 보니까 진실을 알게 되었다.</p>
@@ -307,8 +307,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">=&gt;</span>  <span class="k">while</span><span class="p">((</span><span class="n">x</span><span class="o">--</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">while</span><span class="p">(</span><span class="n">x</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">=&gt;</span>  <span class="k">while</span><span class="p">((</span><span class="n">x</span><span class="o">--</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>실제로는 x에 <code>--</code>연산자가 붙고, <code>x--</code>가 0보다 큰지 검사하는 구문이다. 이걸 띄어쓰기를 적절히 활용해서 마치 <code>--&gt;</code>라는 새로운 연산자가 있는것처럼 보이는 것이다.</p>
 <p>이 사실을 알았을 때, 어이가 없으면서 재미있었다. 이처럼 C++에서는 재미있는 상황이 많이 있는 것 같다.</p>
@@ -319,8 +319,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>배열에 있는 값에 접근을 할 때, 컴파일러는 위와 같이 처리를 한다. 여기서 +는 앞뒤를 서로 바꿔도 같은 값이기 때문에, 아래의 식들도 모두 같다.</p>
 <div class="highlight"><div class="chroma">
@@ -328,8 +328,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="n">i</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="n">i</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>이를 응용하면 다음과 같은 끔찍한(!) 코드도 실행이 된다.</p>
 <div class="highlight"><div class="chroma">
@@ -341,12 +341,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">i</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">)[</span><span class="n">d</span><span class="p">];</span>
-<span class="p">}</span>
-<span class="c1">// d: 1 1 2 3 5 8 13 ...
-</span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">)[</span><span class="n">d</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// d: 1 1 2 3 5 8 13 ...
+</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>어떻게 보면 언어의 결함이라고 볼 수 있을 것 같다. 저런건 컴파일러 단계에서 막을 수 있을 것 같은데 왜 막지 않았을까?</p>
 

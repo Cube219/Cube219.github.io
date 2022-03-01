@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.92.2" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.0" /><meta name="theme-color" content="#fff" />
     <meta name="color-scheme" content="light dark">
 
     
@@ -21,7 +21,7 @@
 
     
     
-        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.83eabbfe3617d36ed66f023d2366a8c42ad0638bc398aa7be9271dd6cea2c759.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.c1c2ce1e6fcbd6d0e50d6180406e7cf925ba7918f14f032b2d827998a86ed76e.js"></script>
 
     
 
@@ -326,37 +326,37 @@
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">par</span><span class="p">[</span><span class="mi">10001</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">10001</span><span class="p">],</span> <span class="n">dis</span><span class="p">[</span><span class="mi">10001</span><span class="p">];</span>
-
-<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">!=</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">v</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">void</span> <span class="nf">uni</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">w</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ur</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">vr</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">ur</span> <span class="o">==</span> <span class="n">vr</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">ur</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">[</span><span class="n">vr</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">ur</span><span class="p">,</span> <span class="n">vr</span><span class="p">);</span>
-    <span class="n">par</span><span class="p">[</span><span class="n">ur</span><span class="p">]</span> <span class="o">=</span> <span class="n">vr</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">ur</span><span class="p">]</span> <span class="o">==</span> <span class="n">r</span><span class="p">[</span><span class="n">vr</span><span class="p">])</span> <span class="n">r</span><span class="p">[</span><span class="n">vr</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
-    <span class="n">dis</span><span class="p">[</span><span class="n">ur</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="nf">query</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">u</span> <span class="o">!=</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dis</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">dis</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
-        <span class="n">u</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">par</span><span class="p">[</span><span class="mi">10001</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">10001</span><span class="p">],</span> <span class="n">dis</span><span class="p">[</span><span class="mi">10001</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">!=</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">v</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">v</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">uni</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">w</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ur</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">vr</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">ur</span> <span class="o">==</span> <span class="n">vr</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">ur</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">[</span><span class="n">vr</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">ur</span><span class="p">,</span> <span class="n">vr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">par</span><span class="p">[</span><span class="n">ur</span><span class="p">]</span> <span class="o">=</span> <span class="n">vr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">ur</span><span class="p">]</span> <span class="o">==</span> <span class="n">r</span><span class="p">[</span><span class="n">vr</span><span class="p">])</span> <span class="n">r</span><span class="p">[</span><span class="n">vr</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dis</span><span class="p">[</span><span class="n">ur</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">query</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">u</span> <span class="o">!=</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dis</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">res</span> <span class="o">=</span> <span class="n">dis</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">u</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>유니온 파인드는 그냥 쓰면 느려질 수 있기 때문에 <strong>Union by rank</strong>를 이용한다. Path decomposition은 트리의 구조가 <strong>깨지기</strong> 때문에 사용하지 않는다. 간선의 비용은 <code>dis[]</code> 배열에서 부모로 올라갈 때 비용으로 저장한다.</p>
 <p>이렇게 트리를 만들고 난 뒤, 경로를 찾을 때는 <a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="noopener"><strong>LCA</strong></a>를 찾으면 되는데, 간선의 비용이 <strong>큰 것</strong>부터 차례대로 올라가면 된다. 이것이 되는 이유는, 트리를 만들 때 간선의 비용이 큰 쪽에서 작은 쪽으로 연결하고, Union by rank를 할 때 서로 합쳐지면서 루트가 갱신되기 때문에 무조건 <strong>위의 간선 비용</strong>이 <strong>아래 간선 비용</strong>보다 <strong>작을</strong> 수 밖에 없기 때문이다. 큰 비용이 무조건 작은 비용보다 아래에 있거나 같은 높이에 있기 때문에, 큰 비용인 정점만 옮기면 자연스럽게 LCA로 다가가게 된다. 설명하기가 좀 어려운데&hellip; 직접 손으로 그려보면 감이 잡힐 것이다.</p>

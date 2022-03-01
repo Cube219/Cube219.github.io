@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.92.2" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.93.0" /><meta name="theme-color" content="#fff" />
     <meta name="color-scheme" content="light dark">
 
     
@@ -21,7 +21,7 @@
 
     
     
-        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.83eabbfe3617d36ed66f023d2366a8c42ad0638bc398aa7be9271dd6cea2c759.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script><script src="/js/meme.min.c1c2ce1e6fcbd6d0e50d6180406e7cf925ba7918f14f032b2d827998a86ed76e.js"></script>
 
     
 
@@ -297,17 +297,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Layout</span>
-<span class="p">{</span>
-    <span class="k">union</span>
-    <span class="p">{</span>
-        <span class="n">HeapLayout</span> <span class="n">heap</span><span class="p">;</span>
-        <span class="n">SSOLayout</span> <span class="n">sso</span><span class="p">;</span>
-        <span class="n">RawLayout</span> <span class="n">raw</span><span class="p">;</span>
-    <span class="p">};</span>
-    
-    <span class="p">...</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Layout</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">union</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HeapLayout</span> <span class="n">heap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SSOLayout</span> <span class="n">sso</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RawLayout</span> <span class="n">raw</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>이렇게 Heap을 쓰는 경우에 사용하는 <code>HeapLayout</code>, SSO를 쓰는 경우에 사용하는 <code>SSOLayout</code>, 그리고 그냥 메모리 상태를 보여주는 <code>RawLayout </code>이 3가지가 <code>union</code>으로 묶여 있다.</p>
 <div class="highlight"><div class="chroma">
@@ -320,13 +320,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">HeapLayout</span>
-<span class="p">{</span>
-    <span class="n">value_type</span><span class="o">*</span> <span class="n">mpBegin</span><span class="p">;</span>
-    <span class="n">size_type</span> <span class="n">mnSize</span><span class="p">;</span>
-    <span class="n">size_type</span> <span class="n">mnCapacity</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">HeapLayout</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">value_type</span><span class="o">*</span> <span class="n">mpBegin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size_type</span> <span class="n">mnSize</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size_type</span> <span class="n">mnCapacity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>Heap을 이용할 경우에는 할당받은 포인터(<code>mpBegin</code>), 크기(<code>mnSize</code>) 그리고 할당 크기(<code>mnCapacity</code>) 정보가 필요하다.</p>
 <p>이럴 경우, 64비트 아키텍처 기준으로는 총 8+8+8=24byte가 사용된다.</p>
@@ -362,35 +362,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">CharT</span><span class="p">,</span> <span class="n">size_t</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">CharT</span><span class="p">)</span><span class="o">&gt;</span>
-<span class="k">struct</span> <span class="nc">SSOPadding</span>
-<span class="p">{</span>
-    <span class="kt">char</span> <span class="n">padding</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">CharT</span><span class="p">)</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)];</span>
-<span class="p">};</span>
-
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">CharT</span><span class="o">&gt;</span>
-<span class="k">struct</span> <span class="nc">SSOPadding</span><span class="o">&lt;</span><span class="n">CharT</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span>
-<span class="p">{</span>
-    <span class="c1">// template specialization to remove the padding structure to avoid warnings on zero length arrays
-</span><span class="c1"></span>    <span class="c1">// also, this allows us to take advantage of the empty-base-class optimization.
-</span><span class="c1"></span><span class="p">};</span>
-
-<span class="c1">// The view of memory when the string data is able to store the string data locally (without a heap allocation).
-</span><span class="c1"></span><span class="k">struct</span> <span class="nc">SSOLayout</span>
-<span class="p">{</span>
-    <span class="k">enum</span> <span class="err">: </span><span class="nc">size_type</span> <span class="p">{</span> <span class="n">SSO_CAPACITY</span> <span class="o">=</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">HeapLayout</span><span class="p">)</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">))</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">value_type</span><span class="p">)</span> <span class="p">};</span>
-
-    <span class="c1">// mnSize must correspond to the last byte of HeapLayout.mnCapacity, so we don&#39;t want the compiler to insert
-</span><span class="c1"></span>    <span class="c1">// padding after mnSize if sizeof(value_type) != 1; Also ensures both layouts are the same size.
-</span><span class="c1"></span>    <span class="k">struct</span> <span class="nc">SSOSize</span> <span class="o">:</span> <span class="n">SSOPadding</span><span class="o">&lt;</span><span class="n">value_type</span><span class="o">&gt;</span>
-    <span class="p">{</span>
-        <span class="kt">char</span> <span class="n">mnRemainingSize</span><span class="p">;</span>
-    <span class="p">};</span>
-
-    <span class="n">value_type</span> <span class="n">mData</span><span class="p">[</span><span class="n">SSO_CAPACITY</span><span class="p">];</span> <span class="c1">// Local buffer for string data.
-</span><span class="c1"></span>    <span class="n">SSOSize</span> <span class="n">mRemainingSizeField</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">CharT</span><span class="p">,</span> <span class="n">size_t</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">CharT</span><span class="p">)</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">SSOPadding</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">padding</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">CharT</span><span class="p">)</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">CharT</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">SSOPadding</span><span class="o">&lt;</span><span class="n">CharT</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// template specialization to remove the padding structure to avoid warnings on zero length arrays
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// also, this allows us to take advantage of the empty-base-class optimization.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The view of memory when the string data is able to store the string data locally (without a heap allocation).
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">SSOLayout</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">enum</span> <span class="err">: </span><span class="nc">size_type</span> <span class="p">{</span> <span class="n">SSO_CAPACITY</span> <span class="o">=</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">HeapLayout</span><span class="p">)</span> <span class="o">-</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">))</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">value_type</span><span class="p">)</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// mnSize must correspond to the last byte of HeapLayout.mnCapacity, so we don&#39;t want the compiler to insert
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// padding after mnSize if sizeof(value_type) != 1; Also ensures both layouts are the same size.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="nc">SSOSize</span> <span class="o">:</span> <span class="n">SSOPadding</span><span class="o">&lt;</span><span class="n">value_type</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="n">mnRemainingSize</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">value_type</span> <span class="n">mData</span><span class="p">[</span><span class="n">SSO_CAPACITY</span><span class="p">];</span> <span class="c1">// Local buffer for string data.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">SSOSize</span> <span class="n">mRemainingSizeField</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>SSO에서는 이 24byte를 활용해서 문자열을 집어넣는다. 남은 문자를 저장하기 위해 최소 1byte를 남겨두고 나머지를 문자열을 담을 공간으로 활용한다.</p>
 <p>여기서는 남은 문자열 크기(<code>mnRemainingSize</code>)를 padding까지 해서 무조건 <code>HeapLayout</code>의 마지막 byte에 두는데, 이는 지금 Heap인지 SSO인지 확인하는데 이 byte를 쓰기 때문이다.</p>
@@ -453,62 +453,62 @@
 </span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
-</span><span class="cp"></span>    <span class="c1">// Big Endian use LSB, unless we want to reorder struct layouts on endianness, Bit is set when we are in Heap
-</span><span class="c1"></span>    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kHeapMask</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
-    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kSSOMask</span>  <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
-<span class="cp">#else
-</span><span class="cp"></span>    <span class="c1">// Little Endian use MSB
-</span><span class="c1"></span>    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kHeapMask</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">size_type</span><span class="p">(</span><span class="o">~</span><span class="n">size_type</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kSSOMask</span>  <span class="o">=</span> <span class="mh">0x80</span><span class="p">;</span>
-<span class="cp">#endif
-</span><span class="cp"></span>
-<span class="p">...</span>
-
-<span class="kr">inline</span> <span class="kt">bool</span> <span class="n">IsHeap</span><span class="p">()</span> <span class="k">const</span> <span class="n">EA_NOEXCEPT</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!!</span><span class="p">(</span><span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span> <span class="o">&amp;</span> <span class="n">kSSOMask</span><span class="p">);</span> <span class="p">}</span>
-
-<span class="p">...</span>
-
-<span class="c1">// Largest value for SSO.mnSize == 23, which has two LSB bits set, but on big-endian (BE)
-</span><span class="c1">// use least significant bit (LSB) to denote heap so shift.
-</span><span class="c1"></span><span class="kr">inline</span> <span class="n">size_type</span> <span class="n">GetSSOSize</span><span class="p">()</span> <span class="k">const</span> <span class="n">EA_NOEXCEPT</span>
-<span class="p">{</span>
-<span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
-</span><span class="cp"></span>    <span class="k">return</span> <span class="n">SSOLayout</span><span class="o">::</span><span class="n">SSO_CAPACITY</span> <span class="o">-</span> <span class="p">(</span><span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">);</span>
-<span class="cp">#else
-</span><span class="cp"></span>    <span class="k">return</span> <span class="p">(</span><span class="n">SSOLayout</span><span class="o">::</span><span class="n">SSO_CAPACITY</span> <span class="o">-</span> <span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span><span class="p">);</span>
-<span class="cp">#endif
-</span><span class="cp"></span><span class="p">}</span>
-
-<span class="kr">inline</span> <span class="kt">void</span> <span class="nf">SetSSOSize</span><span class="p">(</span><span class="n">size_type</span> <span class="n">size</span><span class="p">)</span> <span class="n">EA_NOEXCEPT</span>
-<span class="p">{</span>
-<span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
-</span><span class="cp"></span>    <span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="p">)((</span><span class="n">SSOLayout</span><span class="o">::</span><span class="n">SSO_CAPACITY</span> <span class="o">-</span> <span class="n">size</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">);</span>
-<span class="cp">#else
-</span><span class="cp"></span>    <span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="p">)(</span><span class="n">SSOLayout</span><span class="o">::</span><span class="n">SSO_CAPACITY</span> <span class="o">-</span> <span class="n">size</span><span class="p">);</span>
-<span class="cp">#endif
-</span><span class="cp"></span><span class="p">}</span>
-
-<span class="p">...</span>
-
-<span class="kr">inline</span> <span class="kt">void</span> <span class="n">SetHeapCapacity</span><span class="p">(</span><span class="n">size_type</span> <span class="n">cap</span><span class="p">)</span> <span class="n">EA_NOEXCEPT</span>
-<span class="p">{</span>
-<span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
-</span><span class="cp"></span>    <span class="n">heap</span><span class="p">.</span><span class="n">mnCapacity</span> <span class="o">=</span> <span class="p">(</span><span class="n">cap</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">kHeapMask</span><span class="p">;</span>
-<span class="cp">#else
-</span><span class="cp"></span>    <span class="n">heap</span><span class="p">.</span><span class="n">mnCapacity</span> <span class="o">=</span> <span class="p">(</span><span class="n">cap</span> <span class="o">|</span> <span class="n">kHeapMask</span><span class="p">);</span>
-<span class="cp">#endif
-</span><span class="cp"></span><span class="p">}</span>
-
-<span class="kr">inline</span> <span class="n">size_type</span> <span class="nf">GetHeapCapacity</span><span class="p">()</span> <span class="k">const</span> <span class="n">EA_NOEXCEPT</span>
-<span class="p">{</span>
-<span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
-</span><span class="cp"></span>    <span class="k">return</span> <span class="p">(</span><span class="n">heap</span><span class="p">.</span><span class="n">mnCapacity</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
-<span class="cp">#else
-</span><span class="cp"></span>    <span class="k">return</span> <span class="p">(</span><span class="n">heap</span><span class="p">.</span><span class="n">mnCapacity</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">kHeapMask</span><span class="p">);</span>
-<span class="cp">#endif
-</span><span class="cp"></span><span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="c1">// Big Endian use LSB, unless we want to reorder struct layouts on endianness, Bit is set when we are in Heap
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kHeapMask</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kSSOMask</span>  <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#else
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="c1">// Little Endian use MSB
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kHeapMask</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">size_type</span><span class="p">(</span><span class="o">~</span><span class="n">size_type</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">size_type</span> <span class="n">kSSOMask</span>  <span class="o">=</span> <span class="mh">0x80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">IsHeap</span><span class="p">()</span> <span class="k">const</span> <span class="n">EA_NOEXCEPT</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!!</span><span class="p">(</span><span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span> <span class="o">&amp;</span> <span class="n">kSSOMask</span><span class="p">);</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Largest value for SSO.mnSize == 23, which has two LSB bits set, but on big-endian (BE)
+</span></span></span><span class="line"><span class="cl"><span class="c1">// use least significant bit (LSB) to denote heap so shift.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">inline</span> <span class="n">size_type</span> <span class="n">GetSSOSize</span><span class="p">()</span> <span class="k">const</span> <span class="n">EA_NOEXCEPT</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="k">return</span> <span class="n">SSOLayout</span><span class="o">::</span><span class="n">SSO_CAPACITY</span> <span class="o">-</span> <span class="p">(</span><span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#else
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="k">return</span> <span class="p">(</span><span class="n">SSOLayout</span><span class="o">::</span><span class="n">SSO_CAPACITY</span> <span class="o">-</span> <span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="kt">void</span> <span class="nf">SetSSOSize</span><span class="p">(</span><span class="n">size_type</span> <span class="n">size</span><span class="p">)</span> <span class="n">EA_NOEXCEPT</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="p">)((</span><span class="n">SSOLayout</span><span class="o">::</span><span class="n">SSO_CAPACITY</span> <span class="o">-</span> <span class="n">size</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#else
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="n">sso</span><span class="p">.</span><span class="n">mRemainingSizeField</span><span class="p">.</span><span class="n">mnRemainingSize</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="p">)(</span><span class="n">SSOLayout</span><span class="o">::</span><span class="n">SSO_CAPACITY</span> <span class="o">-</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="kt">void</span> <span class="n">SetHeapCapacity</span><span class="p">(</span><span class="n">size_type</span> <span class="n">cap</span><span class="p">)</span> <span class="n">EA_NOEXCEPT</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="n">heap</span><span class="p">.</span><span class="n">mnCapacity</span> <span class="o">=</span> <span class="p">(</span><span class="n">cap</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">kHeapMask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#else
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="n">heap</span><span class="p">.</span><span class="n">mnCapacity</span> <span class="o">=</span> <span class="p">(</span><span class="n">cap</span> <span class="o">|</span> <span class="n">kHeapMask</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="n">size_type</span> <span class="nf">GetHeapCapacity</span><span class="p">()</span> <span class="k">const</span> <span class="n">EA_NOEXCEPT</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#ifdef EA_SYSTEM_BIG_ENDIAN
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="k">return</span> <span class="p">(</span><span class="n">heap</span><span class="p">.</span><span class="n">mnCapacity</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#else
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="k">return</span> <span class="p">(</span><span class="n">heap</span><span class="p">.</span><span class="n">mnCapacity</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">kHeapMask</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>지금 상태가 Heap인지 SSO인지는 특이하게 판단한다. Layout의 마지막 byte에 masking bit를 넣어서 판단하는데,  little endian이랑 big endian이랑 넣는 위치가 다르다.</p>
 <p>little endian인 경우 해당 byte의 <a href="https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%83%81%EC%9C%84_%EB%B9%84%ED%8A%B8" target="_blank" rel="noopener">MSB</a>에다가 넣는다. 이경우 MSB가 1이면, SSO 입장에서는 <code>mnRemainingSize</code>가 음수이기 때문에 이런 상황이 나올 수가 없고, Heap 입장에서는 저 bit가 <code>mnCapacity</code>에선 매우 큰 값을 나타내기 때문에 masking에 써도 괜찮다.</p>
@@ -529,18 +529,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Layout</span>
-<span class="p">{</span>
-    <span class="p">...</span>
-        
-    <span class="kr">inline</span> <span class="n">value_type</span><span class="o">*</span> <span class="n">BeginPtr</span><span class="p">()</span> <span class="n">EA_NOEXCEPT</span> <span class="p">{</span> <span class="k">return</span> <span class="nf">IsHeap</span><span class="p">()</span> <span class="o">?</span> <span class="n">HeapBeginPtr</span><span class="p">()</span> <span class="o">:</span> <span class="n">SSOBeginPtr</span><span class="p">();</span> <span class="p">}</span>
-    
-    <span class="p">...</span>
-        
-    <span class="kr">inline</span> <span class="n">value_type</span><span class="o">*</span> <span class="n">EndPtr</span><span class="p">()</span> <span class="n">EA_NOEXCEPT</span> <span class="p">{</span> <span class="k">return</span> <span class="nf">IsHeap</span><span class="p">()</span> <span class="o">?</span> <span class="n">HeapEndPtr</span><span class="p">()</span> <span class="o">:</span> <span class="n">SSOEndPtr</span><span class="p">();</span> <span class="p">}</span>
-    
-    <span class="p">...</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Layout</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="kr">inline</span> <span class="n">value_type</span><span class="o">*</span> <span class="n">BeginPtr</span><span class="p">()</span> <span class="n">EA_NOEXCEPT</span> <span class="p">{</span> <span class="k">return</span> <span class="nf">IsHeap</span><span class="p">()</span> <span class="o">?</span> <span class="n">HeapBeginPtr</span><span class="p">()</span> <span class="o">:</span> <span class="n">SSOBeginPtr</span><span class="p">();</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="kr">inline</span> <span class="n">value_type</span><span class="o">*</span> <span class="n">EndPtr</span><span class="p">()</span> <span class="n">EA_NOEXCEPT</span> <span class="p">{</span> <span class="k">return</span> <span class="nf">IsHeap</span><span class="p">()</span> <span class="o">?</span> <span class="n">HeapEndPtr</span><span class="p">()</span> <span class="o">:</span> <span class="n">SSOEndPtr</span><span class="p">();</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>해당 주소에 접근 할 때는 현재 상태를 확인하고 이에 맞는 포인터를 반환한다. 여기서 if 분기문을 거치기 때문에 <a href="https://ko.wikipedia.org/wiki/%EB%B6%84%EA%B8%B0_%EC%98%88%EC%B8%A1" target="_blank" rel="noopener">branch prediction</a>이 실패할 경우 약간의 성능 오버헤드가 발생하게 된다.</p>
 <h2 id="결론"><a href="#결론" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>결론</h2>
