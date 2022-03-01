@@ -57,7 +57,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2022-03-01T17:48:35+09:00",
-        "dateModified": "2022-03-01T08:58:28+00:00",
+        "dateModified": "2022-03-01T21:30:58+09:00",
         "url": "https://blog.cube219.me/posts/2022/fracturing-search/",
         "headline": "Fracturing Search",
         "description": "문제들 중에 k번째로 작은/큰 값을 구하는 경우가 있다. 이때 Fracturing Search를 쓰면 효율적으로 구할 수 있다. Fracutring Search 문제에서 만들 수 있는 여러 상태들이 있고, 각 상태들은 값을 가지고 있다. 이때 다음 조건을 만족하는 상태 트리를 만들 수 있다. 트리에서 노드에 대응되는 모든 상태들은 서로 겹치지 않는다. 자식 노드는 부모 노드보다 값이 크거나 같다. 이때 k...",
@@ -108,7 +108,7 @@
 <meta property="og:locale" content="ko-kr" /><meta property="og:image" content="https://blog.cube219.me/posts/2022/fracturing-search/images/cow-tree-2.png" />
 <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2022-03-01T17:48:35&#43;09:00" />
-    <meta property="article:modified_time" content="2022-03-01T08:58:28&#43;00:00" />
+    <meta property="article:modified_time" content="2022-03-01T21:30:58&#43;09:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -343,7 +343,7 @@
 <p><strong>상한</strong>은 상태에 <strong>고른 개수</strong>를 <strong>저장</strong>하고 상한보다 크면 컷하는 방식으로 하면 된다.
 문제는 <strong>하한</strong>인데, 하한이 있을 때 경우를 생각해보자. 하한이 3일 때, 가장 작은 상태는 (0, 1, 2)다. 그다음 상태는 (0, 1, <strong>3</strong>)이고, 그다음 상태는 (0, 1, <strong>4</strong>), (0, <strong>2, 3</strong>)&hellip; 이렇게 이어진다. 이것은 <strong>base</strong>로 (0, 1, 2)인 상태에서 <strong>뒤에서부터 대체</strong>하는 방식을 사용하면 된다. 시작을 3부터 시작하고, 만약 앞에 넣을 수 있으면 <strong>앞에 넣는 상태</strong>를 <strong>추가</strong>하면 된다.</p>
 <blockquote>
-<p>앞에 넣는다는 의미는 넣는 값이 x일 때 <strong>x-1</strong>을 <strong>x로 대체</strong>하는 것이다. 예를 들어 base가 (0, 1, 2)이고 현제 대체 상태가 (3)이라고 하면, 다음 대체 상태로 (2, 3)이 될 수 있다. 이것은 적용하면 (0, <strong>2, 3</strong>)이 되고, 이는 1이 2로 대체된 것이다.</p>
+<p>앞에 넣는다는 의미는 넣는 값이 x일 때 <strong>x-1</strong>을 <strong>x로 대체</strong>하는 것이다. 예를 들어 base가 (0, 1, 2)이고 현재 대체 상태가 (3)이라고 하면, 다음 대체 상태로 (2, 3)이 될 수 있다. 이것은 적용하면 (0, <strong>2, 3</strong>)이 되고, 이는 1이 2로 대체된 것이다.</p>
 </blockquote>
 <p><img src="images/has-bound.png" alt="5개 있고 상/하한이 [2, 4]일때 상태 트리"></p>
 <p><strong>파란색</strong>이 앞에 넣는 상태이다. 잘 보면 현재 <strong>크기</strong>에 따라 <strong>앞에 넣는 값</strong>이 <strong>같은 것</strong>을 볼 수 있다. 구현할 때 주의할 점은 현재 상태가 <strong>앞에 넣은 상태</strong>라면 <strong>빨간색</strong>으로 넘어가지 <strong>않아야</strong> 한다.</p>
