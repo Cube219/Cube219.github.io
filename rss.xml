@@ -10,7 +10,7 @@
         <title>Cube219&#39;s Blog</title>
         <link>https://blog.cube219.me/</link>
         <description>게임 개발자가 되고 싶은 사람.</description>
-        <generator>Hugo 0.93.0 https://gohugo.io/</generator>
+        <generator>Hugo 0.97.3 https://gohugo.io/</generator>
         
             <language>ko-kr</language>
         
@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Tue, 01 Mar 2022 12:32:40 &#43;0000</lastBuildDate>
+        <lastBuildDate>Wed, 27 Apr 2022 12:00:23 &#43;0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://blog.cube219.me/rss.xml" />
         
@@ -40,7 +40,7 @@
                 
                     <description>&lt;p&gt;문제들 중에 &lt;strong&gt;k번째&lt;/strong&gt;로 &lt;strong&gt;작은/큰 값&lt;/strong&gt;을 구하는 경우가 있다. 이때 &lt;strong&gt;Fracturing Search&lt;/strong&gt;를 쓰면 효율적으로 구할 수 있다.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;fracutring-search&#34;&gt;Fracutring Search&lt;/h1&gt;
+&lt;h1 id=&#34;fracturing-search&#34;&gt;Fracturing Search&lt;/h1&gt;
 &lt;p&gt;문제에서 만들 수 있는 여러 &lt;strong&gt;상태&lt;/strong&gt;들이 있고, 각 상태들은 &lt;strong&gt;값&lt;/strong&gt;을 가지고 있다. 이때 다음 조건을 만족하는 &lt;strong&gt;상태 트리&lt;/strong&gt;를 만들 수 있다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;트리에서 &lt;strong&gt;노드&lt;/strong&gt;에 대응되는 &lt;strong&gt;모든 상태&lt;/strong&gt;들은 서로 &lt;strong&gt;겹치지 않는다&lt;/strong&gt;.&lt;/li&gt;
